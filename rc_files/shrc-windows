@@ -1,0 +1,188 @@
+################
+# Shell options
+################
+# Make Bash append rather than overwrite the history on disk:
+shopt -s histappend
+# A new shell gets the history lines from all previous shells
+PROMPT_COMMAND='history -a'
+# Don't put duplicate lines in the history.
+export HISTCONTROL=ignoredups
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+#HISTSIZE=1000
+#HISTFILESIZE=2000
+
+# check the window size after each command and update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+################
+# Shell aliases
+################
+
+# folders and navigation
+alias dir="ls -F  --color=auto --format=long"
+alias ll="ls -lF  --color=auto"
+alias la="ls -lFa --color=auto"
+alias l=" ls -CF  --color=auto"
+
+# useful AWK alias to edit files in-place directly
+awk_inplace()
+{
+	local file="$1"
+	local temp="$1.tmp"
+	shift 1
+	awk "$@" "$file" > "$temp"
+	mv "$temp" "$file"
+}
+
+# get your own IP address: https://unix.stackexchange.com/a/81699/37512
+alias getip='dig @resolver4.opendns.com myip.opendns.com +short'
+alias getipv4='dig @resolver4.opendns.com myip.opendns.com +short -4'
+alias getipv6='dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6'
+
+
+
+################
+# sh
+################
+#export OS=Windows_NT
+export LANG=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_COLLATE=C.UTF-8
+export LC_NUMERIC=C.UTF-8
+export LC_CTYPE=C.UTF-8
+# opens a file with its default program
+alias open="cygstart"
+alias path='echo "$PATH" | tr ":" "\n" '
+# opens a new shell window
+alias new="cygstart mintty /bin/bash -il"
+
+################
+# cygwin
+################
+SH_ANSI_RESET='\033[0m'
+SH_ANSI_COLOR='\033['
+SH_ANSI_COLOR_USR="${SH_ANSI_COLOR}01;32m"
+SH_ANSI_COLOR_HPC="${SH_ANSI_COLOR}38;5;243m"
+SH_ANSI_COLOR_DIR="${SH_ANSI_COLOR}38;5;39m"
+SH_ANSI_COLOR_GIT="${SH_ANSI_COLOR}38;5;197m"
+SH_NEWLINE=$' '
+parse_git_branch() { git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p' ; }
+
+PS1='${debian_chroot:+($debian_chroot)}\
+\['"$SH_ANSI_COLOR_USR"'\]\u\
+\['"$SH_ANSI_RESET"'\]@\
+\['"$SH_ANSI_COLOR_HPC"'\]\h\
+\['"$SH_ANSI_RESET"'\] \
+\['"$SH_ANSI_COLOR_DIR"'\]\w\
+\['"$SH_ANSI_RESET"'\] \
+\['"$SH_ANSI_COLOR_GIT"'\]$(parse_git_branch)\
+\['"$SH_ANSI_RESET"'\]\
+'"$SH_NEWLINE"'\$ '
+
+# use windows-native symlinks if possible
+export CYGWIN="$CYGWIN winsymlinks:native"
+# opens the cygwin setup.exe package manager
+alias setup="/cygdrive/c/Languages/cygwin64/setup-x86_64.exe" # Cygwin setup (equivalent to a regular linux's package manager: apt/yum/etc)
+alias sudo='cygstart --action=runas'
+
+
+
+##### PROGRAMMING
+
+alias sublime='/cygdrive/c/Program Files/SublimeText/subl.exe'
+
+
+
+################
+# git
+################
+# list contents of git repo remote
+alias git_check="git ls-tree --full-tree -r HEAD"
+# git pull any and all branches from remote
+alias git_pull_all='git branch -r | grep -v "\->" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done ; git fetch --all ; git pull --all'
+# convert a git repo remote HTTPS URL to the equivalent SSH URI
+alias git_https_to_ssh="git remote -v | grep fetch | rev | cut -d ' ' -f2- | rev | sed -E 's_https?\://(www\.)?github\.com/_git@github\.com:_g'"
+# simple aliases to gain time
+alias git_add="git add . && git status"
+alias git_add_all="git add --all && git status"
+alias git_diff="git diff --cached"
+alias git_rm="git rm --cached"
+alias git_restore="git checkout HEAD --"
+alias git_commit="git commit -m"
+alias git_commit_undo="git reset --hard HEAD~1"
+alias git_commit_edit="git commit --amend -m"
+
+
+
+################
+# C
+################
+export CC=x86_64-w64-mingw32-gcc
+export CPATH="C:\\Languages\\cygwin64\\usr\\include"
+export CPATH="$CPATH:C:\\Languages\\cygwin64\\usr\\x86_64-w64-mingw32\\sys-root\\mingw\\include"
+export CPATH="$CPATH:C:\\Languages\\cygwin64\\lib\\gcc\\x86_64-w64-mingw32\\10\\include"
+export CPATH="$CPATH:C:\\Languages\\cygwin64\\lib\\gcc\\x86_64-w64-mingw32\\10\\include-fixed"
+export LDFLAGS="$LDFLAGS -L/usr/local/lib"
+export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/cygdrive/c/PF64/Mono/lib"
+export LIBCLANG_PATH="C:\\Program Files\\LLVM\\bin"
+alias clang='clang --target=x86_64-w64-windows-gnu --sysroot="C:\Languages\cygwin64\usr"'
+alias gdb32="rlwrap /bin/i686-w64-mingw32/gdb.exe"
+alias gdb64="rlwrap /bin/x86_64-w64-mingw32/gdb.exe"
+alias gdb_sigint="~/gdb_sigint"
+# Fast C script template creation
+alias c_main="printf '\n#include <stdio.h>\n\n\n\nint\tmain(int argc, char** argv)\n{\n\t// code\n}\n'"
+# Compiling with essential flags/options in a fast and easy way
+alias compile="$CC -o main -Wall -Wextra -Werror"
+# Run C preprocessor and check output
+alias preprocess="$CC -E -o preprocessed.c"
+# Displays all the defined symbols for a given program
+alias show_defines="$CC -dM -E - </dev/null"
+# Run SCC code counter on a typical C project folder
+alias scc_c="scc -w -v --ci --exclude-dir .git,obj,bin,lib"
+# Run make with 4 parallel threads for faster compilation
+alias fastmake="make -j 4 -O"
+# Run this to check if a makefile has proper variables set up
+alias debugmake="make -n --warn-undefined-variables"
+
+################
+# C#
+################
+export CSC=csc.exe
+#csc() { printf 'cd /d "C:\Program Files (x86)\Microsoft Visual Studio\\2019\Community\MSBuild\Current\Bin\Roslyn"''\n''csc '"$@"'\n''exit''\n' | cmd /K ; }
+#export PATH="$PATH:/cygdrive/c/Windows/Microsoft.NET/Framework64/v4.0.30319/"
+export PATH="$PATH:/cygdrive/c/PF32/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/Roslyn/"
+export PATH="$PATH:/cygdrive/c/PF64/Mono/bin/"
+export PATH="$PATH:/cygdrive/c/PF32/Mono/bin/"
+export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/cygdrive/c/PF64/Mono/lib/pkgconfig"
+export MONO_PATH="C:\\Program Files\\Mono\\lib"
+export MONO_CFG_PATH="C:\\Program Files\\Mono\\etc"
+#alias omnisharp=
+
+################
+# Rust
+################
+alias cargo="/cygdrive/c/Users/`whoami`/.cargo/bin/cargo.exe"
+alias rustc="/cygdrive/c/Users/`whoami`/.cargo/bin/rustc.exe"
+alias rustup="/cygdrive/c/Users/`whoami`/.cargo/bin/rustup.exe"
+
+################
+# Python
+################
+export PYTHON="/usr/bin/python3.8"
+alias conda="/cygdrive/c/Users/`whoami`/miniconda3/_conda.exe"
+
+################
+# JS/TS/Node
+################
+export PATH=$PATH:/cygdrive/c/Users/`whoami`/AppData/Roaming/npm
+export FORCE_COLOR=true
+export NODE_SKIP_PLATFORM_CHECK=1
+export NODE_GYP_FORCE_PYTHON='C:\Languages\Python\python.exe'
+alias node32="/cygdrive/c/Program\ Files\ \(x86\)/nodejs/node"
+alias npm32="/cygdrive/c/Program\ Files\ \(x86\)/nodejs/npm"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# kill background node.js instances (for windows)
+alias npm_stop="taskkill -F -IM node.exe"
+alias killnode="taskkill -F -IM node.exe"

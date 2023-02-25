@@ -1,0 +1,185 @@
+################
+# Shell options
+################
+# Make Bash append rather than overwrite the history on disk:
+shopt -s histappend
+# A new shell gets the history lines from all previous shells
+PROMPT_COMMAND='history -a'
+# Don't put duplicate lines in the history.
+export HISTCONTROL=ignoredups
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+#HISTSIZE=1000
+#HISTFILESIZE=2000
+
+# check the window size after each command and update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+################
+# Shell aliases
+################
+
+# folders and navigation
+alias dir="ls -F --color=auto --format=long"
+alias ll="ls -lF"
+alias la="ls -lFa"
+alias l=" ls -CF"
+
+# useful AWK alias to edit files in-place directly
+awk_inplace()
+{
+	local file="$1"
+	local temp="$1.tmp"
+	shift 1
+	awk "$@" "$file" > "$temp"
+	mv "$temp" "$file"
+}
+
+# get your own IP address: https://unix.stackexchange.com/a/81699/37512
+alias getip='dig @resolver4.opendns.com myip.opendns.com +short'
+alias getipv4='dig @resolver4.opendns.com myip.opendns.com +short -4'
+alias getipv6='dig @resolver1.ipv6-sandbox.opendns.com AAAA myip.opendns.com +short -6'
+
+
+
+################
+# sh
+################
+export OS=MacOS
+export LANG=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_COLLATE=C.UTF-8
+export LC_NUMERIC=C.UTF-8
+export LC_CTYPE=C.UTF-8
+# opens a file with its default program
+#alias open=
+alias path='echo "$PATH" | tr ":" "\n" '
+# opens a new shell window
+#alias new=
+
+################
+# zsh
+################
+SH_ANSI_RESET='\033[0m'
+SH_ANSI_COLOR='\033['
+SH_ANSI_COLOR_USR="${SH_ANSI_COLOR}01;32m"
+SH_ANSI_COLOR_HPC="${SH_ANSI_COLOR}38;5;243m"
+SH_ANSI_COLOR_DIR="${SH_ANSI_COLOR}38;5;39m"
+SH_ANSI_COLOR_GIT="${SH_ANSI_COLOR}38;5;197m"
+SH_NEWLINE=$' '
+parse_git_branch() { git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p' ; }
+setopt PROMPT_SUBST
+export PROMPT="\
+%{$(printf $SH_ANSI_COLOR_USR)%}%n\
+%{$(printf $SH_ANSI_RESET)%}@\
+%{$(printf $SH_ANSI_COLOR_HPC)%}%M\
+%{$(printf $SH_ANSI_RESET)%} \
+%{$(printf $SH_ANSI_COLOR_DIR)%}%d\
+%{$(printf $SH_ANSI_RESET)%} \
+%{$(printf $SH_ANSI_COLOR_GIT)%}\$(parse_git_branch)\
+%{$(printf $SH_ANSI_RESET)%}\
+%{$(printf $SH_NEWLINE)%}\$ "
+
+################
+# Wine
+################
+export WINEARCH=win32
+export WINEPREFIX=~/.wine32
+
+
+
+##### PROGRAMMING
+
+alias sublime="open -a /Applications/Sublime\ Text.app"
+
+
+
+################
+# git
+################
+# list contents of git repo remote
+alias git_check="git ls-tree --full-tree -r HEAD"
+# git pull any and all branches from remote
+alias git_pull_all='git branch -r | grep -v "\->" | while read remote; do git branch --track "${remote#origin/}" "$remote"; done ; git fetch --all ; git pull --all'
+# convert a git repo remote HTTPS URL to the equivalent SSH URI
+alias git_https_to_ssh="git remote -v | grep fetch | rev | cut -d ' ' -f2- | rev | sed -E 's_https?\://(www\.)?github\.com/_git@github\.com:_g'"
+# simple aliases to gain time
+alias git_add="git add . && git status"
+alias git_add_all="git add --all && git status"
+alias git_diff="git diff --cached"
+alias git_rm="git rm --cached"
+alias git_restore="git checkout HEAD --"
+alias git_commit="git commit -m"
+alias git_commit_undo="git reset --hard HEAD~1"
+alias git_commit_edit="git commit --amend -m"
+
+
+
+################
+# C
+################
+export CC=clang
+export CPATH="$CPATH"
+#export CPATH=
+#export CPATH=
+#export CPATH=
+#export LDFLAGS=
+#export LD_LIBRARY_PATH=
+export LIBCLANG_PATH="/usr/local/Cellar/llvm/`ls /usr/local/Cellar/llvm/`/lib"
+#alias clang=
+#alias gdb32=
+#alias gdb64=
+#alias gdb_sigint=
+# Fast C script template creation
+alias c_main="printf '\n#include <stdio.h>\n\n\n\nint\tmain(int argc, char** argv)\n{\n\t// code\n}\n'"
+# Compiling with essential flags/options in a fast and easy way
+alias compile="$CC -o main -Wall -Wextra -Werror"
+# Run C preprocessor and check output
+alias preprocess="$CC -E -o preprocessed.c"
+# Displays all the defined symbols for a given program
+alias show_defines="$CC -dM -E - </dev/null"
+# Run SCC code counter on a typical C project folder
+alias scc_c="scc -w -v --ci --exclude-dir .git,obj,bin,lib"
+# Run make with 4 parallel threads for faster compilation
+alias fastmake="make -j 4 -O"
+# Run this to check if a makefile has proper variables set up
+alias debugmake="make -n --warn-undefined-variables"
+
+################
+# C#
+################
+#export CSC=
+#export PATH=
+#export PATH=
+#export PKG_CONFIG_PATH=
+#export MONO_PATH=
+#export MONO_CFG_PATH=
+alias omnisharp='"/Users/`whoami`/Library/Application Support/Sublime Text 3/Packages/OmniSharp/prebuilt-omnisharp-roslyn/omnisharp"'
+
+################
+# Rust
+################
+#alias cargo=
+#alias rustc=
+#alias rustup=
+
+################
+# Python
+################
+export PATH="/usr/local/opt/python@3.10/bin:$PATH"
+# Created by `pipx` on 2022-05-07 17:24:13
+export PATH="$PATH:/Users/`whoami`/Library/Python/3.10/bin"
+
+################
+# JS/TS/Node
+################
+#export PATH=
+export FORCE_COLOR=true
+#export NODE_SKIP_PLATFORM_CHECK=1
+#alias node32=
+#alias npm32=
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# kill background node.js instances (for windows)
+#alias npm_stop="taskkill -F -IM node.exe"
+#alias killnode="taskkill -F -IM node.exe"

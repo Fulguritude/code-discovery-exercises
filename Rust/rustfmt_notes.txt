@@ -1,0 +1,89 @@
+array_width                         = 60 (Default)
+attr_fn_like_width                  = 70 (Default)
+binop_separator                     = Back    (unstable)
+blank_lines_lower_bound             = 0
+blank_lines_upper_bound             = 5
+brace_style                         = AlwaysNextLine
+control_brace_style                 = AlwaysNextLine
+chain_width                         = 60 (Default)
+color                               = Auto (Default)
+combine_control_expr                = false
+comment_width                       = 100 (same as max_width)
+condense_wildcard_suffixes          = False (unstable)
+empty_item_single_line              = True
+enum_discrim_align_threshold        = T_T  (with alignment)
+fn_args_layout                      = Tall (with alignment)
+fn_call_width                       = 60 (Default)
+fn_single_line                      = True 
+force_explicit_abi                  = True (default)
+force_multiline_blocks              = True (non-Default)
+format_code_in_doc_comments         = True (non-Default, unstable)
+doc_comment_code_block_width        = 100 (default)
+format_macro_matchers               = unsure...
+format_macro_bodies                 = unsure...
+hard_tabs                           = True (non-Default)
+hex_literal_case                    = Upper
+imports_indent                      = Block
+imports_layout                      = HorizontalVertical (with semantic maxlength)
+indent_style                        = block (Default)
+inline_attribute_width              = 0 (Default)
+match_arm_blocks                    = True (Default)
+match_arm_leading_pipes             = Preserve
+match_block_trailing_comma          = True
+max_width                           = 100 (Default)
+merge_derives                       = False (non-Default)
+imports_granularity                 = Crates (but with line-returns)
+newline_style                       = Unix
+normalize_comments                  = True (but only for single line)
+normalize_doc_attributes            = study with Alexis (probably true)
+overflow_delimited_expr             = False (Default)
+remove_nested_parens                = True
+reorder_impl_items                  = True (non-Default)
+reorder_imports                     = False (non-Default)
+group_imports                       = StdExternalCrate
+reorder_modules                     = False (non-Default)
+short_array_element_width_threshold = replace by semantic >=3 args
+skip_children                       = true
+single_line_if_else_max_width       = 40 ? replace by semantic ?
+space_after_colon                   = true (same for equals, etc)
+space_before_colon                  = true (with alignment!)
+spaces_around_ranges                = true
+struct_field_align_threshold        = "true" (with alignment to longest specifier)
+struct_lit_single_line              = false (or better: semantic (nb args) + line length)
+struct_lit_width                    = 20 ?
+trailing_comma                      = Vertical
+trailing_semicolon                  = true
+type_punctuation_density            = Wide (Default)
+use_field_init_shorthand            = False (or better, if all can be converted, convert to shorthand, else, convert to longhand)
+use_try_shorthand                   = True (non-Default)
+where_single_line                   = False (Default)
+wrap_comments                       = True (based on maxwidth)
+
+
+Non-rustfmt
+- alignment in lines with spaces
+
+
+
+disable_all_formatting/ignore ???
+edition ??? (2021)
+
+
+custom linter:
+ -> chain_width                   : force first . to be newlined and aligned vertically with 1 extra tab
+ -> array_width                   : function based on semantics (number of args; align vertically, end comma)
+ -> attr_fn_like_width            : function based on semantics (number of args; align vertically, end comma)
+ -> binop_separator               : "Back" with op alignment
+ -> enum_discrim_align_threshold  : align to longest + 1 space before and +1 after assigner (=)
+ -> fn_args_layout                : align to longest + 1 space before and +1 after assigner (:)
+ -> match statements              : align to longest + 1 space before and +1 after assigner (=>)
+ -> struct_field_align_threshold  : align to longest + 1 space before and +1 after assigner (:)
+ -> fn_single_line                : figure it out, but probably "True" for 99% of cases
+ -> force returns                 : except in lambdas (ie, multiple returns => force to write "return")
+ -> encourage type aliasing       : figure out how (rather than forcing explicit typing)
+ -> multiline strings             : force use of concat to have indentation follow block scoping
+ -> imports_indent/imports_layout : HorizontalVertical (with semantic maxlength)
+
+
+ -> ignore / generated files : add feature ?
+
