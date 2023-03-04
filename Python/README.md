@@ -1,14 +1,4 @@
-
-### Python bootcamps
-
-This series of exercises is a couple of Python bootcamps written by the members of the 42AI association, whose interests include statistics, AI, deep learning and machine learning. The [first bootcamp](https://github.com/42-AI/bootcamp_python) (most up-to-date branch [here](https://github.com/42-AI/bootcamp_python/tree/cloisonnement) as of 2023-02-24) teaches the fundamentals of Python; the [second bootcamp](https://github.com/42-AI/bootcamp_machine-learning) (most up-to-date branch [here](https://github.com/42-AI/bootcamp_machine-learning/tree/closing) as of 2023-02-24) teaches the fundamentals of data science and ML in Python (with numpy and pandas).
-
-You are expected to look things up on your search engine of choice regularly. There are a lot of resources, in many languages, for C. Look around, find some that suit you.
-
-To set up your IDE for Python (eg, Sublime Text), download the Python 3 package, the LSP package (as well as the NodeJS package, required for it ton run; your IDE should ask you for it if you have the rest), and the LSP-Pyright package.
-
-
-#### Why Python
+## Why Python
 
 The reasons we think that learning Python is important are that:
 
@@ -18,14 +8,47 @@ The reasons we think that learning Python is important are that:
 
    - Python takes aspects of object-oriented and functional programming in its design, and can be used to learn some concepts of these paradigms;
 
-   - Python has a wide community, so you can find a lot of help online, and lots of useful packages that can make your life easier;
+   - Python has a wide community, so you can find a lot of help online, a lot of tutorial, and lots of useful packages that can make your life easier;
 
    - Python has a lot of syntactic sugar, and is thus very expressive and fast to write for small programs;
 
-   - Python, despite being dynamic and weakly-typed, now supports type-hinting and type-checking, which alleviates some of the problems it used to have.
+   - Python, despite being dynamic and weakly-typed, now supports type-hinting and type-checking, which alleviates some of the problems it used to have;
+
+   - Python is rather easy to learn (except that you'll want to force yourself to type-hint your code appropriately since it's not mandatory (yet)).
 
 
-#### Rules
+
+## Tutorials
+
+You are expected to look things up on your search engine of choice regularly. There are a lot of resources, in many languages, for Python. Look around, find some that suit you. StackOverflow, GeeksForGeeks, DataCamp, official documentation, etc, etc.
+
+### 42AI Python beginner bootcamp
+
+This series of exercises is a Python bootcamp written by the members of the 42AI association, whose interests include statistics, AI, deep learning and machine learning. This [first bootcamp](https://github.com/42-AI/bootcamp_python) (most up-to-date branch [here](https://github.com/42-AI/bootcamp_python/tree/cloisonnement) as of 2023-02-24) teaches the fundamentals of Python.
+
+### 42AI Python data science and MK bootcamp
+
+The [second bootcamp](https://github.com/42-AI/bootcamp_machine-learning) (most up-to-date branch [here](https://github.com/42-AI/bootcamp_machine-learning/tree/closing) as of 2023-02-24) teaches the fundamentals of data science and ML in Python (with numpy and pandas).
+
+### 42 Python Django *piscine*
+
+Piscine is the word that 42 (a programming "school") uses for its bootcamps. Django is a Python framework for web development. A Django bootcamp can be found [here](https://github.com/Binary-Hackers/42_Subjects/tree/master/01_Piscines/Python-Django).
+
+### Personal project
+
+I'd suggest looking up PyGame, a library that allows you to render pixels to a window, and making a small video game. If you're not sure how to get started, find an out-of-the-box code example (say on some website mentioned above), remove all that's unnecessary, and start coding.
+
+
+
+## IDE set up
+
+To set up your IDE for Python (eg, Sublime Text), download the Python 3 package, the LSP package (as well as the NodeJS package, required for it ton run; your IDE should ask you for it if you have the rest), and the LSP-Pyright package. This should get you error displays inside your IDE.
+
+You'll probably also want to install MyPy from the terminal. I typically do everything with `python3 -m pip install ...`, so run `python3 -m pip install mypy` (since I abhor all of this virtual env dependency management band-aid). Just make sure that if this is the install pattern that you go for, you stick to it. You can then run `python3 -m mypy my_entry_file.py` to check for extra type errors.
+
+
+
+## Rules
 
 The below is mandatory.
 
@@ -66,7 +89,7 @@ The below is mandatory.
    - processes the duration of which is known ahead of time, or have a simple iteration mechanism, will use `for` loops, processes where this iteration amount is unknown will use `while` loops. Remember: a good `for`-comprehension or a good `map/filter/reduce` is often better than an explicit `for` loop (at least in python).
 
 
-#### Styling
+## Styling
 
 The below is strongly advised, but not mandatory.
 
