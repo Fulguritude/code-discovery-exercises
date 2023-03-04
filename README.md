@@ -1,6 +1,8 @@
 # Code Discovery Exercises
 
-This is a repo containing exercises for aspiring developer, and people who want to broach new languages.
+This is a repo containing exercises for aspiring developers, and programmers who want to broach new languages. Most of the things here are just a centralization of various neat tutorials friends, colleagues and I have found, built, or used over the years. There's also a bunch of info/advice/opinions on code, languages, styling, and project organization.
+
+I'm mostly putting this online so that I can have a neat way not to repeat myself for every new person that I try to bring into programming. :D
 
 
 
@@ -30,6 +32,10 @@ The point of this repo is to teach you the following things:
 
    - etc.
 
+
+## Your new best friend
+
+When approaching *any* new programming language, check out if it has a page [here](https://learnxinyminutes.com/). It's generally not perfect, but it *will* help you get started.
 
 
 ## Words of advice
@@ -80,7 +86,6 @@ For now, we have:
 They can prove very useful if you're looking to broaden your skills.
 
 Of course, don't forget to read, and re-read, the documentation provided ! There are a lot of useful concepts and tools in there. Look in the relevant folders for more information.
-
 
 
 ## How to turn in your exercises
