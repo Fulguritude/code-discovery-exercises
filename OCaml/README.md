@@ -1,7 +1,18 @@
 
 ## Why OCaml
 
-TODO
+The reasons we think that learning OCaml is important are:
+
+   - OCaml is a programming language that is very much in the functional paradigm, but has a couple of features that it inherits from the imperative and object-oriented paradigms. For this reason, it's often used as people's first true, practical discovery of functional programming. Indeed, a lot of things which are much more straightforward in imperative and OOP, such as `for`-loops, are greatly deterred by the language's syntax and its standard library. It'll naturally force you to gravitate towards "functional patterns", such as map/filter/fold, internal functions, partial application, recursion, generic modules as functors, etc.
+
+   - Though building full-on OCaml projects has been complex for a while, the build system has been improving with time (ie, `dune`). This is still imperfect, and somewhat hard for beginners, though.
+
+   - The language has a lot of high-level features and is very secure, mathematically. It's not every language in which the build system itself takes into account the fact that you'll be generating code from strings and compiling it immediately, and that this is normal procedure and needs to be done safely and simply. It's really a gateway into advanced code and math (notably through the theorem prover `coq`).
+
+   - Since it's pretty niche, it's actually pretty easy to find an OCaml job, since the companies that are the source of the demand is ready to hire people they'll be willing to train somewhat. However, this does also imply that the community is small, and it's harder to get help if you're working alone and you're stuck.
+
+   - There are probably even "better" production functional languages when it comes to ease-of-build, lots of available libs, language maturity, community size, frequency of use in industry, etc. Scala is probably the best contender here. However, OCaml is probably a simpler, more straightforward way to start learning functional programming.
+
 
 
 ## Tutorials
@@ -10,9 +21,11 @@ TODO
 
 We recommend the [42 OCaml piscine](https://github.com/Binary-Hackers/42_Subjects/blob/master/01_Piscines/OCaml) as a start. There
 
+
 ### 42 pedagogical projects
 
 There are other OCaml projects from 42 that might interest you: https://github.com/Binary-Hackers/42_Subjects/tree/master/00_Projects/05_OCaml
+
 
 ### Personal project
 
@@ -77,7 +90,9 @@ Finally, to have sublime recognize it, find the path to `ocamllsp` with `which o
 
 https://ocaml.org/docs/ ; the official language docs are pretty great, and you should probably read them in full, it'll teach you a lot about OCaml and functional programming in general.
 
-https://cs3110.github.io/textbook/chapters/preface/about.html ; an online textbook on OCaml, goes more in depth, if you want to go further with the language.
+https://dev.realworldocaml.org/toc.html ; probably the best / most thorough OCaml textbook out there.
+
+https://cs3110.github.io/textbook/chapters/preface/about.html ; another online textbook on OCaml, goes more in depth, if you want to go further with the language.
 
 https://stackoverflow.com/questions/9997822/ocaml-module-include-and-open ; how to manage projects and imports.
 
@@ -113,9 +128,11 @@ The below is mandatory.
 
 The below is strongly advised, but not mandatory.
 
+   - explicit terminating `;;` even if they are unnecessary.
+
    - avoid non-obvious abbreviations as much as possible (eg, `acc`, `f`, `x`, `h`, `t` are allowed, but generally, if these are not generic `'a` types, some semantically relevant name (or hungarian type-hinting) should be preferred, such as `intlist_h`).
 
-   - match statements that contains multiple arms (ie, anything other than unpacking a tuple or list into component parts) will start with the `match` statement on a new line with an extra indentation. Conversely, an "unpacking" match statement should have everything from the `match` keyword up to the `->` on a single line.
+   - match statements that contains multiple arms (ie, anything other than unpacking a tuple or list into component parts) will start with the `match` statement on a new line with an extra indentation. Conversely, an "unpacking" match statement should have everything from the `match` keyword up to the `->` on a single line, unless this makes reading it too complex (though the simpler `let (arg1, arg2) = my_pair in` syntax is of course preferable in the vast majority of cases).
 
    - vertical bars (pipes, `|`) after a match statement will be aligned vertically at the same indentation as the `match` keyword.
 
@@ -137,12 +154,15 @@ The below is strongly advised, but not mandatory.
 
    - internal functions and value declaration blocks will always be followed by a single blank line.
 
-   - enum/union type declarations with 4 or more variants will be vertically aligned and indented with a leading pipe `|`.
+   - enum/union type declarations with 4 or more variants will be vertically aligned and indented with a leading pipe `|`. This also applies to enums/unions with less variants, but with complex `of` type declarations for certain variants.
 
    - in sequences of single-line `let ... in` statements, the assignment equal signs should be aligned vertically, and if the lines are very similar, the `in` keywords should be as well.
 
    - if a function call gets too long, consider multilining it (with each arg on a new line and with an extra indent compared to the function name itself), or storing its content into intermediary variables.
 
+   - when dealing with mutually-recursive functions (ie, declared using the `and` keyword, have the `let rec` be on its own line, aligned with the `and` keyword and have the internal functions indented.
+
+   - in a module, separate your functions by 2 blank spaces.
 
 
 ## Rule and styling example
