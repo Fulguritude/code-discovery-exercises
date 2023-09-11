@@ -19,7 +19,21 @@ The reasons we think that learning OCaml is important are:
 
 ### First steps bootcamp
 
-We recommend the [42 OCaml piscine](https://github.com/Binary-Hackers/42_Subjects/blob/master/01_Piscines/OCaml) as a start. There
+We recommend the [42 OCaml piscine](https://github.com/Binary-Hackers/42_Subjects/blob/master/01_Piscines/OCaml) as a start.
+
+Here's a brief summary of what you'll learn
+
+   - D00: basic syntax through standard "programming 101"-style exercises in OCaml
+   - D01: intro to recursion in functional programming (and it's much more important here than for other paradigms)
+   - D02: "programming 101" exercises, but with more kick to them (discovery of native data types such as List, and concrete ("union/enum") types, more advanced match patterns, internal functions, etc.)
+   - D03: entry-level graphics programming, using external packages, compilation, some tree-based algorithmics, etc.
+   - D04: using internal packages, code structuring, complex "class-like" types.
+   - D05: file IO and imperative-style OCaml (including Arrays), a hint of ML/stats algorithmics.
+   - D06: modules and functors
+   - D07: object-oriented-style OCaml (classes)
+   - D08: more object-oriented-style OCaml, making class-based modules
+   - D09: monoids and monads
+   - Rush00 & Rush01: small, but larger, scale projects (completable in a weekend)
 
 
 ### 42 pedagogical projects
@@ -35,7 +49,7 @@ TODO
 
 ## Setup
 
-We'll go with a Linux / WSL description of installation, as well as setup for Sublime Text.
+We'll go with a Linux / WSL (Windows Subsystem for Linux) description of the installation, as well as setup for Sublime Text.
 
 First, you'll want to download the OCaml language.
 
@@ -59,7 +73,7 @@ Then, you'll want to install an OCaml LSP server (more instructions and details 
 opam install ocaml-lsp-server
 ```
 
-Finally, to have sublime recognize it, find the path to `ocamllsp` with `which ocamllsp`, then add the following to your LSP settings (`Ctrl+Shift+P` then write `LSP settings` and press enter; edit the file on the right; if it's empty you can just copy paste the below over it; otherwise you'll need to add the "`ocaml`" element to the "`clients`" dictionary).
+Finally, to have sublime recognize it, find the path to `ocamllsp` with `which ocamllsp` (generally, the path should be `~/.opam/default/bin/ocamllsp`), then add the following to your LSP settings (`Ctrl+Shift+P` then write `LSP settings` and press enter; edit the file on the right; if it's empty you can just copy paste the below over it; otherwise you'll need to add the "`ocaml`" element to the "`clients`" dictionary).
 
 ```json
 // Settings in here override those in "LSP/LSP.sublime-settings"
@@ -102,7 +116,7 @@ https://stackoverflow.com/questions/9997822/ocaml-module-include-and-open ; how 
 
 The below is mandatory.
 
-   - **You will explicitly type your function's input and output types.** Yes, OCaml has type inference; no, this does not lead to immediately legible and maintainable code; yes, you want to type explicitly. Only very trivial lambdas (eg `fun x y -> x ^ " " ^ y`) can be excepted from this rule.
+   - **You will explicitly type your function's input and output types.** Yes, OCaml has type inference; no, this does not lead to immediately legible and maintainable code; yes, you want to type explicitly, especially when it comes to things you'll use to compose, or which you'll expose to other programmers. Only trivial lambdas (eg `fun x y -> x ^ " " ^ y`) can be excepted from this rule. Typing variables within a function is unnecessary if each sub-operation is neatly assigned to a well-named intermediary variable.
 
    - **Every `in` keyword, every semicolon `;`, and every pair of semicolons `;;` should be followed by a newline.** A possible exception is for tiny `print_endline(); let ... in` or `let ... in let ...in` expressions that can be aligned vertically and would be less legible if converted to calls of a two-line internal function (quite rare).
 
@@ -127,6 +141,8 @@ The below is mandatory.
 ## Styling
 
 The below is strongly advised, but not mandatory.
+
+   - prefer modules to classes.
 
    - explicit terminating `;;` even if they are unnecessary.
 

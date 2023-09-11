@@ -32,7 +32,7 @@ The [second bootcamp](https://github.com/42-AI/bootcamp_machine-learning) (most 
 
 ### 42 Python Django *piscine*
 
-Piscine is the word that 42 (a programming "school") uses for its bootcamps. Django is a Python framework for web development. A Django bootcamp can be found [here](https://github.com/Binary-Hackers/42_Subjects/tree/master/01_Piscines/Python-Django).
+Piscine is the word that 42 (a programming "school") uses for its bootcamps. Django is a Python framework for web development. A Django bootcamp can be found in English [here](https://github.com/Kharsv/Piscine-Python-Django), and in French [here](https://github.com/Binary-Hackers/42_Subjects/tree/master/01_Piscines/Python-Django). The bootcamp gives you primers on web techs (HTML, CSS, JS, etc.), then a quick intro to Python and using Python libraries, before teaching you how to use the Django web library.
 
 ### Personal project
 
