@@ -2,7 +2,7 @@
 
 This is a repo containing exercises for aspiring developers, and programmers who want to broach new languages. Most of the things here are just a centralization of various neat tutorials friends, colleagues and I have found, built, or used over the years. There's also a bunch of info/advice/opinions on code, languages, styling, and project organization.
 
-I'm mostly putting this online so that I can have a neat way not to repeat myself for every new person that I try to bring into programming. :D
+I'm mostly putting this online so that I can have a neat way not to repeat myself for every new person that I try to bring into programming.
 
 
 
@@ -12,11 +12,11 @@ You might be starting out with code and want to increase your mastery and hirabi
 
 The point of this repo is to teach you the following things:
 
-- **Using `git`**, and the collaborative GitLab workflow in particular. For starters, you can find a [small guide to using git in the `LEARN2GIT.md` file](https://github.com/Fulguritude/code-discovery-exercises/-/blob/master/LEARN2GIT.md). You might also want to [check out the `CONTRIBUTING.md` file](https://github.com/Fulguritude/code-discovery-exercises/-/blob/master/CONTRIBUTING.md), to learn how multiple software engineer friends, colleagues and I try to clarify our commit messages.
+- **Using `git`**, and the collaborative GitHub/GitLab workflow in particular. For starters, you can find a [small guide to using git in the `LEARN2GIT.md` file](https://github.com/Fulguritude/code-discovery-exercises/-/blob/master/LEARN2GIT.md). You might also want to [check out the `CONTRIBUTING.md` file](https://github.com/Fulguritude/code-discovery-exercises/-/blob/master/CONTRIBUTING.md), to learn how multiple software engineer friends, colleagues and I try to clarify our commit messages.
 
 - **Using the Unix shell (the terminal)**, and the standard commands that you should know and use. You can find a small guide to using the terminal (or [cygwin](https://www.cygwin.com/), or [WSL](https://docs.microsoft.com/en-us/windows/wsl/about) if you *really* want to make your life more difficult and develop on Windows rather than Linux or Mac) in the [`LEARN2TERM.md` file](https://github.com/Fulguritude/code-discovery-exercises/-/blob/master/LEARN2TERM.md).
 
-- **Writing code in various languages**: typically C and/or Python code for beginnes (we'll certainly try to add more bootcamps as time goes on), specifically in a way that is compatible with the "best practices" of collaborative software engineering. This includes: 
+- **Writing code in various languages**: typically C and/or Python code for beginners, or OCaml and Rust for intermediate coders (we'll certainly try to add more bootcamps as time goes on), specifically in a way that is compatible with the "best practices" of collaborative software engineering. This includes: 
 
    - structuring and organizing the files in a project;
 
@@ -24,7 +24,7 @@ The point of this repo is to teach you the following things:
 
    - typing (or type-hinting) your code cleanly;
 
-   - following, what we believe, are styling conventions that help legibility;
+   - following what, we believe, are styling conventions that help legibility;
 
    - dividing your code into easy-to-read atoms (eg, "one instruction/expression per line", "writing small functions (everything from 5 to 20 instructions/expressions ideally)");
 
@@ -81,6 +81,7 @@ Here are a few general methodology rules:
 For now, we have:
 - the 42 C piscine,
 - the 42-AI Python bootcamps (both general Python and Python for data science and machine learning),
+- the 42 OCaml piscine,
 - some custom Rust cheat sheets which will present essential concepts of the language, as well as the polars data science library, and a link to Rustlings.
 
 They can prove very useful if you're looking to broaden your skills.
@@ -98,4 +99,3 @@ Fork this repo. You can then do whatever you want with it. Then send us a link.
 ## TODO
 
 - give code examples to make the "styling" sections more understandable
-- add an OCaml section for functional programming
