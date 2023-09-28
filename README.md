@@ -1,8 +1,8 @@
 # Code Discovery Exercises
 
-This is a repo containing exercises for aspiring developers, and programmers who want to broach new languages. Most of the things here are just a centralization of various neat tutorials friends, colleagues and I have found, built, or used over the years. There's also a bunch of info/advice/opinions on code, languages, styling, and project organization.
+This is a repo containing exercises for aspiring developers, and programmers who want to broach new languages, or discover subjects important to computer science (such as mathematics, data science, shell scripting, etc). Most of the things here are just a centralization of various neat tutorials friends, colleagues and I have found, built, or used over the years. There's also a bunch of info/advice/opinions on code, languages, styling, and project organization.
 
-I'm mostly putting this online so that I can have a neat way not to repeat myself for every new person that I try to bring into programming.
+I'm mostly putting this online so that I can have a neat way not to repeat myself for every new person that I try to bring into programming. It can also serve as somewhat of a portfolio of my pedagogical work.
 
 
 
@@ -83,6 +83,8 @@ For now, we have:
 - the 42-AI Python bootcamps (both general Python and Python for data science and machine learning),
 - the 42 OCaml piscine,
 - some custom Rust cheat sheets which will present essential concepts of the language, as well as the polars data science library, and a link to Rustlings.
+- some code projects meant to teach you entry-level university mathematics if you already know at least one programming language well that I wrote as a member of 42-AI.
+- an introduction to data science and ML that I wrote for university students of design and UX (WIP, for now, only an extensive lexicon is present).
 
 They can prove very useful if you're looking to broaden your skills.
 
