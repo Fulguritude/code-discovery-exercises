@@ -8,45 +8,114 @@
 
 \begin{document}
 
+
 \section*{Lexicon}
 
-\subsection*{Code for the level of various terms:}
+The following is large, thematic lexicon, of various terms relating to the domain of "data". It is mostly oriented to individuals trying to build or improve a technical profile in the domain. However, it was designed to also be of interest to anyone that might need to work with technical data profiles, even if they themselves might not be one (business, HR, legal, designers, etc).
+
+It includes vocabulary from mathematics (everything from combinatorics to topological data analysis), computer science (programming paradigms to systems engineering), machine learning, professions in data science, etc.
+
+
+\subsection*{Code for the level of various terms}
+
+Below is a code to understand the relative difficulty or importance of various terms in this lexicon. Note that even if a term is "above your level of understanding or ambition", it might still be useful to have heard of it. Also note that some terms might be fundamental for one profile, but only necessary later on for others (typically, all of linear algebra); this will be described through letter pairs.
+
+Difficulty code:
+
 \begin{itemize}
-    \item A: fundamental, best understood before or during the ML intro course
-    \item B: important, to be understood by the end of the ML intro course
-    \item C1: interesting, but peripheral to the subject (general culture)
-    \item C2: interesting, directly related to the topic, but more complex than the topic (general culture)
-    \item D: advanced, complex and interesting and related to the topic (to give vision and perspective; to "have heard of it")
+	\item \textbf{A}: fundamental, to be known and understood for any kind of work profile in data that you're trying to build or improve (even non-technical ones)
+	\item \textbf{B}: important, to be understood in order to attempt any basic productive work in the domain
+	\item \textbf{C}: advanced, to be understood by those trying to build a specialist profile
+	\item \textbf{D}: very advanced, to be understood by those trying to build an expert profile
+\end{itemize}
+
+Thematic code:
+
+\begin{itemize}
+	\item \textbf{M (math)}: applies to profiles which rely on mathematics a lot (data science, statistics, ML engineering, ML research, algorithmics research, etc)
+	\item \textbf{E (engineer)}: applies to profiles which rely on computer engineering or software engineering a lot (systems engineering, network engineering, distributed computing, etc)
+	\item \textbf{L (learning)}: applies to profiles which rely on machine learning, algorithmics and statistics, and their specific techniques, outside of general mathematics
+	\item \textbf{T (technical)}: applies to other profiles which may have an interest in this document, and have a technical profile (physical modelling, financial analysis, business analysis, etc)
+	\item \textbf{O (other)}: applies to any other profiles which may have an interest in this document (designers, front-end engineers, data collectors, lawyers, businesspeople, etc)
+	\item \textbf{G (general)}: interesting to know, but peripheral to the subject of data (general culture)
 \end{itemize}
 
 
 
-\subsection*{Data Professions}
+\subsection*{Data generalities}
+
+\subsubsection*{Data generalities: fundamentals}
+
+\begin{itemize}
+	\item \textbf{Data (A)}: "data" describes any form of raw information about the world (real or virtual) that can be measured, collected, described, transmitted, organized, transformed, modelled, and/or analyzed. The human goal for "data" is to turn it into "analysis" (semantic information, information in the "non-raw" sense), in order to aid human decision-making by improving our understanding the dynamics of our world and its various component systems.
+
+	\item \textbf{Domain, business domain (A)}: a "domain" is a field of human activity, generally one of business activity. This includes everything from the management of shipping ports, to mariage counseling, to meteorological modeling. "Domain knowledge" refers to the ways that people that are active in this domain tend to describe it; this includes all the vocabulary, processes, or mental models specific to actors of that domain.
+
+	\item \textbf{System (A)}: a "system" is collection of "\textbf{entities}" (or "agents", or "nodes") and the "\textbf{interactions}" (or "links", or "edges") between these entities. In a system, you generally have various collections of entities which can be grouped together (because they are of the same "type": while distinct, they are analogous to each other, like "atoms", or "humans"). Different kinds of interactions exist between each other based on their respective types, though generally, interactions between elements of type A and elements of type B can be described by a common "interaction type" A->B (like "covalent bonds" between atoms, "relationships" between humans, or "ownership" of an object by a human). "Systems engineering" in particular, generally refers to the specific case of information systems / computer systems, and the network interactions between these computers, or their interfaces with their users.
+
+	\item \textbf{Model (A)}: a "model" is a mathematical way of describing some entity, or set of entities, or domain; within the real or virtual world. Nowadays, all models (which used to be mostly abstract tools) tend to become implemented into computers somehow. Models insist in different ways on different mathematics. Some are specialized for statistical analysis and/or predictions, some are specialized to describe how an information system is meant to be designed, some are specialized in describing existing non-information (such as physical) systems, etc. Generally, when building an overall system for a specific domain, there are various types of models which are required, and these need to be associated, designed in common, or linked together for the overall domain to be modeled properly.
+
+	\item \textbf{Big data (A)}: this term is somewhat hard to define cleanly, and is used more as a marketing buzzword, rather than having an actual technical definition. After all, how "big" is "big" ? Is a spreadsheet with 10 millions columns "big" ? Analyzing it would have required dozens of computers some decades ago; nowadays a single average laptop can typically handle it. We can perhaps divide the expression into its two subterms: big and data. "Big" would then generally refers to "big enough to require a large-scale information (computer) system, and/or algorithms that are used to handle extremely high volumes of data, or dimensions of data". Data is defined above. In practice, in this sense "big data" is actually quite rare: "big" alone (just needing a distributed information system for some use case, but where data analysis is not the central goal of the system) or "data" alone (just running algorithms, even complex ones that also work on high-dimensional data, on moderate volumes of data) are much, much more frequent in practice.
+
+	\item \textbf{Pipeline, data pipeline (A)}: a "data pipeline" is a term used to describe the set of structures and processes that allow humans to go from a raw measure of some domain to analyses of this domain. One should generally consider the following steps or aspects of a data pipeline.
+	\begin{itemize}
+		\item \textbf{harvesting / ingestion / collection / extraction}: this 1st step consists of obtaining raw data. This encompasses multiple aspects. Firstly, the choice of what's interesting and useable, metric-wise: this is mostly an exercise in modeling and understanding what is necessary to feasibly answer domain-specific questions. Secondly, the building of some tool that's capable of data extraction (this includes everything from survey forms, to mechanical thermometers). Finally, the agglomeration of these harvested metrics into some entity in the system, so that it maybe retrieved or transmitted later for further processing.
+
+		\item \textbf{wrangling / preprocessing / transformation}: this 2nd step consists of preparing the raw data so that it can be used properly. A mathematical-programmatic model is chosen to represent the data. Raw data often has issues (inconsistent formatting, outlying errors due to failures of measurement, improper modeling by someone not conscious of the requirements of the rest of the pipeline or analytics) and these issues need to be resolved before that data can be used. Once the preprocessing is done, the data generally goes through a validation phase.
+
+		\item \textbf{systems engineering / deploying / linking / networking / servicing}: this 3rd step consists of ensuring that setting up and managing access to the system, both internally and externally, is properly handled. This includes multiples aspects, such as:
+		\begin{itemize}
+			\item handling updates consistently (both to the data and the system itself);
+			\item referencing content (such as setting up registry tables or distributed hashmaps);
+			\item selecting the right hardware for the right role (storage, compute, caching, load balancing, logging, archiving, testing, monitoring, etc);
+			\item network engineering (setting up, then optimizing, the interactions between machines);
+			\item making sure only the appropriate parts of the system are accessible to the right actors (security analysis, system administration, pentesting);
+			\item providing structured ways of speaking to the system for it to act on our behalf (such as APIs or query languages);
+			\item making sure that the system can evolve (scalability, content distribution, code quality audits);
+			\item monitoring, maintaining, and improving the overall health, performance and functionality of the system (end-to-end testing, logging, tracing, automatic fault recovery, audits, making backups, archiving, disaster recovery planning, vacuuming...).
+		\end{itemize}
+
+		\item \textbf{storing / loading}: this 4th step consists of putting the well-formatted, well-modeled, cleaned data into the appropriate databases and computers. There are various tradeoffs, mostly engineering-wise, that should be considered for this step. One can understand this step as "translating" an abstract mathematical model (such as a relational table, initially represented as some spreadsheets) into a specific technological architecture and implementation (such as an SQL database based on PostgreSQL). This step should above all consider how best to distribute the volume of data so that it can be accessed efficiently.
+
+		\item \textbf{consumption / exploration / analysis}: this 5th step consists in actually using the data to produce useful (non-raw) "information": analyses. Generally one first starts with an exploration of data, trying to understand its various attributes, and its underlying geometry, using various visualization tools (such as software libraries like Matplotlib, or various algorithms like bar charts or more advanced ones, like doing a dimensionality reduction (e.g., PCA) first). Then, analyses are run. For example, a data scientist than elaborates hypotheses over the data, meant to test \textit{a priori} domain questions, or answer questions / remarks that arose from the process of exploration. In other cases, an ML engineer can choose an appropriate neural network model and define its topology in order to train models over the dataset. Finally, isolated reports or dynamic software that helps communicate or make this data useful for human decision-making, or to help process automation.
+	\end{itemize}
+
+	Note, however, that these steps are not neatly separated, nor neatly sequential. The above is a neat abstraction that allows one to have a simple mental model of the various factors required for a data pipeline. Dividing "data pipelines" into the above does not mean that all systems neatly follow the above division; far from it. You may very well have some ingestion immediately happen into a pre-existing, already well-networked system. You may have a company where the wranglers are also the data architects and write a single piece of software that goes from dirty raw data to everything being neatly ingested into a distributed database. The networking step can be done before the loading step if we know in advance the amount of data to ingest is going to be massive and are building a system from scratch; but it can also be done after, if we're scaling an existing small system into a bigger system. If the data is stored improperly, because the model was poorly thought-out, some wrangling is generally necessary before analysis. The list of exceptions and caveats goes on and on; however, given the overall complexity of modern systems, the above is still an excellent mental model to keep in mind, if one wants to have a simple set of questions to ask themselves when trying to analyze or design a system.
+
+	Also note that there are peripheral steps that don't necessarily integrate into the pipeline \textit{per se}, such as running a prior analysis of the domain and prototyping models and systems on paper before even building anything; or the study of the pipeline itself in order to improve it over time; or documenting the pipeline for new workers.
+
+\end{itemize}
+
+\subsubsection*{Data generalities: professions}
 
 This is a (non-exhaustive) list of professions, designed to give you an idea of the various roles that are available when dealing with data.
 
 \begin{itemize}
-    \item \textbf{Data wrangler (A)}: individual knowing how to create, synthesize, prepare, normalize, and/or homogenize data so that it is coherent and can be processed by algorithms.
-    
-    \item \textbf{Data engineer (A)}: individual knowing how to store, distribute, and route data so that it can be processed by algorithms on specific computing machines. They ensure data pipelines are efficient, scalable, and reliable. The data engineers who are tasked with designing data pipelines are often called "data architects".
-    
-    \item \textbf{Data analyst/scientist (A)}: individual who knows how to analyze input data, formalize a problem and elaborate hypotheses, choose an algorithmic protocol for data processing, provide visualization tools, and finally evaluate the quality of the predictive model generated by the algorithm. Their work is then used to aid strategic decision-making.
-    
-    \item \textbf{Machine learning researcher (A)}: individual who uses mathematical, data science, and engineering principles to invent new machine learning algorithms, or improve existing ones (performance improvement, broadening of the application domain, etc).
-    
-    \item \textbf{Machine learning engineer (A)}: individual who uses data science and machine learning principles to implement existing ML algorithms to concrete business cases, e.g., automatic optimal logistics management. They work on selecting algorithms, preprocessing data, and tuning model parameters.
-    
-    \item \textbf{Database Administrator (A)}: individual esponsible for managing and maintaining databases, including ensuring data integrity, security, backup, and optimization for efficient data retrieval.
-    
-    \item \textbf{AI Ethics Officer (A)}: invidual dedicated to ensuring ethical and responsible development and deployment of artificial intelligence and machine learning systems.
+	\item \textbf{Data wrangler (A)}: individual knowing how to create, synthesize, prepare, normalize, and/or homogenize data so that it is coherent and can be processed by algorithms.
 
-    \item \textbf{Data Governance Manager (C1)}: individual responsible for establishing and implementing data governance policies and procedures to ensure data quality, security, compliance, and ethical use.
-    
-    \item \textbf{Data Privacy Officer (C1)}: individual who oversees data protection measures, ensuring compliance with data privacy regulations and policies to safeguard sensitive information.
-    
-    \item \textbf{Chief Data Officer (CDO) (C1)}: high-level executives responsible for driving data strategy within an organization, overseeing data management, analytics, and aligning data initiatives with business goals.
-    
+	\item \textbf{Data engineer (A)}: individual knowing how to store, distribute, and route data so that it can be processed by algorithms on specific computing machines. They implement pipelines, and ensure data pipelines are efficient, scalable, and reliable.
 
+	\item \textbf{Data analyst/scientist (A)}: individual who knows how to analyze input data, formalize a problem and elaborate hypotheses, choose an algorithmic protocol for data processing, provide visualization tools, and finally evaluate the quality of the predictive model generated by the algorithm. Their work is then used to aid strategic decision-making.
+
+	\itel \textbf{Data architect (A)}: A catch-all term for data engineers or mathematicians who are tasked with designing data pipelines. It is generally a managerial, or at least, a high-responsibility position. One can generally distinguish between \textbf{systems architects} (who design overall information systems, generally more on the engineering side; themselves divided into network architects, computer architects, web architects, etc) and \textbf{database architects} (who design how best to mathematically model the data from a given real-world domain in order to answer its questiosn, and help define how this data should be stored and serviced). Obviously, these profiles still do have a lot of overlap in their skills and responsibilities, hence the catch-all term.
+
+	\item \textbf{Machine learning researcher (A)}: individual who uses mathematical, data science, and engineering principles to invent new machine learning algorithms, or improve existing ones (performance improvement, broadening of the application domain, etc).
+
+	\item \textbf{Machine learning engineer (A)}: individual who uses data science and machine learning principles to implement existing ML algorithms to concrete business cases, e.g., automatic optimal logistics management. They work on selecting algorithms, preprocessing data, tuning model parameters, and evaluating model quality.
+
+	\item \textbf{Database administrator (A)}: individual esponsible for managing and maintaining databases, including ensuring data integrity, security, backup, and optimization for efficient data retrieval.
+
+	\item \textbf{AI ethics officer (A)}: invidual dedicated to ensuring ethical and responsible development and deployment of artificial intelligence and machine learning systems.
+
+	\item \textbf{Data governance manager (A)}: individual responsible for establishing and implementing data governance policies and procedures to ensure data quality, security, compliance, and ethical use.
+
+	\item \textbf{Data privacy officer (A)}: individual who oversees data protection measures, ensuring compliance with data privacy regulations and policies to safeguard sensitive information.
+
+	\item \textbf{Chief data officer, CDO (A)}: high-level executive responsible for driving data strategy within an organization, overseeing data management, analytics, and aligning data initiatives with business goals.
+
+	\item \textbf{Chief technological officer, CTO (A)}: high-level executive responsible for information systems strategy within an organization, overseeing hardware and software decision-making, cost (money and time) vs quality tradeoffs, and communicating technological stakes with the more "business" side of the company. To caricature, he CTO is the "highest technical position" in a company.
+
+	\item \textbf{Vice-president of engineering, VPoE (A)}: high-level executives responsible for developer and engineer management, overseeing hiring decisions of technical profiles, promotions, team-management, and company culture for technical profiles. To caricature, the VPoE is the highest "tech HR" role.
 \end{itemize}
 
 
@@ -57,45 +126,45 @@ This is a (non-exhaustive) list of professions, designed to give you an idea of 
 This section describes terms that are fundamental to understand how one can use a computer to automate processes and ideas.
 
 \begin{itemize}
-    \item \textbf{Algorithm (A)}: mathematical process capable of transforming inputs (data that is provided) into outputs (data that is generated), according to a determined and structured protocol.
-    
-    \item \textbf{Heuristic (B)}: a technique of algorithmic design that allows one to trade precision or correctness of the solution against a faster calculation time. These are often used for very complex problems. Heuristic algorithms are algorithms that provide a "good guess" to a complex problem.
-    
-    \item \textbf{Programming language (A)}: a programming language is a way of writing text, usually a hybrid between English and mathematical language, to translate mathematical/algorithmic ideas into a form that an electronic computer can understand and execute.
-    
-    \item \textbf{Machine language (A)}: a language based on the binary alphabet (containing series of just 2 symbols, '0' and '1'; or 'the current is blocked' and 'the current is flowing'), allowing a computer to process information automatically.
-    
-    \item \textbf{Type (A)}: the category to which a given "real-world concept" belongs in a program. It is one of the most important concepts in computer science, both in practice and in theory. Mathematically, a type corresponds to the mathematical space to which a computer quantity belongs. We can distinguish, for example, the type "Integer" (signed integers), the type "Float" (floating point number, serving as an approximation of real numbers), the type "String" (textual character strings). Things like a "Player", or a "Color", in a video game are also examples of more complex types. Note that in what follows, the word "type" should be understood to have this specific definition.
-    
-    \item \textbf{Code (A)}: code is text written according to the rules of a programming language.
-    
-    \item \textbf{Syntax (A)}: the \textit{grammatical structure} of a language. For example, the syntax of a programming language can restrict the programmer to declare the type before a variable (e.g., \texttt{Type\_A variable\_a}) or after the variable (e.g., \texttt{variable\_a : Type\_A}). An instruction ("sentence" of a programming language) that does not respect the syntax of its language will not be executable by the machine, because it is not translatable to machine language.
-    
-    \item \textbf{Semantics (A)}: the \textit{meaning} taken by an instruction/phrase in a language. An example of a semantic error would be \texttt{Integer my\_variable = "bobo"}: "bobo" is not an integer, so the statement, while syntactically correct (in a language like C), is semantically incorrect. Here's an example from "real-world" language by Noam Chomsky: "Colorless green ideas sleep furiously". This is not a grammatical error, but there's clearly an error with the meaning.
-    
-    \item \textbf{Variable (computer science) (A)}: in computer science, a variable is a "word" declared through writing, used to store a mathematical value in memory, and then use this mathematical value conceptually. For example, (\texttt{Float speed = 5.75} would declare a variable for "speed". In the rest of the code, the programmer would then use "speed" in the code (repeatedly and in the adapted way). This makes code much clearer to read than a "5.75" that hangs around, and is meaningless with a deep understanding of the context.
+	\item \textbf{Algorithm (A)}: mathematical process capable of transforming inputs (data that is provided) into outputs (data that is generated), according to a determined and structured protocol.
 
-    \item \textbf{Function (computer science) (A)}: in computer science, function is a series of instructions callable from other places in the code, which can take zero, one, or more inputs and return zero, one, or more outputs. Functions can also affect the state (memory) of a program or computer (side effects). This is for example the case for functions that display information on a screen: they affect the electronics of the computer. A "pure" function is one which does not have side effect: one which is a purely mathematical calculation that can be figured out with pen and paper, given some inputs.
-    
-    \item \textbf{Condition (A)}: A condition is a statement that translates a logical calculation (Boolean, a question with a true/false answer) into a conditional redirection (a branching) of the code. Keywords: \texttt{if, elif, else, and, or, not, then}.
-    
-    \item \textbf{Loop (A)}: A loop is a series of instructions that can be repeated, with minimal configurable changes, as long as a given condition remains true.
-    
-    \item \textbf{Turing-completeness (C1)}: roughly speaking, a programming language is said to be "Turing-complete" if it is "as expressive as possible". That means that it is able to execute computations on all types, store information in its memory, execute its computations contextually/conditionally, and redirect its reading head. Turing-completeness is a fundamental notion of theoretical computer science, and for reasons that are long and complex to explain, it is in a way the ultimate "speed limit" to computation. A Turing-complete language is able to execute any (reasonable) function. Almost all programming languages have a Turing-complete level of expressivity.
-    
-    \item \textbf{Argument (A)}: an argument is a synonym for a function input.
-    
-    \item \textbf{Return (A)}: a return (value) is a synonym for a function output.
-    
-    \item \textbf{Signature (A)}: the signature of a function is the declaration of the name of the function, and the types and names of its inputs and outputs. The function's type is defined as "types of inputs -> types of outputs", and is a direct consequence of these.
+	\item \textbf{Heuristic (B)}: a technique of algorithmic design that allows one to trade precision or correctness of the solution against a faster calculation time. These are often used for very complex problems. Heuristic algorithms are algorithms that provide a "good guess" to a complex problem.
 
-    \item \textbf{Interpreted language, compiled language (C1)}: a language is said to be "interpreted" if a software called "the interpreter" must be launched to read the code line by line, as the code runs, so that it executes. A language is said to be "compiled" if a software called the "compiler" must read the whole code and produce an executable ahead of time, before the program can be executed. Python is an example of an interpreted language. C is a compiled language.
-    
-    \item \textbf{Static typing, dynamic typing (C1)}: A "typing" is how the type system for a programming language was designed. It is said to be static if it is necessary at the level of the programming language's syntax, or if it can be inferred before the code is run. A typing is said to be dynamic if the interpreter or software is only able to infer the type of a computer value from its context, at runtime (and thus the declaration of the type of a variable or the arguments of a function is not necessary). Python is a dynamically typed language. C is a statically typed language. Statically typed languages are generally more restrictive in their syntax, but also generally more rigorous and reliable.
-    
-    \item \textbf{Paradigm (of a programming language) (C1)}: way to design a programming language. The 3 main paradigms are: imperative, object-oriented, and functional. They are not necessarily mutually exclusive. Imperative languages are very close to how the machine works, giving orders as concrete instructions (typical example: C). Object-oriented languages structure their components in "classes", types that contain both data (state: nouns or adjectives) and functions (actions: verbs). Most modern languages are inspired by object-oriented design; Python included, among others. Functional languages are very close to mathematics and are inspired by lambda calculus; they have the advantage of producing very solid code because they are close to a mathematical proof, when they are handled by the interpreter or the compiler.
-    
-    \item \textbf{Version control / Git / GitHub (B)}: Technology for managing project data and archiving code, used in software development. A git "repository" contains all the archives and changes in a project's data since its creation. This means that you can use it to find anything that was saved at any time in a project's history. Platforms like GitHub allow sharing and collaboration of code projects online. Using git daily is a \textbf{\textit{fundamental}} practice when programming.
+	\item \textbf{Programming language (A)}: a programming language is a way of writing text, usually a hybrid between English and mathematical language, to translate mathematical/algorithmic ideas into a form that an electronic computer can understand and execute.
+
+	\item \textbf{Machine language (A)}: a language based on the binary alphabet (containing series of just 2 symbols, '0' and '1'; or 'the current is blocked' and 'the current is flowing'), allowing a computer to process information automatically.
+
+	\item \textbf{Type (A)}: the category to which a given "real-world concept" belongs in a program. It is one of the most important concepts in computer science, both in practice and in theory. Mathematically, a type corresponds to the mathematical space to which a computer quantity belongs. We can distinguish, for example, the type "Integer" (signed integers), the type "Float" (floating point number, serving as an approximation of real numbers), the type "String" (textual character strings). Things like a "Player", or a "Color", in a video game are also examples of more complex types. Note that in what follows, the word "type" should be understood to have this specific definition.
+
+	\item \textbf{Code (A)}: code is text written according to the rules of a programming language.
+
+	\item \textbf{Syntax (A)}: the \textit{grammatical structure} of a language. For example, the syntax of a programming language can restrict the programmer to declare the type before a variable (e.g., \texttt{Type\_A variable\_a}) or after the variable (e.g., \texttt{variable\_a : Type\_A}). An instruction ("sentence" of a programming language) that does not respect the syntax of its language will not be executable by the machine, because it is not translatable to machine language.
+
+	\item \textbf{Semantics (A)}: the \textit{meaning} taken by an instruction/phrase in a language. An example of a semantic error would be \texttt{Integer my\_variable = "bobo"}: "bobo" is not an integer, so the statement, while syntactically correct (in a language like C), is semantically incorrect. Here's an example from "real-world" language by Noam Chomsky: "Colorless green ideas sleep furiously". This is not a grammatical error, but there's clearly an error with the meaning.
+
+	\item \textbf{Variable (computer science) (A)}: in computer science, a variable is a "word" declared through writing, used to store a mathematical value in memory, and then use this mathematical value conceptually. For example, (\texttt{Float speed = 5.75} would declare a variable for "speed". In the rest of the code, the programmer would then use "speed" in the code (repeatedly and in the adapted way). This makes code much clearer to read than a "5.75" that hangs around, and is meaningless with a deep understanding of the context.
+
+	\item \textbf{Function (computer science) (A)}: in computer science, function is a series of instructions callable from other places in the code, which can take zero, one, or more inputs and return zero, one, or more outputs. Functions can also affect the state (memory) of a program or computer (side effects). This is for example the case for functions that display information on a screen: they affect the electronics of the computer. A "pure" function is one which does not have side effect: one which is a purely mathematical calculation that can be figured out with pen and paper, given some inputs.
+
+	\item \textbf{Condition (A)}: A condition is a statement that translates a logical calculation (Boolean, a question with a true/false answer) into a conditional redirection (a branching) of the code. Keywords: \texttt{if, elif, else, and, or, not, then}.
+
+	\item \textbf{Loop (A)}: A loop is a series of instructions that can be repeated, with minimal configurable changes, as long as a given condition remains true.
+
+	\item \textbf{Turing-completeness (C1)}: roughly speaking, a programming language is said to be "Turing-complete" if it is "as expressive as possible". That means that it is able to execute computations on all types, store information in its memory, execute its computations contextually/conditionally, and redirect its reading head. Turing-completeness is a fundamental notion of theoretical computer science, and for reasons that are long and complex to explain, it is in a way the ultimate "speed limit" to computation. A Turing-complete language is able to execute any (reasonable) function. Almost all programming languages have a Turing-complete level of expressivity.
+
+	\item \textbf{Argument (A)}: an argument is a synonym for a function input.
+
+	\item \textbf{Return (A)}: a return (value) is a synonym for a function output.
+
+	\item \textbf{Signature (A)}: the signature of a function is the declaration of the name of the function, and the types and names of its inputs and outputs. The function's type is defined as "types of inputs -> types of outputs", and is a direct consequence of these.
+
+	\item \textbf{Interpreted language, compiled language (C1)}: a language is said to be "interpreted" if a software called "the interpreter" must be launched to read the code line by line, as the code runs, so that it executes. A language is said to be "compiled" if a software called the "compiler" must read the whole code and produce an executable ahead of time, before the program can be executed. Python is an example of an interpreted language. C is a compiled language.
+
+	\item \textbf{Static typing, dynamic typing (C1)}: A "typing" is how the type system for a programming language was designed. It is said to be static if it is necessary at the level of the programming language's syntax, or if it can be inferred before the code is run. A typing is said to be dynamic if the interpreter or software is only able to infer the type of a computer value from its context, at runtime (and thus the declaration of the type of a variable or the arguments of a function is not necessary). Python is a dynamically typed language. C is a statically typed language. Statically typed languages are generally more restrictive in their syntax, but also generally more rigorous and reliable.
+
+	\item \textbf{Paradigm (of a programming language) (C1)}: way to design a programming language. The 3 main paradigms are: imperative, object-oriented, and functional. They are not necessarily mutually exclusive. Imperative languages are very close to how the machine works, giving orders as concrete instructions (typical example: C). Object-oriented languages structure their components in "classes", types that contain both data (state: nouns or adjectives) and functions (actions: verbs). Most modern languages are inspired by object-oriented design; Python included, among others. Functional languages are very close to mathematics and are inspired by lambda calculus; they have the advantage of producing very solid code because they are close to a mathematical proof, when they are handled by the interpreter or the compiler.
+
+	\item \textbf{Version control / Git / GitHub (B)}: Technology for managing project data and archiving code, used in software development. A git "repository" contains all the archives and changes in a project's data since its creation. This means that you can use it to find anything that was saved at any time in a project's history. Platforms like GitHub allow sharing and collaboration of code projects online. Using git daily is a \textbf{\textit{fundamental}} practice when programming.
 \end{itemize}
 
 
@@ -104,19 +173,19 @@ This section describes terms that are fundamental to understand how one can use 
 This section describes the important electronic components that allow an electronic computer to work.
 
 \begin{itemize}
-    \item \textbf{Computer (C1)}: There are two major definitions of computer: one is a mathematical model for "how to automatically do math" (see Turing-completeness); another is a physical (generally electronic) machine (see Von Neumann architecture).
-    
-    \item \textbf{Central Processing Unit (CPU) (C1)}: the fundamental calculation unit of a computer.
-    
-    \item \textbf{Graphics Processing Unit (GPU) (C2)}: a computing unit specialized in parallelized computing. Modern GPUs are efficient in performing tasks like simultaneous scalar products, making them suitable for tasks involving linear algebra.
-    
-    \item \textbf{Random Access Memory (RAM) (C1)}: a memory unit that contains data and software currently running on the computer. It is cleared as soon as the computer turns off. It is generally in form of electronic flat stick.
-    
-    \item \textbf{Read-only memory (ROM) (C1)}: a memory unit that contains inactive but saved data and software of the machine. It can be in the form of a rotating hard disk or a flash memory drive.
-    
-    \item \textbf{Motherboard (C1)}: The control unit that contains most of the software necessary for the computer to start. It serves as an interface to various hardware components.
-    
-    \item \textbf{Power supply unit (C1)}: A unit that provides power to the computer, ensuring its proper operation.
+	\item \textbf{Computer (C1)}: There are two major definitions of computer: one is a mathematical model for "how to automatically do math" (see Turing-completeness); another is a physical (generally electronic) machine (see Von Neumann architecture).
+
+	\item \textbf{Central Processing Unit (CPU) (C1)}: the fundamental calculation unit of a computer.
+
+	\item \textbf{Graphics Processing Unit (GPU) (C2)}: a computing unit specialized in parallelized computing. Modern GPUs are efficient in performing tasks like simultaneous scalar products, making them suitable for tasks involving linear algebra.
+
+	\item \textbf{Random Access Memory (RAM) (C1)}: a memory unit that contains data and software currently running on the computer. It is cleared as soon as the computer turns off. It is generally in form of electronic flat stick.
+
+	\item \textbf{Read-only memory (ROM) (C1)}: a memory unit that contains inactive but saved data and software of the machine. It can be in the form of a rotating hard disk or a flash memory drive.
+
+	\item \textbf{Motherboard (C1)}: The control unit that contains most of the software necessary for the computer to start. It serves as an interface to various hardware components.
+
+	\item \textbf{Power supply unit (C1)}: A unit that provides power to the computer, ensuring its proper operation.
 \end{itemize}
 
 
@@ -125,18 +194,18 @@ This section describes the important electronic components that allow an electro
 This section describes various data types that are fundamental to algorithmics in general, and data engineering/science in particular.
 
 \begin{itemize}
-    \item \textbf{Array/List (A)}: an array, or list, is a series of values, usually of the same type, stored (usually) contiguously in memory, and accessible by index. In the vast majority of languages, the indexing of an array starts at 0. For example, if you have the following array of integers \texttt{Array<Integer> my\_array = [1, 4, 6, 10, 0]}, then \texttt{array[2]} returns 6.
-    
-    \item \textbf{Tensor (computer science) (B)}: a tensor is an array of arrays of arrays of arrays of arrays... of elements usually of the same type. The "rank" of a tensor is its nesting level. A simple value is a tensor of rank 0. A simple array is a tensor of rank 1. An array of arrays is a rank 2 tensor. An array of arrays of arrays is a rank 3 tensor. Etc. An Excel spreadsheet with only number is an example of a rank 2 tensor.
-    
-    \item \textbf{Graph (A)}: a graph is a set of points (usually of the same type, called nodes), linked together 2-by-2 (called edges). A very rudimentary social network, for example, can model its users as "one node per person" and "one edge between two people if they are friends".
-    
-    \item \textbf{Data point cloud / Data frame / Data point space (A)}: A data frame is two-dimensional table, with "individuals" as rows, and "attributes" as columns. When its data is visualized geometrically, it corresponds to a point cloud in a mathematical coordinate frame, where each column of the table defines a "dimension", i.e. an axis of the frame. Each individual corresponds precisely to a single point in this frame. Most data tables have too many dimensions for the human brain to visualize (since we are limited to 3 spatial dimensions, 1 temporal dimension, and possibly 1 or 2 color gradients, for a total of 6, which is in practice very rarely attainable in an understandable way).
-    
-    \item \textbf{(Relational) database (C2)}: a database is a set of (usually massive) data tables, possibly logically linked together by 2-column tables called "junction tables". These have been the most important data structure for a long time. Relational databases have an advanced mathematical formalism, called "relational algebra", developed by a certain Edgar Codd. There are programming language specific to interactions with databases, including the SQL family of languages. Databases are so frequently relational, that anything else is generally referred to under the umbrella term "NoSQL".
-    
-    \item \textbf{Vectorization (C2)}: Vectorization is the expression of computations on arrays in such a way that the computations can take place simultaneously (this is called "parallelism"). This works according to the SIMD (Single Instruction, Multiple Data) principle: you run exactly the same operations on lots of data of the same type, at the same time. It is this principle that allows GPUs to do graphical computations or computation for data or neural networks faster than CPUs.
-   
+	\item \textbf{Array/List (A)}: an array, or list, is a series of values, usually of the same type, stored (usually) contiguously in memory, and accessible by index. In the vast majority of languages, the indexing of an array starts at 0. For example, if you have the following array of integers \texttt{Array<Integer> my\_array = [1, 4, 6, 10, 0]}, then \texttt{array[2]} returns 6.
+
+	\item \textbf{Tensor (computer science) (B)}: a tensor is an array of arrays of arrays of arrays of arrays... of elements usually of the same type. The "rank" of a tensor is its nesting level. A simple value is a tensor of rank 0. A simple array is a tensor of rank 1. An array of arrays is a rank 2 tensor. An array of arrays of arrays is a rank 3 tensor. Etc. An Excel spreadsheet with only number is an example of a rank 2 tensor.
+
+	\item \textbf{Graph (A)}: a graph is a set of points (usually of the same type, called nodes), linked together 2-by-2 (called edges). A very rudimentary social network, for example, can model its users as "one node per person" and "one edge between two people if they are friends".
+
+	\item \textbf{Data point cloud / Data frame / Data point space (A)}: A data frame is two-dimensional table, with "individuals" as rows, and "attributes" as columns. When its data is visualized geometrically, it corresponds to a point cloud in a mathematical coordinate frame, where each column of the table defines a "dimension", i.e. an axis of the frame. Each individual corresponds precisely to a single point in this frame. Most data tables have too many dimensions for the human brain to visualize (since we are limited to 3 spatial dimensions, 1 temporal dimension, and possibly 1 or 2 color gradients, for a total of 6, which is in practice very rarely attainable in an understandable way).
+
+	\item \textbf{(Relational) database (C2)}: a database is a set of (usually massive) data tables, possibly logically linked together by 2-column tables called "junction tables". These have been the most important data structure for a long time. Relational databases have an advanced mathematical formalism, called "relational algebra", developed by a certain Edgar Codd. There are programming language specific to interactions with databases, including the SQL family of languages. Databases are so frequently relational, that anything else is generally referred to under the umbrella term "NoSQL".
+
+	\item \textbf{Vectorization (C2)}: Vectorization is the expression of computations on arrays in such a way that the computations can take place simultaneously (this is called "parallelism"). This works according to the SIMD (Single Instruction, Multiple Data) principle: you run exactly the same operations on lots of data of the same type, at the same time. It is this principle that allows GPUs to do graphical computations or computation for data or neural networks faster than CPUs.
+
 \end{itemize}
 
 
@@ -144,16 +213,16 @@ This section describes various data types that are fundamental to algorithmics i
 
 This section has some vocabulary which useful for general culture of computer science, such as network engineering, or systems engineering.
 
-\begin{itemize}	
-    \item \textbf{Server (C1)}: a server is a piece of software that allows other computers to interact with it. You can think of a "server" as a program "at whose door you can knock".
+\begin{itemize}
+	\item \textbf{Server (C1)}: a server is a piece of software that allows other computers to interact with it. You can think of a "server" as a program "at whose door you can knock".
 
-    \item \textbf{Client (C1)}: a client is a piece of software that can make requests to another computer. Web browsers are the typical "client" software that most people know about. You can think of a client as a program "that goes to knock on other people's door". 
+	\item \textbf{Client (C1)}: a client is a piece of software that can make requests to another computer. Web browsers are the typical "client" software that most people know about. You can think of a client as a program "that goes to knock on other people's door".
 
-    \item \textbf{Peer (C1)}: a peer is a piece of software that is both a client and a server.
+	\item \textbf{Peer (C1)}: a peer is a piece of software that is both a client and a server.
 
-    \item \textbf{Operating System (OS) (C1)}: an operating system is a piece of software that allows the management and operation of other software. It is generally the first piece of software that you want to run when turning on a computer. Examples of such architectures include Mac OS, Windows, Linux-Debian, Linux-RedHat, iOS, Android, Raspberry Pi, Microsoft Azure, and more.
+	\item \textbf{Operating System (OS) (C1)}: an operating system is a piece of software that allows the management and operation of other software. It is generally the first piece of software that you want to run when turning on a computer. Examples of such architectures include Mac OS, Windows, Linux-Debian, Linux-RedHat, iOS, Android, Raspberry Pi, Microsoft Azure, and more.
 
-    \item \textbf{Cross-platform (C1)}: Refers to software or code that can run on various operating systems.
+	\item \textbf{Cross-platform (C1)}: Refers to software or code that can run on various operating systems.
 \end{itemize}
 
 
@@ -162,25 +231,27 @@ This section has some vocabulary which useful for general culture of computer sc
 This section presents the various tools that programmers who work in data science and machine learning use (most of the time). We explicitly ignore the R programming language, since the goal is to prepare the student to Machine Learning.
 
 \begin{itemize}
-    \item \textbf{Python (A)}: Python is a programming language designed to look a lot like plain English, to be simple to learn, to be dynamically typed, to be interpreted, and to have a richness of syntactic expression. This makes it a very good language for discovery through code and experimentation/prototyping. However, this language is sometimes quite slow at runtime, not easy to develop cross-platform, and dynamically typed. This makes it often avoided in production-grade environment, unless special care is taken. Python is above all the language of research, learning, scripting, and prototyping.
-    
-    \item \textbf{Jupyter (A)}: Technology used to launch a local server which makes one capable of running Python in a browser. It is very useful for easy Python development, given the problems of cross-platform distribution of Python, as well as those in the production of Python executables.
-    
-    \item \textbf{Numpy (B)}: Standard linear algebra library in Python.
-    
-    \item \textbf{Scipy (B)}: Standard scientific computing library in Python.
-    
-    \item \textbf{SciKit-Learn (B)}: Standard Machine Learning library in Python.
+	\item \textbf{Python (A)}: Python is a programming language designed to look a lot like plain English, to be simple to learn, to be dynamically typed, to be interpreted, and to have a richness of syntactic expression. This makes it a very good language for discovery through code and experimentation/prototyping. However, this language is sometimes quite slow at runtime, not easy to develop cross-platform, and dynamically typed. This makes it often avoided in production-grade environment, unless special care is taken. Python is above all the language of research, learning, scripting, and prototyping.
 
-    \item \textbf{PyTorch (B)}: A sort of combination of Numpy and SciKit-Learn which has in recent years become the new standard for Machine Learning development.
-    
-    \item \textbf{Pandas (B)}: Library for managing dataframes (data tables) in Python. Very useful, quite standard in data science.
-    
-    \item \textbf{Matplotlib (B)}: Complete, but not very pretty, data visualization library in Python. A bit complex to get into at first, but essential to know.
-    
-    \item \textbf{Seaborn (B)}: Data visualization library specialized in data science. Does every visualization task that is very "classical" quite well, simply, and beautifully. It is however sometimes difficult or impossible to do data visualizations with it, if these visualizations are too custom.
-    
-    \item \textbf{SQL (C1)}: Fundamental database query language. Replaced since by languages that descend from it often (PostgreSQL, GraphQL), even if many databases still work with SQL.
+	\item \textbf{Jupyter (A)}: Technology used to launch a local server which makes one capable of running Python in a browser. It is very useful for easy Python development, given the problems of cross-platform distribution of Python, as well as those in the production of Python executables.
+
+	\item \textbf{Numpy (B)}: Standard linear algebra library in Python.
+
+	\item \textbf{Scipy (B)}: Standard scientific computing library in Python.
+
+	\item \textbf{SciKit-Learn (B)}: Standard Machine Learning library in Python.
+
+	\item \textbf{PyTorch (B)}: A sort of combination of Numpy and SciKit-Learn which has in recent years become the new standard for Machine Learning development, and increasingly general data science as well.
+
+	\item \textbf{Pandas (B)}: Library for managing dataframes (data tables) in Python. Very useful, quite standard in data science.
+
+	\item \textbf{Polars (B)}: Library for managing dataframes (data tables) in Python. Very useful, less famous, but more performant than Pandas.
+
+	\item \textbf{Matplotlib (B)}: Complete, but not very pretty, data visualization library in Python. A bit complex to get into at first, but essential to know.
+
+	\item \textbf{Seaborn (B)}: Data visualization library specialized in data science. Does every visualization task that is very "classical" quite well, simply, and beautifully. It is however sometimes difficult or impossible to do data visualizations with it, if these visualizations are too custom.
+
+	\item \textbf{SQL (C1)}: Fundamental database query language. Replaced since by languages that descend from it often (PostgreSQL, GraphQL), even if many databases still work with SQL.
 \end{itemize}
 
 
@@ -192,39 +263,39 @@ This section presents the various tools that programmers who work in data scienc
 This section describes the fundamentals that one tends to see during the first weeks of an undergrad of mathematics. While mastery is not essential for machine learning, understanding the following concepts makes the learning of all the mathematics related to data science much, much easier.
 
 \begin{itemize}
-    \item \textbf{Set (A)}: a set is a collection of mathematical objects. For example, the binary alphabet is the set containing the symbols $0$ and $1$, noted $\{0, 1\}$. The natural numbers form another set, noted $\mathbb{N} = \{0, 1, 2, 3, \dots\}$. You can think of a set as a deck of cards are unique, and there might be an infinite amount of cards.
-    
-    \item \textbf{Space / algebraic structure (A)}: a space is the combination of a set and with some rules/laws/properties and/or operators on its elements. For example, the '+' operator on the binary language (set of all combinations of symbols of the binary alphabet noted $\{0, 1\}^* = \{"", "0", "1", "00", "01", \\ "10", "11", \ldots\}$) is concatenation, and glues the "words" together (e.g., \texttt{"1010" + "111" = "1010111"}). The '+' operator in natural numbers is addition (e.g., $5 + 7 = 7 + 5 = 12$). An example of a property is commutativity: $a + b = b + a$. This property is verified in the natural integers but not in the binary language. You can think of properties as the rules you want to choose to play with your chosen deck of cards.
-    
-    \item \textbf{Function (mathematics) (A)}: a function is an association of the elements of a set of inputs (called a domain) with a set of outputs (called a codomain), where each input has at most one output image, so that the result of a function, given a fixed input, is deterministic. The square root is an example of a "1 input, 1 output" function. The classical operators (like addition) are examples of "2 input, 1 output" functions (for example, written in this way $+(5, 7) = 5 + 7 = 12$, this fact becomes clearer).
-    
-    \item \textbf{Application / Map}: You can consider that "application"/"map" and "function" are synonymous terms in mathematics (by abuse of language, even if there is a technical distinction between the two in French).
-    
-    \item \textbf{Image}: the image $y$ by a function $f$ of an element $x$ of the domain is the unique element $y = f(x)$ of the codomain. Put more simply, the "image" is the result value of applying the function, for a given input/output pair.
-    
-    \item \textbf{Antecedent}: an antecedent $x$ of an element $y$ of the codomain of a function $f$ is an element of the domain such that $y = f(x)$. Put more simply, the "antecedent" is the "origin" of some result of the function, for a given input/output pair.
-    
-    \item \textbf{Variable (mathematics) (A)}: a variable is a value which is named and typed (declared to be a member of a certain space) but not specified. This makes it so that this named value can act as a placeholder, to represent "any value" from the space in which it exists.
-    
-    \item \textbf{Parameter (A)}: a parameter is a variable which is given a specific value, for experimentation's sake, but which could just as easily be changed.
-    
-    \item \textbf{Function composition}: if $f$ is a function from $A$ to $B$ and $g$ is a function from $B$ to $C$, then there exists a function $h = g \circ f$ from $A$ to $C$, such that $h$ is the concatenation of $f$ and then $g$ (ie, first applying $f$, then $g$), where the return value of the function $f$ is given as an argument to $g$.
-    
-    \item \textbf{Continuous function (A)}: a function is said to be continuous if its graphical representation (linking its inputs and outputs) has no "break".
-    
-    \item \textbf{Derivable function (A)}: a derivable function is a continuous function which does not have any "sharp corners" in its graphical representation.
-    
-    \item \textbf{Derivative (A)}: the derivative of a function is another function, representing the slope of rise or fall at each point of this function as a numerical value. A rise for an input point corresponds to a positive value of the derivative at that same input point; a fall corresponds to a negative value at that point.
-    
-    \item \textbf{Exponential function (A)}: the exponential function is the "fundamental" function whose derivative is the exponential function itself. Among its many properties, we have $e^{a + b} = e^a \cdot e^b$, i.e., it transforms an addition of inputs into a multiplication of outputs.
-    
-    \item \textbf{Logarithmic function / Neperian logarithm (A)}: the reciprocal of the exponential function. The derivative of the neperian logarithm is the function $(x \to \frac{1}{x})$. Also, $\ln(a \cdot b) = \ln(a) + \ln(b)$, i.e., the neperian logarithm turns a product into a sum.
-    
-    \item \textbf{Logistic function (B)}: The logistic function is a continuous, strictly increasing function, varying from 0 to 1 (in its outputs) from $-\infty$ to $+\infty$ (in its inputs).
-    
-    \item \textbf{Integral (C1)}: the integral is the "ruler" (in the sense of a tool to measure) of mathematics. It is also the "anti-derivative".
-    
-    \item \textbf{Symbolic notation of iterated sums and products (B)}: A large $\Sigma$ represents an iterated sum, a large $\Pi$ represents an iterated product. Example: $\sum_{i = 0}^{i = 5} 2^i = 2^0 + 2^1 + 2^2 + 2^3 + 2^4 + 2^5 = 1 + 2 + 4 + 8 + 16 + 32 = 63$.
+	\item \textbf{Set (A)}: a set is a collection of mathematical objects. For example, the binary alphabet is the set containing the symbols $0$ and $1$, noted $\{0, 1\}$. The natural numbers form another set, noted $\mathbb{N} = \{0, 1, 2, 3, \dots\}$. You can think of a set as a deck of cards are unique, and there might be an infinite amount of cards.
+
+	\item \textbf{Space / algebraic structure (A)}: a space is the combination of a set and with some rules/laws/properties and/or operators on its elements. For example, the '+' operator on the binary language (set of all combinations of symbols of the binary alphabet noted $\{0, 1\}^* = \{"", "0", "1", "00", "01", \\ "10", "11", \ldots\}$) is concatenation, and glues the "words" together (e.g., \texttt{"1010" + "111" = "1010111"}). The '+' operator in natural numbers is addition (e.g., $5 + 7 = 7 + 5 = 12$). An example of a property is commutativity: $a + b = b + a$. This property is verified in the natural integers but not in the binary language. You can think of properties as the rules you want to choose to play with your chosen deck of cards.
+
+	\item \textbf{Function (mathematics) (A)}: a function is an association of the elements of a set of inputs (called a domain) with a set of outputs (called a codomain), where each input has at most one output image, so that the result of a function, given a fixed input, is deterministic. The square root is an example of a "1 input, 1 output" function. The classical operators (like addition) are examples of "2 input, 1 output" functions (for example, written in this way $+(5, 7) = 5 + 7 = 12$, this fact becomes clearer).
+
+	\item \textbf{Application / Map}: You can consider that "application"/"map" and "function" are synonymous terms in mathematics (by abuse of language, even if there is a technical distinction between the two in French).
+
+	\item \textbf{Image}: the image $y$ by a function $f$ of an element $x$ of the domain is the unique element $y = f(x)$ of the codomain. Put more simply, the "image" is the result value of applying the function, for a given input/output pair.
+
+	\item \textbf{Antecedent}: an antecedent $x$ of an element $y$ of the codomain of a function $f$ is an element of the domain such that $y = f(x)$. Put more simply, the "antecedent" is the "origin" of some result of the function, for a given input/output pair.
+
+	\item \textbf{Variable (mathematics) (A)}: a variable is a value which is named and typed (declared to be a member of a certain space) but not specified. This makes it so that this named value can act as a placeholder, to represent "any value" from the space in which it exists.
+
+	\item \textbf{Parameter (A)}: a parameter is a variable which is given a specific value, for experimentation's sake, but which could just as easily be changed.
+
+	\item \textbf{Function composition}: if $f$ is a function from $A$ to $B$ and $g$ is a function from $B$ to $C$, then there exists a function $h = g \circ f$ from $A$ to $C$, such that $h$ is the concatenation of $f$ and then $g$ (ie, first applying $f$, then $g$), where the return value of the function $f$ is given as an argument to $g$.
+
+	\item \textbf{Continuous function (A)}: a function is said to be continuous if its graphical representation (linking its inputs and outputs) has no "break".
+
+	\item \textbf{Derivable function (A)}: a derivable function is a continuous function which does not have any "sharp corners" in its graphical representation.
+
+	\item \textbf{Derivative (A)}: the derivative of a function is another function, representing the slope of rise or fall at each point of this function as a numerical value. A rise for an input point corresponds to a positive value of the derivative at that same input point; a fall corresponds to a negative value at that point.
+
+	\item \textbf{Exponential function (A)}: the exponential function is the "fundamental" function whose derivative is the exponential function itself. Among its many properties, we have $e^{a + b} = e^a \cdot e^b$, i.e., it transforms an addition of inputs into a multiplication of outputs.
+
+	\item \textbf{Logarithmic function / Neperian logarithm (A)}: the reciprocal of the exponential function. The derivative of the neperian logarithm is the function $(x \to \frac{1}{x})$. Also, $\ln(a \cdot b) = \ln(a) + \ln(b)$, i.e., the neperian logarithm turns a product into a sum.
+
+	\item \textbf{Logistic function (B)}: The logistic function is a continuous, strictly increasing function, varying from 0 to 1 (in its outputs) from $-\infty$ to $+\infty$ (in its inputs).
+
+	\item \textbf{Integral (C1)}: the integral is the "ruler" (in the sense of a tool to measure) of mathematics. It is also the "anti-derivative".
+
+	\item \textbf{Symbolic notation of iterated sums and products (B)}: A large $\Sigma$ represents an iterated sum, a large $\Pi$ represents an iterated product. Example: $\sum_{i = 0}^{i = 5} 2^i = 2^0 + 2^1 + 2^2 + 2^3 + 2^4 + 2^5 = 1 + 2 + 4 + 8 + 16 + 32 = 63$.
 \end{itemize}
 
 
@@ -233,61 +304,61 @@ This section describes the fundamentals that one tends to see during the first w
 This is the meat of data science as a subject. All of machine learning, statistics, data science, most of physics, economics, etc, rely on linear algebra in some form or another.
 
 \begin{itemize}
-    \item \textbf{Vector space (B)}: a vector space $E$ is an algebraic structure with commutative addition and subtraction (elements of the vector space, called \textbf{vectors}, behave like an "abelian group" under addition). It is always accompanied by another structure $K$ called "field", itself having usual addition, subtraction, multiplication and division (except by 0): this is the usual arithmetic that you've seen throughout school. Elements of $K$, called \textbf{scalars} allow one to change (scale) the size of vectors. This structure is coupled with a series of laws that allow the combined operation of $K$ and $E$ in a correct way.
-    
-    \item \textbf{Vector addition (A)}: addition of $E \times E \rightarrow E$ (2 inputs in $E$, one output in $E$).
-    
-    \item \textbf{Vector scaling (A)}: multiplication of $K \times E \rightarrow E$ (1 input in $K$, 1 input in $E$, 1 output in $E$).
-    
-    \item \textbf{Scalar (A)}: a scalar is an element of $K$. In general, we choose $K = \mathbb{R}$, the field of real numbers. A scalar is a tensor of rank 0.
-    
-    \item \textbf{Vector (A)}: a vector is an element of $E$. In general, a vector will be an array of $n$ elements. The number $n$ is then shared by all elements of $E$ and is called the "dimension" of $E$. $E$ is then denoted $\mathbb{R}^n$ (for the vector space of real numbers of dimension $n$). The space of functions from $\mathbb{R}$ to $\mathbb{R}$ are also an example of vectors, because they respect the same laws (addition and scaling). The space $(\mathbb{R} \rightarrow \mathbb{R})$ is a vector space. A vector is a tensor of rank 1.
-    
-    \item \textbf{Linear combination (B)}: any possible arrangement of scalings and additions of a set of vectors. For example, if we have 3 vectors $u$, $v$, and $w$, then $72 \cdot u + \frac{1}{3} \cdot v - 4.5 \cdot w$ is a linear combination of vectors $u$, $v$, and $w$. We can always simplify a linear combination back to a form where each vector is multiplied by a single scalar, and the list of these scalar-vector products is summed (as is used in the example).
-    
-    \item \textbf{Linear independence (A)}: a set of $n$ vectors is linearly independent if the only way to get the zero vector (the zero of $E$, the element that changes nothing by vector addition) by linear combination is to have the scalar factor in front of each scalar-vector pair be zero. Intuitively, this means that each vector in the set contributes to creating a new dimension, independent of those created by the other vectors: there is no way to express one of the vectors as a linear combination of the others.
-    
-    \item \textbf{Basis (A)}: a set of linearly independent vectors that can describe any point in a vector space. There are always precisely as many elements in a basis as there are dimensions in a vector space.
-    
-    \item \textbf{Dimension (A)}: number of elements in any basis of a vector space; number of axes needed to represent a vector space.
-    
-    \item \textbf{Colinearity (A)}: two vectors are said to be colinear if their direction describes the same line passing through the origin. This means that one can be scaled into the other.
-    
-    \item \textbf{Linearity / Linear application (A)}: Said of a function from $E$ into $F$, where $E$ and $F$ are vector spaces, that sends the origin of $E$ (its zero vector) to the origin of $F$, and keeps all parallel lines in $E$ parallel in $F$. Algebraically, a function/application is said to be linear if and only if $f(0_E) = 0_F$ and $f(ku+v) = kf(u) + f(v)$, for all $k$ in $K$ and all $u$ and $v$ in $E$. Geometrically something "linear" is something straight (a line, a plane, etc); something non-linear is something curved (a sphere, a parabola, etc). "Linear" often also refers to polynomials of degree 1 (which have straight shapes), "quadratic" refers to polynomials of degree 2, "cubic" to polynomials of degree 3, etc.
-    
-    \item \textbf{Matrix (A)}: a matrix is a rectangle of scalars. A matrix of size $m \times n$ ($m$ rows, $n$ columns) represents a linear map of $\mathbb{R}^n \rightarrow \mathbb{R}^m$ (i.e., a function with as input a vector of dimension $n$, and as output a vector of dimension $m$). A matrix is a tensor of rank 2.
-    
-    \item \textbf{Matrix multiplication (A)}: matrix multiplication is the function composition of linear maps.
-    
-    \item \textbf{Dot product (A)}: the dot product is a product of $E \times E \rightarrow K$ (2 vectors of $E$ as input, one scalar of $K$ as output). It is computed as the sum of the term-to-term product of each coordinate of its two inputs. It is denoted $\langle u, v \rangle$, and is also equal to $\|u\| \cdot \|v\| \cdot \cos(u,v)$. Algebraically, for two vectors $u$ and $v$ of dimension $n$ with coordinates $u_i$ and $v_i$, the dot product is defined as: $\langle u, v \rangle = \sum_{i=1}^{i=n} u_i \cdot v_i$. The dot product algebraically encodes two pieces of geometric information (one about angles, and one about lengths) into a single number. In practice, the dot product of two vectors of norm 1 is equal to the angle between these two vectors; the dot product of two collinear vectors is equal to the multiplication of their norm.
-    
-    \item \textbf{Norm (A)}: The norm of a vector is the distance of displacement that this vector represents. It is usually defined using the dot product, as $\|u\| = \sqrt{\langle u, u \rangle}$ (Euclidean norm, also called the 2-norm, the one from the Pythagorean theorem). There are different norms (useful in ML), like the "supremum norm/$\infty$-norm" or the "Manhattan norm/1-norm".
-    
-    \item \textbf{Quadratic norm (A)}: the quadratic norm is the norm of a vector squared. It is usually defined as $\|u\|^2 = \langle u, u \rangle$.
-    
-    \item \textbf{Cosine (A)}: value used to define the angle between 2 vectors. Algebraically, $\cos(u, v) = \frac{\langle u, v \rangle}{\|u\| \cdot \|v\|}$.
-    
-    \item \textbf{Distance (metric) (B)}: function to define a measure of the distance between two vectors. If the vector space is normed (has a norm function), a distance can always be defined from it as $d(u, v) = \|u - v\|$.
-    
-    \item \textbf{Span (generated vector subspace) (B)}: the vector subspace generated by a family (set) of vectors is the set of points that are reachable by linear combinations of the vectors of this family.
-    
-    \item \textbf{Normalization (linear algebra) (A)}: vector scaling of a vector $u$ by the value $\frac{1}{\|u\|}$, in order to find a vector $\hat{u}$ of norm 1 and the same direction as $u$.
-    
-    \item \textbf{Tensor (B)}: A tensor is an arrangement of scalars. A tensor of rank zero is a point of numbers (a single scalar). A tensor of rank one is a line of numbers: either a vector (column vector) or a covector (row vector). A tensor of rank two is a rectanle of numbers (a matrix). A tensor of rank three is a cube of numbers (hypermatrix). Etc.
-    
-    \item \textbf{Linear form / covector (C1)}: A linear form is a linear map of $E \rightarrow K$. Linear forms are row vectors.
+	\item \textbf{Vector space (B)}: a vector space $E$ is an algebraic structure with commutative addition and subtraction (elements of the vector space, called \textbf{vectors}, behave like an "abelian group" under addition). It is always accompanied by another structure $K$ called "field", itself having usual addition, subtraction, multiplication and division (except by 0): this is the usual arithmetic that you've seen throughout school. Elements of $K$, called \textbf{scalars} allow one to change (scale) the size of vectors. This structure is coupled with a series of laws that allow the combined operation of $K$ and $E$ in a correct way.
 
-    \item \textbf{Vector subspace (B)}: A vector subspace is a vector space contained in another vector space. A vector line, or a vector plane (i.e. passing through the origin) in a vector space of dimension 3 are examples of a vector subspace. Any space is a vector subspace of itself.
-    
-    \item \textbf{Hyperplane (B)}: A hyperplane is a vector subspace of dimension $n-1$ in a vector space of dimension $n$. The 2D planes are the hyperplanes of 3D space. The 1D lines are the hyperplanes of 2D space. The role of a hyperplane is to separate a vector space into exactly 2 pieces. For example, any "mirror" symmetry is done with respect to a hyperplane, whatever the dimension $n$ of the enclosing space.
-    
-    \item \textbf{Eigenvectors/Eigenvalues (C2)}: Any linear map has vector subspaces that are stable (i.e. if an input is in that special stable subspace, then so is its output by the linear map in question). The are called eigenspaces. Linear maps in 1D eigenspaces amount to dilations (since both input and output are colinear). The vectors serving as the basis for these vector subspaces are called eigenvectors; their respective dilation coefficient is called an eigenvalue.
-    
-    \item \textbf{Euclidean space (B)}: vector space along with a dot product operator, allowing it to define a norm (the Euclidean norm) and therefore a metric (the Euclidean metric). This is the usual kind of space in which we do math and physics in high school.
-    
-    \item \textbf{Normed vector space (B)}: vector space along with a norm operator over vectors, allowing it to define a metric.
-    
-    \item \textbf{Metric space (B)}: vector space having a notion of distance between vectors (though not necessarily a notion of size for vectors).
+	\item \textbf{Vector addition (A)}: addition of $E \times E \rightarrow E$ (2 inputs in $E$, one output in $E$).
+
+	\item \textbf{Vector scaling (A)}: multiplication of $K \times E \rightarrow E$ (1 input in $K$, 1 input in $E$, 1 output in $E$).
+
+	\item \textbf{Scalar (A)}: a scalar is an element of $K$. In general, we choose $K = \mathbb{R}$, the field of real numbers. A scalar is a tensor of rank 0.
+
+	\item \textbf{Vector (A)}: a vector is an element of $E$. In general, a vector will be an array of $n$ elements. The number $n$ is then shared by all elements of $E$ and is called the "dimension" of $E$. $E$ is then denoted $\mathbb{R}^n$ (for the vector space of real numbers of dimension $n$). The space of functions from $\mathbb{R}$ to $\mathbb{R}$ are also an example of vectors, because they respect the same laws (addition and scaling). The space $(\mathbb{R} \rightarrow \mathbb{R})$ is a vector space. A vector is a tensor of rank 1.
+
+	\item \textbf{Linear combination (B)}: any possible arrangement of scalings and additions of a set of vectors. For example, if we have 3 vectors $u$, $v$, and $w$, then $72 \cdot u + \frac{1}{3} \cdot v - 4.5 \cdot w$ is a linear combination of vectors $u$, $v$, and $w$. We can always simplify a linear combination back to a form where each vector is multiplied by a single scalar, and the list of these scalar-vector products is summed (as is used in the example).
+
+	\item \textbf{Linear independence (A)}: a set of $n$ vectors is linearly independent if the only way to get the zero vector (the zero of $E$, the element that changes nothing by vector addition) by linear combination is to have the scalar factor in front of each scalar-vector pair be zero. Intuitively, this means that each vector in the set contributes to creating a new dimension, independent of those created by the other vectors: there is no way to express one of the vectors as a linear combination of the others.
+
+	\item \textbf{Basis (A)}: a set of linearly independent vectors that can describe any point in a vector space. There are always precisely as many elements in a basis as there are dimensions in a vector space.
+
+	\item \textbf{Dimension (A)}: number of elements in any basis of a vector space; number of axes needed to represent a vector space.
+
+	\item \textbf{Colinearity (A)}: two vectors are said to be colinear if their direction describes the same line passing through the origin. This means that one can be scaled into the other.
+
+	\item \textbf{Linearity / Linear application (A)}: Said of a function from $E$ into $F$, where $E$ and $F$ are vector spaces, that sends the origin of $E$ (its zero vector) to the origin of $F$, and keeps all parallel lines in $E$ parallel in $F$. Algebraically, a function/application is said to be linear if and only if $f(0_E) = 0_F$ and $f(ku+v) = kf(u) + f(v)$, for all $k$ in $K$ and all $u$ and $v$ in $E$. Geometrically something "linear" is something straight (a line, a plane, etc); something non-linear is something curved (a sphere, a parabola, etc). "Linear" often also refers to polynomials of degree 1 (which have straight shapes), "quadratic" refers to polynomials of degree 2, "cubic" to polynomials of degree 3, etc.
+
+	\item \textbf{Matrix (A)}: a matrix is a rectangle of scalars. A matrix of size $m \times n$ ($m$ rows, $n$ columns) represents a linear map of $\mathbb{R}^n \rightarrow \mathbb{R}^m$ (i.e., a function with as input a vector of dimension $n$, and as output a vector of dimension $m$). A matrix is a tensor of rank 2.
+
+	\item \textbf{Matrix multiplication (A)}: matrix multiplication is the function composition of linear maps.
+
+	\item \textbf{Dot product (A)}: the dot product is a product of $E \times E \rightarrow K$ (2 vectors of $E$ as input, one scalar of $K$ as output). It is computed as the sum of the term-to-term product of each coordinate of its two inputs. It is denoted $\langle u, v \rangle$, and is also equal to $\|u\| \cdot \|v\| \cdot \cos(u,v)$. Algebraically, for two vectors $u$ and $v$ of dimension $n$ with coordinates $u_i$ and $v_i$, the dot product is defined as: $\langle u, v \rangle = \sum_{i=1}^{i=n} u_i \cdot v_i$. The dot product algebraically encodes two pieces of geometric information (one about angles, and one about lengths) into a single number. In practice, the dot product of two vectors of norm 1 is equal to the angle between these two vectors; the dot product of two collinear vectors is equal to the multiplication of their norm.
+
+	\item \textbf{Norm (A)}: The norm of a vector is the distance of displacement that this vector represents. It is usually defined using the dot product, as $\|u\| = \sqrt{\langle u, u \rangle}$ (Euclidean norm, also called the 2-norm, the one from the Pythagorean theorem). There are different norms (useful in ML), like the "supremum norm/$\infty$-norm" or the "Manhattan norm/1-norm".
+
+	\item \textbf{Quadratic norm (A)}: the quadratic norm is the norm of a vector squared. It is usually defined as $\|u\|^2 = \langle u, u \rangle$.
+
+	\item \textbf{Cosine (A)}: value used to define the angle between 2 vectors. Algebraically, $\cos(u, v) = \frac{\langle u, v \rangle}{\|u\| \cdot \|v\|}$.
+
+	\item \textbf{Distance (metric) (B)}: function to define a measure of the distance between two vectors. If the vector space is normed (has a norm function), a distance can always be defined from it as $d(u, v) = \|u - v\|$.
+
+	\item \textbf{Span (generated vector subspace) (B)}: the vector subspace generated by a family (set) of vectors is the set of points that are reachable by linear combinations of the vectors of this family.
+
+	\item \textbf{Normalization (linear algebra) (A)}: vector scaling of a vector $u$ by the value $\frac{1}{\|u\|}$, in order to find a vector $\hat{u}$ of norm 1 and the same direction as $u$.
+
+	\item \textbf{Tensor (B)}: A tensor is an arrangement of scalars. A tensor of rank zero is a point of numbers (a single scalar). A tensor of rank one is a line of numbers: either a vector (column vector) or a covector (row vector). A tensor of rank two is a rectanle of numbers (a matrix). A tensor of rank three is a cube of numbers (hypermatrix). Etc.
+
+	\item \textbf{Linear form / covector (C1)}: A linear form is a linear map of $E \rightarrow K$. Linear forms are row vectors.
+
+	\item \textbf{Vector subspace (B)}: A vector subspace is a vector space contained in another vector space. A vector line, or a vector plane (i.e. passing through the origin) in a vector space of dimension 3 are examples of a vector subspace. Any space is a vector subspace of itself.
+
+	\item \textbf{Hyperplane (B)}: A hyperplane is a vector subspace of dimension $n-1$ in a vector space of dimension $n$. The 2D planes are the hyperplanes of 3D space. The 1D lines are the hyperplanes of 2D space. The role of a hyperplane is to separate a vector space into exactly 2 pieces. For example, any "mirror" symmetry is done with respect to a hyperplane, whatever the dimension $n$ of the enclosing space.
+
+	\item \textbf{Eigenvectors/Eigenvalues (C2)}: Any linear map has vector subspaces that are stable (i.e. if an input is in that special stable subspace, then so is its output by the linear map in question). The are called eigenspaces. Linear maps in 1D eigenspaces amount to dilations (since both input and output are colinear). The vectors serving as the basis for these vector subspaces are called eigenvectors; their respective dilation coefficient is called an eigenvalue.
+
+	\item \textbf{Euclidean space (B)}: vector space along with a dot product operator, allowing it to define a norm (the Euclidean norm) and therefore a metric (the Euclidean metric). This is the usual kind of space in which we do math and physics in high school.
+
+	\item \textbf{Normed vector space (B)}: vector space along with a norm operator over vectors, allowing it to define a metric.
+
+	\item \textbf{Metric space (B)}: vector space having a notion of distance between vectors (though not necessarily a notion of size for vectors).
 \end{itemize}
 
 
@@ -296,27 +367,27 @@ This is the meat of data science as a subject. All of machine learning, statisti
 This section describes the math of probability theory, which forms a lot of the backbone of statistics. Statistics is basically the combination of probability and linear algebra.
 
 \begin{itemize}
-    \item \textbf{Universe of discourse (A)}: set describing the collection of possible outcomes of a random experiment (some situation with a random outcome). For example, the universe of discourse for a single roll of a regular (six-sided) die (also called a "1d6") is the set $\Omega = \{ 1, 2, 3, 4, 5, 6 \}$.
-    
-    \item \textbf{Probability (A)}: A probability is a function over a universe of discourse that returns an outcome between 0 (ie, 0\% chance) and 1 (ie, 100\% chance). This universe of discourse is geometrically an object of measure 1 (a length of 1 in dimension 1, an area of 1 in dimension 2, a volume of 1 in dimension 3, an $n$-hypervolume of 1 in dimension $n$). The probability function assigns a measure between 0 and 1 to all collections of outcomes. For example, in the universe of discourse described above (the 1d6), the event "an even number is rolled" corresponds to the set $e = \{ 2, 4, 6 \}$ and is precisely one half of the full space (measure $0.5$), which corresponds to a 50\% chance.
-    
-    \item \textbf{Conditional probability (Bayesian probabilities) (A)}: A conditional probability is a probability considering/knowing that an event $e$ is necessarily true. This is geometrically equivalent to restricting oneself to the section of the universe of discourse where $e$ is true, and considering that this new geometric object is now of measure 1 (ie, certain). For example, take a 1d6, $e_1 = \{ 1, 2, 3, 4 \}$, ie, "rolling 4 or less", and $e_2 = \{ 2, 4, 6 \}$, ie, "rolling an even number". Then, the probability of "rolling an even number \textit{knowing that} we rolled 4 or less" is $0.5$, since the set $e_3 = \{ 2, 4 \}$ is half the measure of the the set $e_1 = \{ 1, 2, 3, 4 \}$ which is our new, "knowing that", universe. This should not be confused with the probability of "rolling an even number \textit{and} rolling 4 or less", which would be 1/3.
-    
-    \item \textbf{Random variable (A)}: probabilistic experiment where the result is assigned a "success" value (in general a real number). Algebraically, a random variable is a function of the universe of discourse in (in general) the set of real numbers, usually denoted $X : \Omega \rightarrow \mathbb{R}$. For example, let's say I win 0.50€ per point on a 1d6 die, but if I roll a 6, I instead lose 3€. Our function looks like $X = \{ 1 \rightarrow 0.5 ; 2 \rightarrow 1 ; 3 \rightarrow 1.5 ; 4 \rightarrow 2 ; 5 \rightarrow 2.5 ; 6 \rightarrow -3 \}$.
-    
-    \item \textbf{Random vector (B)}: probabilistic experiment where the outcome is assigned multiple values (usually $n$ real numbers). For example, if I refer to the value of two normal throws of the dice in order (2d6) as "x" for the first throw, and "y" for the second, then the example of a random vector where I win 2x candies but lose 0.5xy€ on each pair of throws can be defined as $X = (x, y) \rightarrow (2x, -0.5xy)$. Models in data science are usually random vectors that try to match the shape and properties of a cloud of data points, if the probabilistic experiment is performed repeatedly on different points.
-    
-    \item \textbf{Expectation (A)}: average of the results of a random variable over a universe, weighted by their probability. It corresponds to the "average return that can be expected in the long run, if we repeat the experiment an infinite amount of times".
-    
-    \item \textbf{Variance (A)}: Average of the squared deviations of each of the outcomes from the expectation. This gives an idea of the "spread" of the values of the experiment away from the average. The variance can also be understood as the covariance of a random variable (or vector) with itself, i.e. the quadratic norm of a random variable. In the case of a random vector, the variance takes the form of a symmetric, positive semidefinite matrix, called the variance-covariance matrix.
-    
-    \item \textbf{Standard deviation (A)}: the standard deviation is the square root of the variance of a variable or a random vector. It is therefore the norm of a random vector, noted $\sigma_X$.
-    
-    \item \textbf{Covariance (B)}: The covariance is a measure of how much two random variables vary together. It is the dot product of spaces of random vectors. It is noted $\text{cov}(X, Y)$.
-    
-    \item \textbf{Pearson's correlation coefficient (B)}: a measure of how closely two events are correlated. It is the cosine of the spaces of random vectors. It is defined as $\text{cor}(X, Y) = \frac{\text{cov}(X, Y)}{\text{stddev}(X) \cdot \text{stddev}(Y)}$.
-    
-    \item \textbf{Bias (A)}: difference between the mean/expectation given by the model, and the one given by the experiment (the real data).
+	\item \textbf{Universe of discourse (A)}: set describing the collection of possible outcomes of a random experiment (some situation with a random outcome). For example, the universe of discourse for a single roll of a regular (six-sided) die (also called a "1d6") is the set $\Omega = \{ 1, 2, 3, 4, 5, 6 \}$.
+
+	\item \textbf{Probability (A)}: A probability is a function over a universe of discourse that returns an outcome between 0 (ie, 0\% chance) and 1 (ie, 100\% chance). This universe of discourse is geometrically an object of measure 1 (a length of 1 in dimension 1, an area of 1 in dimension 2, a volume of 1 in dimension 3, an $n$-hypervolume of 1 in dimension $n$). The probability function assigns a measure between 0 and 1 to all collections of outcomes. For example, in the universe of discourse described above (the 1d6), the event "an even number is rolled" corresponds to the set $e = \{ 2, 4, 6 \}$ and is precisely one half of the full space (measure $0.5$), which corresponds to a 50\% chance.
+
+	\item \textbf{Conditional probability (Bayesian probabilities) (A)}: A conditional probability is a probability considering/knowing that an event $e$ is necessarily true. This is geometrically equivalent to restricting oneself to the section of the universe of discourse where $e$ is true, and considering that this new geometric object is now of measure 1 (ie, certain). For example, take a 1d6, $e_1 = \{ 1, 2, 3, 4 \}$, ie, "rolling 4 or less", and $e_2 = \{ 2, 4, 6 \}$, ie, "rolling an even number". Then, the probability of "rolling an even number \textit{knowing that} we rolled 4 or less" is $0.5$, since the set $e_3 = \{ 2, 4 \}$ is half the measure of the the set $e_1 = \{ 1, 2, 3, 4 \}$ which is our new, "knowing that", universe. This should not be confused with the probability of "rolling an even number \textit{and} rolling 4 or less", which would be 1/3.
+
+	\item \textbf{Random variable (A)}: probabilistic experiment where the result is assigned a "success" value (in general a real number). Algebraically, a random variable is a function of the universe of discourse in (in general) the set of real numbers, usually denoted $X : \Omega \rightarrow \mathbb{R}$. For example, let's say I win 0.50€ per point on a 1d6 die, but if I roll a 6, I instead lose 3€. Our function looks like $X = \{ 1 \rightarrow 0.5 ; 2 \rightarrow 1 ; 3 \rightarrow 1.5 ; 4 \rightarrow 2 ; 5 \rightarrow 2.5 ; 6 \rightarrow -3 \}$.
+
+	\item \textbf{Random vector (B)}: probabilistic experiment where the outcome is assigned multiple values (usually $n$ real numbers). For example, if I refer to the value of two normal throws of the dice in order (2d6) as "x" for the first throw, and "y" for the second, then the example of a random vector where I win 2x candies but lose 0.5xy€ on each pair of throws can be defined as $X = (x, y) \rightarrow (2x, -0.5xy)$. Models in data science are usually random vectors that try to match the shape and properties of a cloud of data points, if the probabilistic experiment is performed repeatedly on different points.
+
+	\item \textbf{Expectation (A)}: average of the results of a random variable over a universe, weighted by their probability. It corresponds to the "average return that can be expected in the long run, if we repeat the experiment an infinite amount of times".
+
+	\item \textbf{Variance (A)}: Average of the squared deviations of each of the outcomes from the expectation. This gives an idea of the "spread" of the values of the experiment away from the average. The variance can also be understood as the covariance of a random variable (or vector) with itself, i.e. the quadratic norm of a random variable. In the case of a random vector, the variance takes the form of a symmetric, positive semidefinite matrix, called the variance-covariance matrix.
+
+	\item \textbf{Standard deviation (A)}: the standard deviation is the square root of the variance of a variable or a random vector. It is therefore the norm of a random vector, noted $\sigma_X$.
+
+	\item \textbf{Covariance (B)}: The covariance is a measure of how much two random variables vary together. It is the dot product of spaces of random vectors. It is noted $\text{cov}(X, Y)$.
+
+	\item \textbf{Pearson's correlation coefficient (B)}: a measure of how closely two events are correlated. It is the cosine of the spaces of random vectors. It is defined as $\text{cor}(X, Y) = \frac{\text{cov}(X, Y)}{\text{stddev}(X) \cdot \text{stddev}(Y)}$.
+
+	\item \textbf{Bias (A)}: difference between the mean/expectation given by the model, and the one given by the experiment (the real data).
 \end{itemize}
 
 
@@ -325,13 +396,13 @@ This section describes the math of probability theory, which forms a lot of the 
 This is a more advanced mathematical subject, but it is necessary for more advanced topics in data science, such as the explanation for several advanced algorithms, explainability in ML, fields of data science like topological data analysis, etc.
 
 \begin{itemize}
-    \item \textbf{Scalar function (B)}: A scalar function is a function from $\mathbb{R}^n \rightarrow \mathbb{R}$ that is not necessarily linear (unlike linear forms). Ex: $f : \mathbb{R}^3 \rightarrow \mathbb{R}$, such that $(x, y, z) \rightarrow xy + z^2 + \cos(x)$.
-    
-    \item \textbf{Partial derivative}: derivative of a single coordinate of scalar function. Each coordinate is obtained with the standard derivative, considering all coordinates constant, except one. E.g., going with the previous function, here is the partial derivative in the $x$ coordinate: $\pdv{f}{x} = y - \sin(x)$.
-    
-    \item \textbf{Differential / gradient (B)}: The differential / gradient is the "fundamental" derivative of a scalar function. The differential gradient indicates the direction in which to move to get the largest increase in the output value. The differential / gradient is calculated as the vector of all partial derivatives. The only difference between the two is that the differential (noted $df$) is a row vector (covector) and the gradient (noted $\nabla f$) is a column vector (i.e., their input/output space are reversed). E.g., going with the previous function:
-    
-    \begin{align*}
+	\item \textbf{Scalar function (B)}: A scalar function is a function from $\mathbb{R}^n \rightarrow \mathbb{R}$ that is not necessarily linear (unlike linear forms). Ex: $f : \mathbb{R}^3 \rightarrow \mathbb{R}$, such that $(x, y, z) \rightarrow xy + z^2 + \cos(x)$.
+
+	\item \textbf{Partial derivative}: derivative of a single coordinate of scalar function. Each coordinate is obtained with the standard derivative, considering all coordinates constant, except one. E.g., going with the previous function, here is the partial derivative in the $x$ coordinate: $\pdv{f}{x} = y - \sin(x)$.
+
+	\item \textbf{Differential / gradient (B)}: The differential / gradient is the "fundamental" derivative of a scalar function. The differential gradient indicates the direction in which to move to get the largest increase in the output value. The differential / gradient is calculated as the vector of all partial derivatives. The only difference between the two is that the differential (noted $df$) is a row vector (covector) and the gradient (noted $\nabla f$) is a column vector (i.e., their input/output space are reversed). E.g., going with the previous function:
+
+	\begin{align*}
 		df
 		=
 		\begin{bmatrix}
@@ -341,36 +412,36 @@ This is a more advanced mathematical subject, but it is necessary for more advan
 		\begin{bmatrix}
 			y - \sin(x) & x & 2z
 		\end{bmatrix}
-    \end{align*}
-    
-    \item \textbf{Multivariate function}: a multivariate function is a function from $\mathbb{R}^n \rightarrow \mathbb{R}^m$, which is not necessarily linear. E.g.: $f : \mathbb{R}^3 \rightarrow \mathbb{R}^2$ such that $(x,y,z) \rightarrow (xy + \cos(x), xyz + z^2)$. Note that we can write $f(x,y,z) = (f_1(x,y,z), f_2(x,y,z))$, where $f_1(x,y,z) = xy + \cos(x)$ and $f_2(x,y,z) = xyz + z^2$ are both scalar functions.
-    
-    \item \textbf{Jacobian}: the "fundamental" derivative of a multivariate function. The Jacobian is a matrix of size $m \times n$, where the $i$-th row corresponds to the differential of the $i$-scalar function. To caricature, "we stack the differentials". Note that the Jacobian is itself a function from $\mathbb{R}^n \rightarrow (\mathbb{R}^n \rightarrow \mathbb{R}^m)$; that is, your Jacobian gives you a different matrix for each point in your space where you compute it. Geometrically, the Jacobian gives you the best linear approximation at a point $(x,y,z)$ of its return in the output space.
-    \begin{align*}
-    	J_f
-    	=
-    	\begin{bmatrix}
-    		\pdv{f_1}{x} & \pdv{f_1}{y} & \pdv{f_1}{z} \\
-    		\pdv{f_2}{x} & \pdv{f_2}{y} & \pdv{f_2}{z}
-    	\end{bmatrix}
-    	=
-    	\begin{bmatrix}
-    		y - \sin(y) & x & 0 \\
-    		yz & xz & xy + 2z
-    	\end{bmatrix}
-    \end{align*}
-    
-    \item \textbf{Manifold (C2)}: a manifold is an object which is "locally euclidean". This means that, if you zoom in enough on your object, it looks flat. It's a kind of object on which we can define a geometry through which differentiable functions can exist. Any vector space, as well as any space of functions between vector spaces, is a manifold. The sphere, the torus, the Klein bottle, the $n$-dimensional Cartesian plane ($\mathbb{R}^n$), are all examples of manifolds.
-    
-    \item \textbf{Topology (C2)}: a branch of mathematics that studies the local and global structures of manifolds. Also, a term for a "fabric of reality / choice of mathematical universe" based on the language of sets, on such spaces, in order to define notions of distance, measure, continuity, derivability, etc.
-    
-    \item \textbf{Measure theory (C2)}: extension of topology to build a more powerful version of the integral, and to define a way to compute lengths, areas, volumes, whatever the dimension. Probabilities are geometrically understood as "n-volumes relative to a global space of n-volume 1", and measure theory is thus the foundation of all modern probability theory.
-    
-    \item \textbf{Topological data analysis (D)}: a technique that aims to study the geometric form (the manifold) on which data points exist in an encompassing statistical vector space, in order to drastically reduce its dimension or to make its logical structure explicit. 
-    
-    \item \textbf{Differential Geometry (D)}: theory of derivation on manifolds.
-    
-    \item \textbf{Information Geometry (D)}: mathematical theory relying on probability, statistics, information theory, measure theory and differential geometry to establish statistical spaces (random vector spaces; data point cloud spaces) and dynamics on general manifolds.
+	\end{align*}
+
+	\item \textbf{Multivariate function}: a multivariate function is a function from $\mathbb{R}^n \rightarrow \mathbb{R}^m$, which is not necessarily linear. E.g.: $f : \mathbb{R}^3 \rightarrow \mathbb{R}^2$ such that $(x,y,z) \rightarrow (xy + \cos(x), xyz + z^2)$. Note that we can write $f(x,y,z) = (f_1(x,y,z), f_2(x,y,z))$, where $f_1(x,y,z) = xy + \cos(x)$ and $f_2(x,y,z) = xyz + z^2$ are both scalar functions.
+
+	\item \textbf{Jacobian}: the "fundamental" derivative of a multivariate function. The Jacobian is a matrix of size $m \times n$, where the $i$-th row corresponds to the differential of the $i$-scalar function. To caricature, "we stack the differentials". Note that the Jacobian is itself a function from $\mathbb{R}^n \rightarrow (\mathbb{R}^n \rightarrow \mathbb{R}^m)$; that is, your Jacobian gives you a different matrix for each point in your space where you compute it. Geometrically, the Jacobian gives you the best linear approximation at a point $(x,y,z)$ of its return in the output space.
+	\begin{align*}
+		J_f
+		=
+		\begin{bmatrix}
+			\pdv{f_1}{x} & \pdv{f_1}{y} & \pdv{f_1}{z} \\
+			\pdv{f_2}{x} & \pdv{f_2}{y} & \pdv{f_2}{z}
+		\end{bmatrix}
+		=
+		\begin{bmatrix}
+			y - \sin(y) & x & 0 \\
+			yz & xz & xy + 2z
+		\end{bmatrix}
+	\end{align*}
+
+	\item \textbf{Manifold (C2)}: a manifold is an object which is "locally euclidean". This means that, if you zoom in enough on your object, it looks flat. It's a kind of object on which we can define a geometry through which differentiable functions can exist. Any vector space, as well as any space of functions between vector spaces, is a manifold. The sphere, the torus, the Klein bottle, the $n$-dimensional Cartesian plane ($\mathbb{R}^n$), are all examples of manifolds.
+
+	\item \textbf{Topology (C2)}: a branch of mathematics that studies the local and global structures of manifolds. Also, a term for a "fabric of reality / choice of mathematical universe" based on the language of sets, on such spaces, in order to define notions of distance, measure, continuity, derivability, etc.
+
+	\item \textbf{Measure theory (C2)}: extension of topology to build a more powerful version of the integral, and to define a way to compute lengths, areas, volumes, whatever the dimension. Probabilities are geometrically understood as "n-volumes relative to a global space of n-volume 1", and measure theory is thus the foundation of all modern probability theory.
+
+	\item \textbf{Topological data analysis (D)}: a technique that aims to study the geometric form (the manifold) on which data points exist in an encompassing statistical vector space, in order to drastically reduce its dimension or to make its logical structure explicit.
+
+	\item \textbf{Differential Geometry (D)}: theory of derivation on manifolds.
+
+	\item \textbf{Information Geometry (D)}: mathematical theory relying on probability, statistics, information theory, measure theory and differential geometry to establish statistical spaces (random vector spaces; data point cloud spaces) and dynamics on general manifolds.
 \end{itemize}
 
 
@@ -382,23 +453,23 @@ This is a more advanced mathematical subject, but it is necessary for more advan
 Here we define terms that are useful all around for scientific/technical data science and ML.
 
 \begin{itemize}
-    \item \textbf{Regression}: a type of model learning that seeks to predict numerical values for fictitious input data, close to the real output data in relation to its input data.
-    
-    \item \textbf{Classification}: a type of model learning that seeks to predict the categorization of some output based on an input data point.
-    
-    \item \textbf{Model (A)}: a model is a mathematical function used as a hypothesis to generate a virtual data point from a chosen input. The goal of a model is to predict the actual data as closely as possible.
+	\item \textbf{Regression}: a type of model learning that seeks to predict numerical values for fictitious input data, close to the real output data in relation to its input data.
 
-    \item \textbf{"Garbage in, garbage out"}: a saying emphasizing the importance of quality data for accurate results in data science and machine learning.
+	\item \textbf{Classification}: a type of model learning that seeks to predict the categorization of some output based on an input data point.
 
-    \item \textbf{R-squared (B)}: one of the measures of the validity of a model.
+	\item \textbf{Model (A)}: a model is a mathematical function used as a hypothesis to generate a virtual data point from a chosen input. The goal of a model is to predict the actual data as closely as possible.
 
-    \item \textbf{ML fields of study}: Natural Language Processing (NLP); Computer Vision; Decision-making; Business analytics; Ranking; Darwinian algorithms/Reinforcement learning, etc.
+	\item \textbf{"Garbage in, garbage out"}: a saying emphasizing the importance of quality data for accurate results in data science and machine learning.
 
-    \item \textbf{Neural network (B)}: a neural network is an architecture using linear algebra to build a graph of computational cells (neurons) and run an optimization protocol (part darwinian, part search for an optimum of a hard mathematical function) to allow an algorithm to become efficient for a given task in an unsupervised way.
+	\item \textbf{R-squared (B)}: one of the measures of the validity of a model.
 
-    \item \textbf{Curse of dimensionality (B)}: the growth of data points required for accurate representation grows exponentially with the number of attributes, making many algorithms inefficient for high-dimensional spaces.
-    
-    \item \textbf{Dimensionality reduction (C2)}: techniques used to reduce the dimension of high-dimensional spaces while preserving information. Used for visualization and to make data tractable for algorithms.
+	\item \textbf{ML fields of study}: Natural Language Processing (NLP); Computer Vision; Decision-making; Business analytics; Ranking; Darwinian algorithms/Reinforcement learning, etc.
+
+	\item \textbf{Neural network (B)}: a neural network is an architecture using linear algebra to build a graph of computational cells (neurons) and run an optimization protocol (part darwinian, part search for an optimum of a hard mathematical function) to allow an algorithm to become efficient for a given task in an unsupervised way.
+
+	\item \textbf{Curse of dimensionality (B)}: the growth of data points required for accurate representation grows exponentially with the number of attributes, making many algorithms inefficient for high-dimensional spaces.
+
+	\item \textbf{Dimensionality reduction (C2)}: techniques used to reduce the dimension of high-dimensional spaces while preserving information. Used for visualization and to make data tractable for algorithms.
 \end{itemize}
 
 
@@ -407,23 +478,23 @@ Here we define terms that are useful all around for scientific/technical data sc
 Here, we define the various terms that make up the "learning" part of machine learning.
 
 \begin{itemize}
-    \item \textbf{Supervised Learning (A)}: type of machine learning, where the data is all labeled and specified by a human being, so that the algorithm can use this as a foundation to know if it is right or wrong.
-    
-    \item \textbf{Unsupervised Learning / Self-Supervised Learning(A)}: learning where the algorithm itself is supposed to classify, measure or label the data on its own.
+	\item \textbf{Supervised Learning (A)}: type of machine learning, where the data is all labeled and specified by a human being, so that the algorithm can use this as a foundation to know if it is right or wrong.
 
-    \item \textbf{Semi-Supervised Learning (C2)}: A learning approach where a model is trained on a mix of labeled and unlabeled data. It aims to leverage the unlabeled data to improve model performance.
-    
-    \item \textbf{Reinforcement Learning (A)}: learning where the algorithm itself perceives its environment, and learns according to it in a pseudo-darwinian way to perform a task more and more efficiently, based on some fitness/cost function.
+	\item \textbf{Unsupervised Learning / Self-Supervised Learning(A)}: learning where the algorithm itself is supposed to classify, measure or label the data on its own.
 
-    \item \textbf{Transfer Learning (C1)}: A technique where a pre-trained model on one task is fine-tuned on a new, related task. This approach can significantly speed up the training process and improve performance, especially when labeled data is limited. Large Language Models, like GPT-3, are pre-trained on massive amounts of text data and then fine-tuned for specific tasks. This transfer learning approach allows them to perform well on a wide range of language-related tasks.
+	\item \textbf{Semi-Supervised Learning (C2)}: A learning approach where a model is trained on a mix of labeled and unlabeled data. It aims to leverage the unlabeled data to improve model performance.
 
-    \item \textbf{Fitness/Cost function (A)}: a fitness/cost function is a function that, for a whole series of inputs, calculates the distance between the output of this input passed through the model function and the actual result in the data point cloud. The sum of these distances is the result of our cost function and is a measure of the accuracy of our model. Machine learning algorithms try to improve fitness / minimize cost, to become better at their given problem.
-    
-    \item \textbf{Hyperparameters (B)}: the parameters that allow one to manage the learning rate or direction of an algorithm.
-    
-    \item \textbf{AutoML (C1)}: Automated Machine Learning refers to the process of automating the end-to-end process of applying machine learning to real-world problems, including data preprocessing, feature selection, model selection, and hyperparameter tuning.
+	\item \textbf{Reinforcement Learning (A)}: learning where the algorithm itself perceives its environment, and learns according to it in a pseudo-darwinian way to perform a task more and more efficiently, based on some fitness/cost function.
 
-    \item \textbf{Human-in-the-Loop (C2)}: Incorporating human reviewers to guide and oversee generated content (often for GANs or LLMs in particular) which helps ensure higher quality and ethical standards.
+	\item \textbf{Transfer Learning (C1)}: A technique where a pre-trained model on one task is fine-tuned on a new, related task. This approach can significantly speed up the training process and improve performance, especially when labeled data is limited. Large Language Models, like GPT-3, are pre-trained on massive amounts of text data and then fine-tuned for specific tasks. This transfer learning approach allows them to perform well on a wide range of language-related tasks.
+
+	\item \textbf{Fitness/Cost function (A)}: a fitness/cost function is a function that, for a whole series of inputs, calculates the distance between the output of this input passed through the model function and the actual result in the data point cloud. The sum of these distances is the result of our cost function and is a measure of the accuracy of our model. Machine learning algorithms try to improve fitness / minimize cost, to become better at their given problem.
+
+	\item \textbf{Hyperparameters (B)}: the parameters that allow one to manage the learning rate or direction of an algorithm.
+
+	\item \textbf{AutoML (C1)}: Automated Machine Learning refers to the process of automating the end-to-end process of applying machine learning to real-world problems, including data preprocessing, feature selection, model selection, and hyperparameter tuning.
+
+	\item \textbf{Human-in-the-Loop (C2)}: Incorporating human reviewers to guide and oversee generated content (often for GANs or LLMs in particular) which helps ensure higher quality and ethical standards.
 \end{itemize}
 
 
@@ -432,73 +503,73 @@ Here, we define the various terms that make up the "learning" part of machine le
 Here we describe various techniques or meta-approaches that are common in data science and machine learning.
 
 \begin{itemize}
-    \item \textbf{Normalization (data science) (B)}: a change of benchmark used to rescale the distances between the points of a data point cloud, so as to express the same relative information between these data points, but so that a specific algorithm has better results.
+	\item \textbf{Normalization (data science) (B)}: a change of benchmark used to rescale the distances between the points of a data point cloud, so as to express the same relative information between these data points, but so that a specific algorithm has better results.
 
-    \item \textbf{Gradient descent (B)}: an algorithm using iterative gradient calculation to find an extremum of a complex mathematical function (typically, the minimization of a cost function).
+	\item \textbf{Gradient descent (B)}: an algorithm using iterative gradient calculation to find an extremum of a complex mathematical function (typically, the minimization of a cost function).
 
-    \item \textbf{Principal Components Analysis (C2)}: This is a dimensionality reduction technique (probably the best known and most widely used). Its principle is to express the underlying frame of reference of the data space in its most "expressive" form, i.e. that maximizes the variance of the data projected on the axes of the new frame of reference. This allows having a maximum of information on the data cloud with a minimum of dimensions (axes). The origin of this new frame is the mean of the data points, and the axes are computed by Singular Value Decomposition (SVD) of the covariance matrix. Projecting the data points onto the main axes allows visualizing an approximate but rather accurate version of a much more complex high-dimensional data space.
+	\item \textbf{Principal Components Analysis, PCA (C2)}: This is a dimensionality reduction technique (probably the best known and most widely used). Its principle is to express the underlying frame of reference of the data space in its most "expressive" form, i.e. that maximizes the variance of the data projected on the axes of the new frame of reference. This allows having a maximum of information on the data cloud with a minimum of dimensions (axes). The origin of this new frame is the mean of the data points, and the axes are computed by Singular Value Decomposition (SVD) of the covariance matrix. Projecting the data points onto the main axes allows visualizing an approximate but rather accurate version of a much more complex high-dimensional data space.
 
-    \item \textbf{Decision Trees, Random Forests (C2)}: machine learning techniques that build decision trees (conditional "if" trees) from data, used for classification and regression. They are easy for humans to interpret.
-    
-    \item \textbf{Kernel Methods / Integral Kernel / Window functions / Statistical Kernel / RKHS (C2/D)}: methods using covectors of vector spaces of functions, or modified dot products, to transform the shape of data point clouds into something easier to handle (e.g., by linear methods) and achieve better results.
+	\item \textbf{Decision trees, random forests (C2)}: machine learning techniques that build decision trees (conditional "if" trees) from data, used for classification and regression. They are easy for humans to interpret.
 
-    \item \textbf{Gradient Boosting (B)}: An ensemble learning technique that combines multiple weak learners (typically decision trees) to create a strong predictive model. It builds the model in a stage-wise manner, focusing on correcting the errors of previous iterations. XGBoost is a popular open-source implementation of gradient boosting that is known for its efficiency and performance in machine learning competitions. LightGBM is another gradient boosting framework that is designed to be memory-efficient and fast, making it suitable for large datasets. CatBoost is a gradient boosting algorithm that handles categorical features automatically, eliminating the need for extensive preprocessing.
+	\item \textbf{Kernel methods / Integral kernel / Window functions / Statistical Kernel / RKHS (C2/D)}: methods using covectors of vector spaces of functions, or modified dot products, to transform the shape of data point clouds into something easier to handle (e.g., by linear methods) and achieve better results.
 
-    \item \textbf{Attention Mechanisms (C2)}: Techniques that allow models to focus on specific parts of input data when making predictions. Attention mechanisms have significantly improved the performance of NLP models.
+	\item \textbf{Gradient boosting (B)}: An ensemble learning technique that combines multiple weak learners (typically decision trees) to create a strong predictive model. It builds the model in a stage-wise manner, focusing on correcting the errors of previous iterations. XGBoost is a popular open-source implementation of gradient boosting that is known for its efficiency and performance in machine learning competitions. LightGBM is another gradient boosting framework that is designed to be memory-efficient and fast, making it suitable for large datasets. CatBoost is a gradient boosting algorithm that handles categorical features automatically, eliminating the need for extensive preprocessing.
 
-    \item \textbf{Neural Style Transfer (C2)}: A technique that combines the content of one image with the artistic style of another image using neural networks.
+	\item \textbf{Attention mechanisms (C2)}: Techniques that allow models to focus on specific parts of input data when making predictions. Attention mechanisms have significantly improved the performance of NLP models.
 
-    \item \textbf{Anomaly Detection (C2)}: A field of machine learning focused on identifying rare events or outliers in data. It has applications in fraud detection, network security, and more.
+	\item \textbf{Neural style transfer (C2)}: A technique that combines the content of one image with the artistic style of another image using neural networks.
+
+	\item \textbf{Anomaly detection (C2)}: A field of machine learning focused on identifying rare events or outliers in data. It has applications in fraud detection, network security, and more.
 \end{itemize}
 
 
 \subsubsection*{Data Science \& Machine Learning algorithms}
 
-\begin{itemize}    
-    \item \textbf{Linear regression (B)}: a technique that allows establishing a model (here, an approximation of a cloud of data points) in the form of a vector subspace minimizing the distance to a set of points.
-    
-    \item \textbf{Logistic regression (B)}: form of regression using the logistic function to obtain a probabilistic model of binary classification (true/false).
-    
-    \item \textbf{K-means clustering (C2)}: A classification algorithm that seeks to partition a group of n observations (an n-point data point cloud) into k "clusters" where each point belongs to the cluster with the closest mean. The algorithm organizes the points of the initial cloud by iteratively readjusting hyperplanes to converge to a local optimum.
-    
-    \item \textbf{K-nearest neighbors (B)}: algorithm for both classification and regression, assigning to each point either the category of its k nearest neighbors (classification) or the average of the values assigned to these k nearest neighbors (regression). It is based on a choice of distance and requires normalization of distances.
-    
-    \item \textbf{Support Vector Machines (SVM) (C2)}: supervised learning algorithm for linear classification using hyperplanes. Extensions exist for regression and non-linear classification (using kernel methods).
-    
-    \item \textbf{Naive Bayes Classifiers (C2)}: family of algorithms based on conditional probabilities to perform classification.
-    
-    \item \textbf{Multiplayer Perceptron (MLP) (B)}: a fundamental neural network architecture that takes input, processes through layers, and produces an output. Learning is done using the backpropagation algorithm.
-    
-    \item \textbf{Convolutional Neural Network (CNN) (C2)}: specialized neural network for image processing, using convolution cells to extract local shapes.
-    
-    \item \textbf{Recurrent Neural Networks (RNN) (C2)}: neural network architecture with linked non-neighboring layers that can affect each other. It is designed to handle sequences of data, making them suitable for tasks like time series prediction, natural language processing, and more.
-    
-    \item \textbf{Long Short Term Memory Network (LSTM) (C2)}: a type of complex Recurrent Neural Network, capable of learning and remembering longer sequences of data, used for NLP and speech recognition.
-    
-    \item \textbf{Large Language Model (LLM) (C2)}: Large Language Models (LLMs) are advanced artificial intelligence systems designed to understand and generate human-like text based on vast amounts of training data. LLMs, such as OpenAI's GPT-3, utilize deep learning techniques to learn the statistical patterns and structures of language. These models have the capacity to generate coherent and contextually relevant text, making them invaluable tools for natural language processing tasks. LLMs can perform a wide range of language-related tasks, including text generation, language translation, sentiment analysis, chatbot interactions, content summarization, and more. Their capabilities stem from the complex neural architectures they employ, which consist of multiple layers of interconnected processing units. LLMs have garnered significant attention for their potential to revolutionize various industries and applications by enhancing human-computer interactions and enabling sophisticated language-related tasks. [This definition was generated using ChatGPT with GPT 3.5]
+\begin{itemize}
+	\item \textbf{Linear regression (B)}: a technique that allows establishing a model (here, an approximation of a cloud of data points) in the form of a vector subspace minimizing the distance to a set of points.
 
-    \item \textbf{Gated Recurrent Unit (GRU) (C2)}: A variation of the LSTM architecture with fewer parameters, often used for similar tasks as LSTMs.
+	\item \textbf{Logistic regression (B)}: form of regression using the logistic function to obtain a probabilistic model of binary classification (true/false).
 
-    \item \textbf{Generative Adversarial Networks (GAN) (C2)}: neural network architecture with two agents, a generator (which acts like forger) and a discriminator (which acts like an inspector), that improve by competing with each other. Used to produce realistic data in image, video or audio format.
+	\item \textbf{K-means clustering (C2)}: A classification algorithm that seeks to partition a group of n observations (an n-point data point cloud) into k "clusters" where each point belongs to the cluster with the closest mean. The algorithm organizes the points of the initial cloud by iteratively readjusting hyperplanes to converge to a local optimum.
 
-    \item \textbf{Transformer Architecture (C2)}: A neural network architecture designed for sequence-to-sequence tasks, such as machine translation. Transformers have revolutionized NLP and are the foundation of models like BERT, GPT, and T5.
-    
-    \item \textbf{Q-learning (C2)}: Model-free reinforcement learning algorithm widely used for AIs, generally by having them "play video games" (react and evolve in a given simulated environment).
+	\item \textbf{K-nearest neighbors (B)}: algorithm for both classification and regression, assigning to each point either the category of its k nearest neighbors (classification) or the average of the values assigned to these k nearest neighbors (regression). It is based on a choice of distance and requires normalization of distances.
+
+	\item \textbf{Support Vector Machines, SVM (C2)}: supervised learning algorithm for linear classification using hyperplanes. Extensions exist for regression and non-linear classification (using kernel methods).
+
+	\item \textbf{Naive bayes classifiers (C2)}: family of algorithms based on conditional probabilities to perform classification.
+
+	\item \textbf{Multi-Layer Perceptron, multilayer perceptron, MLP (B)}: a fundamental neural network architecture that takes input, processes through layers, and produces an output. Learning is done using the backpropagation algorithm.
+
+	\item \textbf{Convolutional Neural Network, CNN (C2)}: specialized neural network for image processing, using convolution cells to extract local shapes.
+
+	\item \textbf{Recurrent Neural Networks, RNN (C2)}: neural network architecture with linked non-neighboring layers that can affect each other. It is designed to handle sequences of data, making them suitable for tasks like time series prediction, natural language processing, and more.
+
+	\item \textbf{Long Short Term Memory Network, LSTM (C2)}: a type of complex Recurrent Neural Network, capable of learning and remembering longer sequences of data, used for NLP and speech recognition.
+
+	\item \textbf{Large Language Model, LLM (C2)}: Large Language Models (LLMs) are advanced artificial intelligence systems designed to understand and generate human-like text based on vast amounts of training data. LLMs, such as OpenAI's GPT-3, utilize deep learning techniques to learn the statistical patterns and structures of language. These models have the capacity to generate coherent and contextually relevant text, making them invaluable tools for natural language processing tasks. LLMs can perform a wide range of language-related tasks, including text generation, language translation, sentiment analysis, chatbot interactions, content summarization, and more. Their capabilities stem from the complex neural architectures they employ, which consist of multiple layers of interconnected processing units. LLMs have garnered significant attention for their potential to revolutionize various industries and applications by enhancing human-computer interactions and enabling sophisticated language-related tasks. [This definition was generated using ChatGPT with GPT 3.5]
+
+	\item \textbf{Gated Recurrent Unit (GRU) (C2)}: A variation of the LSTM architecture with fewer parameters, often used for similar tasks as LSTMs.
+
+	\item \textbf{Generative Adversarial Networks (GAN) (C2)}: neural network architecture with two agents, a generator (which acts like forger) and a discriminator (which acts like an inspector), that improve by competing with each other. Used to produce realistic data in image, video or audio format.
+
+	\item \textbf{Transformer Architecture (C2)}: A neural network architecture designed for sequence-to-sequence tasks, such as machine translation. Transformers have revolutionized NLP and are the foundation of models like BERT, GPT, and T5.
+
+	\item \textbf{Q-learning (C2)}: Model-free reinforcement learning algorithm widely used for AIs, generally by having them "play video games" (react and evolve in a given simulated environment).
 \end{itemize}
 
 
 \subsection*{Other: Design}
 
 \begin{itemize}
-    \item \textbf{Reverse engineering (B)}: The process of studying the functioning of a product or algorithm to understand its design and production. This can involve reproducing or improving upon the original design.
-    
-    \item \textbf{Divergent thinking (B)}: The ability to think creatively and generate a wide range of possible solutions to a design problem. It involves thinking outside the box and considering unconventional ideas.
-    
-    \item \textbf{Convergent thinking (B)}: The ability to systematically filter and evaluate possible solutions to a problem based on a defined set of constraints. It is similar to the scientific method (aka Cartesian method).
-    
-    \item \textbf{Design thinking (B)}: A mental protocol for creative problem-solving that combines both approaches of divergent and convergent thinking.
-    
-    \item \textbf{Algorithm design (B)}: The process of inventing protocols for automated data processing, involving the creation of step-by-step instructions for solving specific problems.
+	\item \textbf{Reverse engineering (B)}: The process of studying the functioning of a product or algorithm to understand its design and production. This can involve reproducing or improving upon the original design.
+
+	\item \textbf{Divergent thinking (B)}: The ability to think creatively and generate a wide range of possible solutions to a design problem. It involves thinking outside the box and considering unconventional ideas.
+
+	\item \textbf{Convergent thinking (B)}: The ability to systematically filter and evaluate possible solutions to a problem based on a defined set of constraints. It is similar to the scientific method (aka Cartesian method).
+
+	\item \textbf{Design thinking (B)}: A mental protocol for creative problem-solving that combines both approaches of divergent and convergent thinking.
+
+	\item \textbf{Algorithm design (B)}: The process of inventing protocols for automated data processing, involving the creation of step-by-step instructions for solving specific problems.
 \end{itemize}
 
 \end{document}
