@@ -398,7 +398,7 @@ This section has some vocabulary which useful for systems engineering. Note that
 
   	There are some case where one could want to denormalize a table, for example for performance reasons in a database which is read-only.
 
-	\item \textbf{Index / (Relational database) index (AMELT)}: an index is a data structure, generally some form of B-tree (possibly a BST or red-black tree), where the leaves of the tree are additionally structured as a doubly-linked list. These allow the retrieval of information in logarithmic time complexity.
+	\item \textbf{Index / (Relational database) index (AMELT)}: an index is a data structure, generally some form of B-tree (possibly a BST or red-black tree), where the leaves of the tree are additionally structured as a doubly-linked list. These allow the retrieval of information in logarithmic time complexity (rather than linear), which, given the size of most data tables, immensely improves retrieval performance. Since creating an index comes with a cost (replicating one full column in memory, and needing to update the index every time the corresponding column is updated), we generally create an index for one of two reasons. Either we create an index for a column which appears in many read queries and is rarely updated (such as a Name column), or we create an index tailored for a specific query which is very frequently used and is always the same (and thus deserves a particular, custom-made speedup).
 
 	\item \textbf{NoSQL database (AMELTO)}: a NoSQL database is an umbrella-term for any database that isn't SQL. Some of them are even SQL-like, but with extra structure. Here is a list of frequently seen NoSQL database architectures.
 	\begin{itemize}
