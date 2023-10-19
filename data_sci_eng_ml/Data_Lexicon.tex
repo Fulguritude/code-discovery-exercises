@@ -9,11 +9,11 @@
 \begin{document}
 
 
-\section*{Lexicon}
+\section*{Data Lexicon}
 
 The following is large, thematic lexicon, of various terms relating to the domain of "data". It is mostly oriented to individuals trying to build or improve a technical profile in the domain. However, it was designed to also be of interest to anyone that might need to work with technical data profiles, even if they themselves might not be one (business, HR, legal, designers, etc).
 
-It includes vocabulary from mathematics (everything from combinatorics to topological data analysis), computer science (programming paradigms to systems engineering), machine learning, professions in data science, etc.
+It includes vocabulary from mathematics (everything from combinatorics to topological data analysis), computer science (programming paradigms to systems engineering), machine learning, professions in data science, etc. As such, it can also serve as a general introduction to computer science.
 
 
 
@@ -54,13 +54,13 @@ Thematic code:
 \begin{itemize}
 	\item \textbf{Data (A)}: "data" describes any form of raw information about the world (real or virtual) that can be measured, collected, described, transmitted, organized, transformed, modelled, and/or analyzed. The human goal for "data" is to turn it into "analysis" (semantic information, information in the "non-raw" sense), in order to aid human decision-making by improving our understanding the dynamics of our world and its various component systems.
 
-	\item \textbf{Domain / Business domain (A)}: a "domain" is a field of human activity, generally one of business activity. This includes everything from the management of shipping ports, to mariage counseling, to meteorological modeling. "Domain knowledge" refers to the ways that people that are active in this domain tend to describe it; this includes all the vocabulary, processes, or mental models specific to actors of that domain.
+	\item \textbf{Domain / Business domain (A)}: a "domain" is a field of human activity, generally one of business activity. This includes everything from the management of shipping ports, to mariage counseling, to meteorological modeling. "Domain knowledge" refers to the ways through which people who are active in this domain tend to describe it; this includes all the vocabulary, processes, or mental models specific to actors of that domain.
 
 	\item \textbf{System (A)}: a "system" is collection of "\textbf{entities}" (or "agents", or "nodes") and the "\textbf{interactions}" (or "links", or "edges") between these entities. In a system, you generally have various collections of entities which can be grouped together (because they are of the same "type": while distinct, they are analogous to each other, like "atoms", or "humans"). Different kinds of interactions exist between each other based on their respective types, though generally, interactions between elements of type A and elements of type B can be described by a common "interaction type" A->B (like "covalent bonds" between atoms, "relationships" between humans, or "ownership" of an object by a human). "Systems engineering" in particular, generally refers to the specific case of information systems / computer systems, and the network interactions between these computers, or their interfaces with their users.
 
 	\item \textbf{Model (A)}: a "model" is a mathematical way of describing some entity, or set of entities, or domain; within the real or virtual world. Nowadays, all models (which used to be mostly abstract tools) tend to become implemented into computers somehow. Models insist in different ways on different mathematics. Some are specialized for statistical analysis and/or predictions, some are specialized to describe how an information system is meant to be designed, some are specialized in describing existing non-information (such as physical) systems, etc. Generally, when building an overall system for a specific domain, there are various types of models which are required, and these need to be associated, designed in common, or linked together for the overall domain to be modeled properly.
 
-	\item \textbf{Big data (A)}: this term is somewhat hard to define cleanly, and is used more as a marketing buzzword, rather than having an actual technical definition. After all, how "big" is "big" ? Is a spreadsheet with 10 millions columns "big" ? Analyzing it would have required dozens of computers some decades ago; nowadays a single average laptop can typically handle it. We can perhaps divide the expression into its two subterms: big and data. "Big" would then generally refers to "big enough to require a large-scale information (computer) system, and/or algorithms that are used to handle extremely high volumes of data, or dimensions of data". Data is defined above. In practice, in this sense "big data" is actually quite rare: "big" alone (just needing a distributed information system for some use case, but where data analysis is not the central goal of the system) or "data" alone (just running algorithms, even complex ones that also work on high-dimensional data, on moderate volumes of data) are much, much more frequent in practice.
+	\item \textbf{Big data (A)}: this term is somewhat hard to define cleanly, and is used more as a marketing buzzword, rather than having an actual technical definition. After all, how "big" is "big" ? Is a spreadsheet with 10 million columns "big" ? Analyzing it would have required dozens of computers some decades ago; nowadays a single average laptop can typically handle it. We can perhaps divide the expression into its two subterms: big and data. "Big" would then generally refers to "big enough to require a large-scale information (computer) system, and/or algorithms that are used to handle extremely high volumes of data, or dimensions of data". Data is defined above. In practice, in this sense, "big data (analytics)" is actually comparatively rare: "big" alone (just needing a distributed information system for some use case, but where data analysis is not the central goal of the system) or "data" alone (just running algorithms on moderate volumes of data; even complex algorithms that also work on high-dimensional data) are much, much more frequent in practice.
 
 	\item \textbf{Pipeline / Data pipeline (A)}: a "data pipeline" is a term used to describe the set of structures and processes that allow humans to go from a raw measure of some domain to analyses of this domain. One should generally consider the following steps or aspects of a data pipeline.
 	\begin{itemize}
@@ -337,9 +337,13 @@ This section has some vocabulary which useful for network engineering. Note that
 
 	\item \textbf{Peer (AG)}: a peer is a piece of software that is both a client and a server.
 
+	\item \textbf{Gateway / Gateway machine / Gateway server (AG)}: the first machine that is reached to or from an internet, and serves a "gateway" (door) into an intranet (isolated computer network).
+
 	\item \textbf{ISO model (of network layers) (AE, CG)}: a description of the various layers required for modern computer networks to functions, down from electronics, up to applicative logic (TODO: go into more detail).
 
 	\item \textbf{Data packet (AE, BG)}: a memory buffer containing specific data, which is given a "header" (small chunk of data to provide addressing, verification, or other information) in order to be replicated from machine to machine and reach a specific destination within a computer network.
+
+	\item \textbf{Intranet (A)}: an intranet is a small to medium network of computers, all put into a common basis for communication via some software protocols (most important of which are IP, TCP, and UDP). Generally, an intranet is either isolated from the Internet completely, or has specific machines, called gateways, which manages Internet access to and from the intranet.
 
 	\item \textbf{Internet (A)}: the internet is a extremely large network of computers, all put into a common basis for communication via some software protocols (most important of which are IP, TCP, and UDP).
 
@@ -465,6 +469,20 @@ This section has some vocabulary which useful for systems engineering. Note that
 
 	Vertical sharding refers to dividing across columns. For example, if a "person" entity has dozens or hundreds of attributes, we might divide these according to themes that should be analyzed in common (say we have a table with 81 columns, and we divide it as 1 primary key attribute, 10 attributes for professional situation, 20 attributes for medical history, 30 attributes for personal interests, and 20 attributes for consumer behavior; we could then vertically shard into a total of 4 new tables, stored on 4 different machines). The primary key of the original table is duplicated across all vertical shards. A join can then be used to obtain the rows of the original table, with all their original attributes.
 
+	\item \textbf{Scaling / Vertical scaling / Horizontal scaling (AE, BG)}: Scaling, in the language of systems engineering, refers to increasing the performance and capabilities (in memory, compute, and/or networking) of a computer system. Vertical scaling refers to increasing the overall specs (components) of a given machine, or of each machine in the system. Horizontal scaling refers to adding more machines to the system, or improving the system self-management software, so that more machines can contribute to the system's overall performance. 
+
+	\item \textbf{Blade (AG)}: a blade is a thin and powerful computer (in terms of memory, compute and network bandwidth) that is used as a unit computer in a some forms of supercomputers, in a datacenter or in a server farm.
+	
+	\item \textbf{Rack (AG)}: a rack is like a closet that holds, and powers, lots of blades. They are used in server farms, supercomputers and datacenters.
+
+	\item \textbf{Supercomputer (AG)}: a supercomputer is an industrial-grade computer, which much, much higher capabilities than a regular PC. It is generally composed of multiple computers, or a single computer with a lot of memory and compute units working in tandem.
+
+	\item \textbf{Server farm (AG)}: a server farm is a place (often a building like a warehouse) containing hundreds of blades, which are mainly used as servers, to provide web-based services.
+
+	\item \textbf{Datacenter (AG)}: a datacenter is a server farm used specifically for the purpose of servicing, or running compute, over massive amounts of data.
+
+	\item \textbf{Fault tolerance (AE, BMLTO)}: "fault tolerance" describes a system's capacity to keep working as intended (servicing data, routing requests, staying consistent, etc) even in case of machine failures (where unit computers become partly, or fully, unavailable).
+
 \end{itemize}
 
 
@@ -485,7 +503,7 @@ This section presents the various tools that programmers who work in data scienc
 
 	\item \textbf{SciKit-Learn (AMELT)}: Standard Machine Learning library in Python.
 
-	\item \textbf{PyTorch (AMELT)}: A sort of combination of Numpy and SciKit-Learn which has in recent years become the new standard for Machine Learning development, and increasingly general data science as well.
+	\item \textbf{PyTorch / Torch (AMELT)}: A sort of combination of Numpy and SciKit-Learn which has in recent years become the new standard for Machine Learning development, and increasingly general data science as well.
 
 	\item \textbf{Pandas (AMELT)}: Library for managing dataframes (data tables) in Python. Very useful, quite standard in data science.
 
@@ -494,6 +512,153 @@ This section presents the various tools that programmers who work in data scienc
 	\item \textbf{Matplotlib (AMELT)}: Complete, but not very pretty, data visualization library in Python. A bit complex to get into at first, but essential to know.
 
 	\item \textbf{Seaborn (AMELT)}: Data visualization library specialized in data science. Does every visualization task that is very "classical" quite well, simply, and beautifully. It is however sometimes difficult or impossible to do data visualizations with it, if these visualizations are too custom.
+
+\end{itemize}
+
+
+
+\subsubsection*{Computer Science: famous Apache technologies for (big) data engineering}
+
+This section presents some of the distributed technologies under Apache license that are often used for big data management and analytics.
+
+\begin{itemize}
+
+	\item \textbf{Apache Software Foundation, ASF (A)}: the Apache Software Foundation is a decentralized, non-profit corporation. It oversees the maintenance and evolution of a lot of software distributed under the Apache license, which provides open-source and free access to the code to which this license applies, while also leaving way to build closed-source software, or provide software services, based on the Apache-licensed software. This made it so that a lot of software companies, famous ones included, have built their business using Apache-licensed software.
+
+	\item \textbf{Zeppelin (CELG)}: Zeppelin is a code notebook technology (like Jupyter) under the Apache license, and readymade to practice working with some famous Apache technologies (like Spark).
+
+	\item \textbf{Hadoop (BE, CMLTG)}: Hadoop is an open-source, distributed computing framework / platform. It consists of 3 major pieces of software / architecture (\textbf{HDFS}, \textbf{YARN}, and \textbf{MapReduce}) that together, allow for horizontal scaling of computer systems. Hadoop was made to allow high levels of fault tolerance (i.e., often allowing for the distributed system to keep working even when multiple whole computers crash together). Hadoop also allows you to scale your system horizontally without downtime (a fancy, shorter way to say "you can add computers to the system while the system is running, without needing to restart the system"). Hadoop's various parts work as a cluster of machines, under a master / slave architecture (where one machine directs what the other machines have to do).
+
+	\item \textbf{Hadoop Distributed File System, HDFS (CE, DMLTG)}: one of the three core parts of the Hadoop framework. It is the part that takes care of the storage and servicing of data. Like (almost?) all filesystems, it is block based, meaning that large files are cut up into chunks of a (fixed, configurable) maximum size, then saved where appropriate within the storage device(s). However, unlike most filesystems, data blocks are replicated multiple times (by default, 3) across different machines (and even, if necessary, different racks), with a spread of blocks that also improves performance. This is one of the major factors that allows Hadoop to be fault tolerant. In practice, blocks for data that's more frequently accessed are replicated more times.
+
+	HDFS can be monitored and managed via a CLI (with most standard unix commands work (but not `cd`!); and others (like `put`, for uploads); or browsing techs in its ecosystem, like Hue.
+
+	In regular HDFS, you cannot edit files. You can only store, retrieve, change somewhere else, store the updated version as a new file, then delete the old version. You can append to files, however. But not edit. At least not without some other Apache technology, like Spark.
+
+	HDFS is generally composed of the following pieces:
+	\begin{itemize}
+		\item a \textit{gateway} machine, which ensures access to the cluster and points to the Active NameNode as well as the Active Resource Manager (see YARN definition)
+
+		\item the \textit{NameNode}: the master node of the cluster, when it comes to handling storage information. It keeps a directory tree of all files in the distributed file system in form of metadata, and tracks where, across the cluster, each file's data is kept. Client applications talk to the NameNode whenever they wish to locate a file, or when they want to add/copy/move/delete a file. The NameNode responds the successful requests by returning a list of relevant DataNode servers where the data lives. There is a single Active NameNode per cluster, and potentially many StandBy NameNodes; these serve as a failover to maintain uptime in case the Active NameNode goes down; they elect a new Active NameNode via a leader election algorithm. The industry convention is that around 5000 DataNodes, you start to need one more NameNode to handle the volume of compute and memory required.
+
+		\item the \textit{DataNodes}: these are the storage slave machines. They contain various data blocks.
+	\end{itemize}
+
+	\item \textbf{MapReduce}: a computation software architecture for distributed parallelism, allowing large-scale data processing. It was originally invented by Google, taking inspiration from the "map" and "reduce/fold/join/flatten" operations of monads and functional programming (which provide a way to abstractly express parallel operations, but require pure functions), and popularized by Hadoop. The main interest of such an approach is to distinguish fields of competencies: mathematicians can concentrate on the algorithms to run, computer scientists can concentrate on how they are run in software, and computer engineers can concentrate on how they are run in hardware. A core idea, rather than bringing data to processes, is to instead bring processes to data: like a human election; not everyone comes to the capital to vote. We vote locally, count locally, than tally results nationally by summing the local counts.
+
+	In practice, MapReduce consists of the following operations:
+	\begin{itemize}
+		\item \textbf{map}: some mapping function $f$ (a pure function from an input data type $A$ to an output data type $B$) is chosen (this is up to the developer to code). The data of type $A$ we want as input is \textbf{split} (automatically) amongst the cluster (where possible, it kept locally on the same node where the operation will run). The function is applied to all elements of type $A$, and the result is kept as \textbf{key-value pairs} $(A : B)$, so that both inputs and outputs can be used for the next step (this is a key difference with the standard monad "map" operation). Critically, the data is (automatically) stored on disk (written to ROM) in order to survive a shutdown mid-MapReduce, though this greatly increases computation time.
+
+		\item \textbf{reduce}: The data is \textbf{shuffled} (we aggregate partial results based on their keys; this happens automatically, but is quite costly) and \textbf{sorted} (we sort the KV-pairs by keys for some natural order, e.g.: alphabetical; this happens automatically). The \textbf{partitioner} (software) distributes the KV-pairs across reducers (by default, the hash partitioner works automatically, but you can also specify how each key should be divided, in a custom way). The data is then "reduced"/\textbf{"folded"}: we combine partial results for each key based on some operator (this is code that needs to be written by the developer). Finally the data is \textbf{aggregated}: we bring back the results from each key together to get the results list for all keys.
+	\end{itemize}
+
+	Various remarks about and pros and cons of MapReduce:
+	\begin{itemize}
+		\item In practice, we generally want a 10:1 ratio of mappers to reducers.
+		\item It is difficult to write filters with MapReduce (even if they are fundamental to monadic parallelization) because of the KV pattern. Spark alleviates that.
+		\item No data movement / node locality principle: MapReduce works well when executed on the node where the data resides; and it helps enable that. However, with larger data over a network, this can be complicated for Hadoop to handle.
+		\item Since there's no possibility to share memory, MapReduce is pretty terrible with (node) graphs. For a while, there was Giraph, but it's quite complex to use. Today, most people use Spark's GraphX.
+		\item MapReduce works with pure functions only, so must be stateless. It's thus difficult to run some algorithms like K-means.
+		\item MapReduce is very, very bad at real-time (i.e.: no online transaction processing, since that goes too fast to follow for MapReduce).
+		\item YARN distributes who will run the various operations of MapReduce in Hadoop.
+		\item Fault tolerance / machine failures are not a problem with MapReduce.
+	\end{itemize}
+
+	\item \textbf{Yet Another Resource Negotiator, YARN (CE, DG)}: Hadoop's resource manager. It allows the launching of apps (mappers and reducers) on the cluster. It can run any program on the cluster, not just a MapReduce program. If a target execution machine is too busy, YARN will deal with it and ask some other machine. If the target execution machine is running many things, YARN will know not to delete shared resources (such as a JVM) when one of them ends. Various tools exist to manage YARN: YARN Web UI, Hue Job Browser, and YARN CLI.
+
+	There are various components to YARN:
+	\begin{itemize}
+		\item a gateway machine, which ensures access to the cluster and points to the Active NameNode as well as the Active Resource Manager (see HDFS definition)
+
+		\item \textit{Resource Manager, RM}: the master machine for task scheduling. It mediates the resources amongst the cluster between competing applications. It has two main elements, a scheduler (which just allocates memory, CPU, and network resources to containers), and applications manager (accepts jobs submissions, finds an AppMaster container to start it, monitors the cluster, and relaunches any AppMaster in case of error). Originally, the RM was a single point of failure. However, in recent versions, multiple machines are Resource Managers: one is Active, and multiple are Standby. This is a failover: in case of RM failure, automatic leader election of the standby nodes).
+
+		\item \textit{AppMaster, AM}: manages an app's lifecycle. It negotiates with the NM to get containers on various machines and run the distributed application (algorithm). As a general rule, every app has its own, single AppMaster, but you can also build an AppMaster for a set of apps.
+
+		\item \textit{Node Manager, NM}: manages the resources on a single machine. It leases jobs and resources for applications, and controls the lifecycle of multiple containers. Does not manage tasks, only resource usage by tasks (kill in case of memory overuse, etc).
+
+		\item \textit{Containers}: they're a unit of resources that are allocated for applications. There are multiple containers per machine. A container handles environment variables, dependencies, security tokens, application processes, computation, etc.
+	\end{itemize}
+
+	Here is the overall process of an app's lifecycle in YARN:
+	\begin{itemize}
+		\item A client submits an application (a task) to the RM.
+		\item RM chooses a container to be an AM.
+		\item AM contacts various NMs, so that it can obtain containers on various nodes to assign the computational gruntwork (including calling the HDFS NameNode).
+		\item NMs launch the containers (and has them run the AM's algorithm). When done, each NM notifies the AM.
+		\item AM reports the end of the task to RM, shuts itself down, and releases its own container.
+	\end{itemize}
+
+    \item \textbf{Cloudera (AG)}: famous company that provides services based around Hadoop and its ecosystem.
+
+    \item \textbf{Hadoop ecosystem (CE, DMLTG)}: Hadoop was foundational, but had multiple issues (mentioned in the defintions for HDFS, YARN and MapReduce). Consequently, a bunch of companion technologies were built, also under the Apache license, in order to resolve these issues. Here is a non-exhaustive, imperfectly described, list:
+    \begin{itemize}
+		\item Hue: a filesystem explorer for HDFS and YARN (Hue Job Browser), in a browser
+		\item Hive: for SQL-like querying over HDFS; converts an SQL query into a MapReduce program to run on Hadoop; now mostly replaced by Spark SQL
+		\item Pig: for data flow scripting, much less popular than Spark nowadays
+		\item Sqoop: for SQL data import/export into HDFS; it can push to multiple destinations.
+		\item Flume: for NoSQL data import/export into HDFS; unlike Sqoop, it is point-to-point, only one place to read from, and one place to send, so generally, one sends data to a Kafka cluster to distribute to various places.
+		\item HBase: for NoSQL databases and real-time databases. Helpfully, can do real-time reads and writes inside Hadoop, and not on the entire block. It has its own custom language. A sister technology, Phoenix, can do SQL queries on HBase.
+		\item Flink: real-time processing, mostly replaced by Spark
+		\item Storm: real-time processing, mostly replaced by Spark
+		\item Impala: for real-time queries (very fast, in-memory, mail fail, unlike MapReduce), Cloudera tech
+		\item Hawq: same as Impala but not a Cloudera tech.
+    \end{itemize}
+
+
+    \item \textbf{Spark (CMEL, DTG)}: Spark is an open-source analytics engine under the Apache license. It is a framework used for real-time processing (e.g.: immediate fraud detection) and batch processing (e.g.: weekly reports). Its main aspect is its in-memory execution engine, this makes it faster than MapReduce. Also, because it is in-memory, it cannot resist all failures, but Spark has a clever "lineage" mechanism to minimally reconstruct parts of the data that were lost during a failure. Finally, Spark uses a lazy evaluation mechanism: it creates an execution plan, and optimizes it before running it. It only effectively runs when prompted (through function calls like collect(), count() or show()).
+
+	Its various facets include:
+	\begin{itemize}
+		\item Spark Core: provides basic I/O, task dispatching, task scheduling, memory management, and fault recovery. Can work with Hadoop, but not mandatory.
+		\item Spark SQL: run sql on structured data
+		\item Spark Streaming: operates on data streams (ie, for "near" real-time processing, e.g., receiving stuff from kafka). This allows the same code that was written for batch processing to be run on a single small machine to get results in real-time.
+		\item MLlib: provides classification, regression, clustering, etc. 
+		\item GraphX: provides (node) graph analysis. Relies on Pregel (apparently a combination of the words Parallel, Graph, and Google) which is a data flow paradigm and system for large-scale graph processing.
+	\end{itemize}
+
+	Its core concept, and fundamental data structure, is the Resilient Distributed Dataset (RDD). They are in-memory, distributed collections of data. They are immutable (once created, they cannot be edited, but can be used to create new RDDs), resilient (they can be reconstructed, in case of failure, from lineage information); typed or untyped; and can handle multiple types and collections of data. Basic operations on RDDs include: map, filter, reduce, join (in the sense of SQL), groupByKey (makes a dictionary to prepare aggregation), reduceByKey (per key aggregation), sortByKey, distinct (returns an RDD with unique values), union, intersection.
+
+    How it works:
+    \begin{itemize}
+		\item Spark works as a column-centric database (ignore all attributes not part of the compute), thereby greatly decreasing memory load. This also simplifies the compression of similar values.
+		\item Everything is loaded into memory, removing the need for things likes indexes, aggregates, etc. This also somewhat simplifies concurrency, since everything is already loaded, and reduces querying costs. All-in-all, it's a $10^4$ to $10^6$ factor speedup over Hadoop's MapReduce.
+		\item Spark does not need Hadoop, but implements a way to use Hadoop (and other such DFS).
+		\item Spark allows a lot of the analytics features to be done in a single common platform, greatly reducing codebase complexity.
+    \end{itemize}
+
+
+    \item \textbf{Kafka (CMELT, DG)}: Kafka is an open-source distributed event store and stream-processing platform. It generally is implemented in its own cluster. It receives data in a pub/sub manner (typically, when something like Flume brings data into HDFS, it can on the side send it to Kafka simultaneously). Multiple processes can produce the data for, or consume the data from, the Kafka cluster simultaneously. Data points on a Kafka server is stored for a default of 7 days. It used to depend on Apache ZooKeeper for distributed coordination and management tasks. However, recent Kafka versions are moving away from this dependency to depend on Kraft (Kafka Raft). Typical use cases of Kafka include log aggregation (making sure the monitoring of a system can be centralized), event sourcing (analyzing user behavior on a website), or metrics collection (such as IoT data or embedded systems for physical measurements).
+
+	Here is Kafka's terminology:
+	\begin{itemize}
+		\item \textit{Message}: a small to medium piece of data (raw bytes).
+		\item \textit{Producer}: an application that publishes data to Kafka. They write messages to topics, and Kafka stores them for a specified retention period.
+		\item \textit{Consumer}: an application that reads data from Kafka. They subscribe to topics and process the data. They read messages from partitions and can process them in real-time.
+		\item \textit{Broker}: a kafka server. Kafka brokers are servers that store data, serve client requests, and manage partitions. A Kafka cluster consists of multiple brokers working together.
+		\item \textit{Cluster}: a group of computers sharing a workload for a common purpose.
+		\item \textit{Topic}: an identified (named) data stream. Kafka data is organized into such topics. Topics are like named channels or feeds where data records, referred to as messages, are stored and published. $1$ or $n$ producers can publish to the same topic; $1$ or $n$ consumers can subscribe to the same topic.
+		\item \textit{Partition}: a fraction of a topic. Each topic is divided into partitions, which are the basic unit of parallelism and scalability. Partitions allow data to be distributed across multiple servers. The developer who maintains the Kafka server(s) must manually say how big a partition should be for each topic. A given partition cannot be re-subdivided.
+		\item \textit{Offset}: position of a given message in a partition. It's the index at which one can find a given message in a partition. Offsets are immutable, and local to a partition. Any message can be found with the trio TopicName-PartitionNumber-Offset.
+		\item \textit{Consumer} Group: a logical unit of multiple consumers sharing a task. Multiple consumers can be organized into consumer groups. Each partition in a topic is consumed by only one consumer within a group, enabling parallel processing.
+	\end{itemize}
+
+	The things that Kafka provides, or not:
+	\begin{itemize}
+		\item publishing data: Producers send messages to Kafka topics. These messages are appended to the partitions of the topic.
+		\item storage: Kafka stores these messages for a defined retention period. This storage duration can be configured.
+		\item consuming data: consumers subscribe to topics and read messages from partitions. They can track their progress in each partition using offsets.
+		\item scaling: Kafka scales horizontally by adding more brokers or consumers to handle increased load.
+		\item ideally, the Kafka Producer application needs to be installed at the source; if impossible, you can use Flume, which is pull-based.
+	\end{itemize}
+
+	To query topics, Kafka uses a concept called \textit{windowing}. This serves to do more interesting time-based analytics, by running topic like time series, and replicating the behavior of algorithms on signals from A to B. Here are the 4 main types of Kafka windows.
+	\begin{itemize}
+		\item \textit{hopping}: bound by time, with fixed points (start $A$, and end $B$), a fixed size, and a fixed advance size.
+		\item \textit{tumbling}: same as hopping, but the advance size is equal to $B - A$.
+		\item \textit{sliding}: like hopping and tumbling, it has fixed $A$, $B$ and fixed advance size. However, it advances with user activity.
+		\item \textit{session}: $A$ and $B$ are not fixed points, but determined by the events themselves. An inactivity gap defines the session window. Each new event is added to the current session window, and when no events come in "inactivity gap" amount of time, the session window ends, and a new one is created.
+	\end{itemize}
 
 \end{itemize}
 
@@ -869,14 +1034,26 @@ Maybe improve mathematical section to always have, for each term:
 ? Or just keep an ELI5+ and send people to go read Mathophilia instead ?
 
 Add forgotten words:
+- unstructured / semi-structured / structured
+- frontend
+- backend
+- fullstack
+- stateful / stateless
+- microservice
+- daemon
+- functional (system requirements) / non-functional (system requirements)
 - XML
 - JSON
 - HTML
+- API
+- Rest API
+- HTTP (improve to describe in more detail)
+- HTTPS
+- TLS
+- SSL
 - backpropagation
 - overfitting
 - filesystem
-- TLS
-- SSL
 - map
 - fold / reduce / join
 - monad
@@ -893,7 +1070,7 @@ Add forgotten words:
 - write through (write to cache and DB at the same time) vs write ahead/back (write to cache, then whenever, update the DB asynchronously)
 - (cache) staleness
 - (cache) eviction policy (least recently used, least frequently used)
-- content distribution network
+- content distribution network, CDN (pull based etc)
 - terminal
 - devops
 - devsecops
@@ -904,13 +1081,25 @@ Add forgotten words:
 - hex arch
 - opsec (make security section / S code ?) 
 - osint
-- Apache (Kafka, Hadoop, Spark, Hive, Cassandra)
+- Apache Cassandra
 - MapReduce
 - blue team / red team
-
+- assembly
+- page replacement algorithm (LRU)
+- publisher-subscriber architecture
+- lazy evaluation
+- (system) scaling (horizontal adding machines, vertical improving machine specs)
+- Storage Area Network, SAN
+- computer network types by scale (LAN, WAN etc)
+- tape silo / library / jukebox
+- compression
+- information (à la Shannon)
+- entropy
 
 
 Add section on classical algorithms and algorithmic constructs, not just basic data structures (possibly drawing analogies between discrete and continuous versions where applicable). Improve the subdivision of sections on algorithmics.
+- min heap (binary tree; insert: push to bottom right, percolate upward; delete root: pick bottom right, min-heapify)
+- sorting algorithms (insertion, bubble, merge, quick, external)
 - BFS
 - DFS
 - Floyd-Warshall
@@ -918,6 +1107,8 @@ Add section on classical algorithms and algorithmic constructs, not just basic d
 - Fourier transform, FFT
 - Markov chains
 - Monte-carlo integration
+- quadtree / octree etc
+- compression algorithms
 
 Increase the quality of explanation of algorithms and data structures with images and more details, all throughout the lexicon.
 
@@ -925,7 +1116,6 @@ Add section on system engineering algorithms
 -> distributed hashing
 -> consistent hashing
 -> geohash
--> quadtree / octree etc
 -> Leaky bucket
 -> Trie
 -> Bloomfilter
@@ -964,5 +1154,13 @@ Add "Other: legal" section
 -> closed source
 -> licenses (MIT, Apache, etc)
 -> definition of laws like RGPD and what they entail
+
+Add a section on cybersecurity
+
+Add a section on computer graphics
+
+Add a section on programming languages ? Improve section on programming paradigms ?
+
+When this reaches a stable state (e.g; after the above TODOs are completed and a more thorough cybersec and CGI sections have been added), possibly transform this into a KV-store of some kind, add concept dependencies ("requires", "is necessary for", "should be learned in tandem with"), and make a script that can automatically generate this document, a wiki, and things like ANKI cards.
 
 \end{document}
