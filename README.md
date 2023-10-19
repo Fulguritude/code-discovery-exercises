@@ -60,19 +60,21 @@ Finally, and importantly: have fun ! :) Learning is *deeply* satisfying, when yo
 
 Here are a few general methodology rules:
 
-   - **commit often, commit small things**. "One big commit of all your files per day", or worse, "per week", is not acceptable. Making "atomic" commits makes the review process simpler. For complex exercises, it can help reviewers see your thought process, and your progress, which can lead to more helpful feedback on your code. Also, it'll prevent losing code that could be interesting if you're following various leads and are unsure which is the best. Having a rich code history is invaluable.
+   - **commit often, commit small things**. "One big commit of all your files per day", or worse, "per week", is not acceptable. Making "atomic" commits makes the review process simpler. For complex exercises, it can help reviewers see your thought process, and your progress, which can lead to more helpful feedback on your code. Also, it'll prevent losing code that could be interesting if you're following various leads and are unsure which is the best. Having a rich code history is invaluable. In particular, NEVER mix code changes that are "adding a feature", "fixing a bug" or "refactoring code" in the same commit. This makes for huge headache later on, since all three can introduce bugs, and it's *essential* to keep them distinct. This is a day-and-night in being able to figure out when / where a problem was introduced into the codebase. We all learned this the hard way (like losing a couple of weeks just fixing things, typically after a huge refactor that included an architectural change, and a couple of "fixes" along the way).
 
-   - if you're stuck, don't get demoralized, instead go **ask for help**.
+   - if you're stuck, don't get demoralized, instead go **ask for help**. Don't ask for help immediately at each roadblock, but do ask for help regularly. A very good rule-of-thumb is "ask for help when you know how to *express* what you don't understand in the appropriate terms".
 
    - these bootcamps are a work-in-progress. We've recycled them from other places. For those who have been invited to fork this repo and get personal reviews, take the comments we make on the reviews as the most important source of feedback for you, and apply them. If you don't understand the feedback, say that you don't understand and ask for examples. Note that we aren't going to be as rigid as we could be (like if we had a more "automated" review process).
 
-   - **make a lexicon**. You are going to learn a lot of new vocabulary, and you should deeply understand all these new concepts. We have provided a [`LEXICON.md` file](https://github.com/Fulguritude/code-discovery-exercises/-/blob/master/LEXICON.md), which can help. However, not all of it will be useful to you, so don't hesitate to make your own, use your own words... and push it to your own folder on the repo ! :)
+   - when learning something new ***always* make a lexicon**. You are going to learn a lot of new vocabulary, and you should deeply understand all these new concepts. We have provided a [`Data_Lexicon.pdf` file](https://github.com/Fulguritude/code-discovery-exercises/blob/main/data_sci_eng_ml/Data_Lexicon.pdf), which can help get acquainted with (almost) everything concerning computer science and mathematics. However, not all of it will be useful to you, nor for every subject, so don't hesitate to make your own, use your own words... and push it to your own folder on your fork of the repo ! :) You can also request for some vocabulary to be added to our Lexicon via issues or pull requests (the `.tex` file is available).
 
-   - read, re-read, *re*-re-read, etc, the documentation. You certainly don't have to swallow it all in one go, but use documentation as its meant to be used: ie, consult it regularly. Read this `README.md` multiple times, go over the various guides in this repo again and again and again. There will be things that you missed the first time or things you couldn't or didn't understand at first. Revisiting these documents will help you considerably.
+   - read, re-read, *re*-re-read, etc, the documentation. You certainly don't have to swallow it all in one go, but use documentation as its meant to be used: i.e., consult it regularly. Read this `README.md` multiple times, go over the various guides in this repo again and again and again. There will be things that you missed the first time or things you couldn't or didn't understand at first. Revisiting these documents will help you considerably.
 
    - almost any place where you see yourself copy-pasting your own code should instead be a place where you create a subfunction and call it in different ways. We will be strict on this rule. Code should be *DRY* ("Don't Repeat Yourself").
 
    - if there is anything that's unclear, or poorly written, etc, in this repo, or in our documentation in general: point it out. You can do so by raising an issue.
+
+   - something called ChatGPT was invented recently. It is a *phenomenal* tool to learn computer science subjects in particular. **USE IT !** However, to build mastery, ChatGPT is never enough. Make sure you actually practice on your own, follow the advice given here, and use other resources.
 
 
 
@@ -84,7 +86,7 @@ For now, we have:
 - the 42 OCaml piscine,
 - some custom Rust cheat sheets which will present essential concepts of the language, as well as the polars data science library, and a link to Rustlings.
 - some code projects meant to teach you entry-level university mathematics if you already know at least one programming language well that I wrote as a member of 42-AI.
-- an introduction to data science and ML that I wrote for university students of design and UX (WIP, for now, only an extensive lexicon is present).
+- an introduction to data science, data engineering and ML that I initially wrote for university students of design and UX, then revamped for students of big data. It should now be good enough to serve as a general introduction to most subdomains of computer science, as well as important related subjects.
 
 They can prove very useful if you're looking to broaden your skills.
 
