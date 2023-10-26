@@ -15,12 +15,12 @@ from image_io import ImageTensor
 ImageInfo = TypedDict(
 	"ImageInfo",
 	{
-		"filename" : str,
-		"height"   : float,
-		"width"    : float,
-		"r_avg"    : float,
-		"g_avg"    : float,
-		"b_avg"    : float,
+		"Filename"      : str,
+		"Height"        : float,
+		"Width"         : float,
+		"Average_Red"   : float,
+		"Average_Green" : float,
+		"Average_Blue"  : float,
 	},
 	total = True,
 )
@@ -44,11 +44,11 @@ def fold_tensor_on_width_and_height(
 
 	#package result neatly
 	result : ImageInfo = {
-		"filename" : filename,
-		"height"   : height,
-		"width"    : width,
-		"r_avg"    : r_avg,
-		"g_avg"    : g_avg,
-		"b_avg"    : b_avg,
+		"Filename"      : filename,
+		"Height"        : height,
+		"Width"         : width,
+		"Average_Red"   : r_avg,
+		"Average_Green" : g_avg,
+		"Average_Blue"  : b_avg,
 	}
 	return result

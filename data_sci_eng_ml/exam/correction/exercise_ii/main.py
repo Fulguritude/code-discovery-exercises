@@ -34,7 +34,7 @@ ImageDataDict = dict[int, ImageInfo]
 
 # Constants
 DATASET_FILEPATH = "/home/fulguritude/ProfessionalWork/Enseignement/Estiam/exam/correction/ExerciceII/jpg/"
-READFILE_LIMIT   = 10
+READFILE_LIMIT   = 1000
 
 
 ### Utils
@@ -66,30 +66,37 @@ def read_dataset_average_colors(
 	return filename_values_dict
 
 
-def plot_image_averages(filename_values_dict: dict[int, ImageInfo]):
+def produce_table(data_dict: ImageDataDict) -> pd.DataFrame:
+	df = pd.DataFrame(data_dict)  #type:ignore
+	df = df.transpose()
+	df.to_csv(
+		"imageinfo.tsv",
+		index  = True,
+		header = True,
+		sep    = "\t",
+	)
+	return df
+
+
+def plot_image_averages(df: pd.DataFrame) -> None:
 	# This function prepares the precomputed data for visualisation.
 	# It also, helpfully, represents each point in the scatterplot via
 	# the color value that defines it.
 	inv_256 = 1. / 256.
-
-	r_avg_values = [value["r_avg"] for value in filename_values_dict.values()]
-	g_avg_values = [value["g_avg"] for value in filename_values_dict.values()]
-	b_avg_values = [value["b_avg"] for value in filename_values_dict.values()]
-	color_values = [
-		(
-			value["r_avg"] * inv_256,
-			value["g_avg"] * inv_256,
-			value["b_avg"] * inv_256,
-		)
-		for value in filename_values_dict.values()
-	]
+	color_values = df[
+		[
+			"Average_Red",
+			"Average_Green",
+			"Average_Blue",
+		]
+	].apply(lambda x: x * inv_256)
 
 	fig = plt.figure()
 	ax = fig.add_subplot(111, projection = "3d")
 	ax.scatter(
-		r_avg_values,
-		g_avg_values,
-		b_avg_values,
+		list(df["Average_Red"   ]),
+		list(df["Average_Green" ]),
+		list(df["Average_Blue"  ]),
 		c = color_values,
 	)
 	ax.set_xlabel("Red"   ) #, fontsize=20, rotation=150
@@ -99,24 +106,13 @@ def plot_image_averages(filename_values_dict: dict[int, ImageInfo]):
 	plt.show()
 
 
-def produce_table(data_dict: ImageDataDict) -> None:
-	df = pd.DataFrame(data_dict)  #type:ignore
-	df = df.transpose()
-	df.to_csv(
-		"imageinfo.tsv",
-		index  = True,
-		header = True,
-		sep    = "\t",
-	)
-
-
 
 # Main and data analysis
 
 if __name__ == "__main__":
-	image_stats = read_dataset_average_colors() #, READFILE_LIMIT)
-	plot_image_averages (image_stats)
-	produce_table       (image_stats)
+	image_stats = read_dataset_average_colors() #readfile_limit = READFILE_LIMIT)
+	df = produce_table(image_stats)
+	plot_image_averages(df)
 
 	"""
 	Analysis of the 3D plot:

@@ -30,6 +30,7 @@ def tensor_from_pil(pil_img: Image.Image) -> ImageTensor:
 
 
 def read_imagetensor(filepath: str) -> ImageTensor:
+	# this function cleanly reads an image into a tensor, and closes file IO
 	image  = read_image(filepath)
 	tensor = tensor_from_pil(image)
 	image.close()
