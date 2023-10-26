@@ -1,0 +1,38 @@
+System Design Interview process:
+
+Adapted from ByteByteGo's excellent video on the matter: https://www.youtube.com/watch?v=i7twT3x5yv8
+
+- step 1: understand the problem and establish design scope
+  -> 5 minutes
+  -> brainstorm, organize thoughts, and focus on what's important
+  -> ask questions to the interviewer
+  -> clarify the functional/feature requirements (select 3-4 core ones)
+  -> clarify the non-functional (i.e., quality) requirements. These include: security, consistency, freshness, availability, accuracy, performance, scale. For a system design interview, the latter two are generally the most important, but this might not always be the case. Here, it's mostly about figuring out which non-functional requirement matters more, and getting a sense of the overall scale and pipeline issues with back of the envelope calculations. This means asking for (or quickly estimating) rough amounts for a sense of scale; thinking about security/consistency/performance requirements; etc.
+  -> establish priorities
+
+- step 2: propose high-level design and get buy-in
+  -> 20 minutes
+  -> start suggesting an architecture that fulfills the agreed upon requirements
+  -> describe APIs and mention ideas for the database models required (based on the domain knowledge to model)
+  -> keep focused on the functional/feature requirements: do not describe APIs for features that don't matter for the functional requirements
+  -> if the backend is stateful (such as for 2-way communication), be careful to explain how it could operate at scale
+  -> produce an initial design diagram
+  -> don't go into too much detail too early, before having a good idea of the design (like carving marble, it's progressive)
+  -> REVIEW the overall design to see if it is consistent, actually answers the requirements, puts emphasis on the right quality requirements for the domain, is complete end-to-end, etc.
+
+- step 3: design deep dive
+  -> 15 minutes
+  -> this is where you recognize things that could be problematic, and talk about tradeoffs
+  -> select the top 2 or 3 non-functional issues
+  -> this is where you try to go more in detail about architecture decisions that could help solve non-functional requirements (scale, performance, security, consistency, availability, etc) in particular (such as a choice of database technology, or extra nodes in the network that could help, or extra backend features / algorithms that could help)
+  -> for each problem to solve:
+    -> 1, articulate the problem
+    -> 2, come up with multiple solutions (at least 2)
+    -> 3, discuss the tradeoffs for each solution
+
+- step 4: wrap-up 
+  -> 5 minutes
+  -> summarize the design
+  -> insist on what makes this situation special, the big problem(s) to solve, both functional and non-functional
+  -> address how your design solves these problems specifically
+  -> repeat the limits of your design, what was sacrificed to solve something else

@@ -5,9 +5,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{derivative}
+\usepackage{datetime2}
 
 \begin{document}
 
+(Document compiled on \today \currenttime)
 
 \section*{Data Lexicon}
 
@@ -600,10 +602,10 @@ This section presents some of the distributed technologies under Apache license 
 		\item AM reports the end of the task to RM, shuts itself down, and releases its own container.
 	\end{itemize}
 
-    \item \textbf{Cloudera (AG)}: famous company that provides services based around Hadoop and its ecosystem.
+	\item \textbf{Cloudera (AG)}: famous company that provides services based around Hadoop and its ecosystem.
 
-    \item \textbf{Hadoop ecosystem (CE, DMLTG)}: Hadoop was foundational, but had multiple issues (mentioned in the defintions for HDFS, YARN and MapReduce). Consequently, a bunch of companion technologies were built, also under the Apache license, in order to resolve these issues. Here is a non-exhaustive, imperfectly described, list:
-    \begin{itemize}
+	\item \textbf{Hadoop ecosystem (CE, DMLTG)}: Hadoop was foundational, but had multiple issues (mentioned in the defintions for HDFS, YARN and MapReduce). Consequently, a bunch of companion technologies were built, also under the Apache license, in order to resolve these issues. Here is a non-exhaustive, imperfectly described, list:
+	\begin{itemize}
 		\item Hue: a filesystem explorer for HDFS and YARN (Hue Job Browser), in a browser
 		\item Hive: for SQL-like querying over HDFS; converts an SQL query into a MapReduce program to run on Hadoop; now mostly replaced by Spark SQL
 		\item Pig: for data flow scripting, much less popular than Spark nowadays
@@ -614,10 +616,10 @@ This section presents some of the distributed technologies under Apache license 
 		\item Storm: real-time processing, mostly replaced by Spark
 		\item Impala: for real-time queries (very fast, in-memory, mail fail, unlike MapReduce), Cloudera tech
 		\item Hawq: same as Impala but not a Cloudera tech.
-    \end{itemize}
+	\end{itemize}
 
 
-    \item \textbf{Spark (CMEL, DTG)}: Spark is an open-source analytics engine under the Apache license. It is a framework used for real-time processing (e.g.: immediate fraud detection) and batch processing (e.g.: weekly reports). Its main aspect is its in-memory execution engine, this makes it faster than MapReduce. Also, because it is in-memory, it cannot resist all failures, but Spark has a clever "lineage" mechanism to minimally reconstruct parts of the data that were lost during a failure. Finally, Spark uses a lazy evaluation mechanism: it creates an execution plan, and optimizes it before running anything. It only effectively runs when prompted (through function calls like collect(), count() or show()).
+	\item \textbf{Spark (CMEL, DTG)}: Spark is an open-source analytics engine under the Apache license. It is a framework used for real-time processing (e.g.: immediate fraud detection) and batch processing (e.g.: weekly reports). Its main aspect is its in-memory execution engine, this makes it faster than MapReduce. Also, because it is in-memory, it cannot resist all failures, but Spark has a clever "lineage" mechanism to minimally reconstruct parts of the data that were lost during a failure. Finally, Spark uses a lazy evaluation mechanism: it creates an execution plan, and optimizes it before running anything. It only effectively runs when prompted (through function calls like collect(), count() or show()).
 
 	Its various facets include:
 	\begin{itemize}
@@ -630,16 +632,16 @@ This section presents some of the distributed technologies under Apache license 
 
 	Its core concept, and fundamental data structure, is the Resilient Distributed Dataset (RDD). They are in-memory, distributed collections of data. They are immutable (once created, they cannot be edited, but can be used to create new RDDs), resilient (they can be reconstructed, in case of failure, from lineage information); typed or untyped; and can handle multiple types and collections of data. Basic operations on RDDs include: map, filter, reduce, join (in the sense of SQL), groupByKey (makes a dictionary to prepare aggregation), reduceByKey (per key aggregation), sortByKey, distinct (returns an RDD with unique values), union, intersection.
 
-    How it works:
-    \begin{itemize}
+	How it works:
+	\begin{itemize}
 		\item Spark works as a column-centric database (ignore all attributes not part of the compute), thereby greatly decreasing memory load. This also simplifies the compression of similar values.
 		\item Everything is loaded into memory, removing the need for things likes indexes, aggregates, etc. This also somewhat simplifies concurrency, since everything is already loaded, and reduces querying costs. All-in-all, it's a $10^4$ to $10^6$ factor speedup over Hadoop's MapReduce.
 		\item Spark does not need Hadoop, but implements a way to use Hadoop (and other such DFS).
 		\item Spark allows a lot of the analytics features to be done in a single common platform, greatly reducing codebase complexity.
-    \end{itemize}
+	\end{itemize}
 
 
-    \item \textbf{Kafka (CMELT, DG)}: Kafka is an open-source distributed event store and stream-processing platform. It generally is implemented in its own cluster. It receives data in a pub/sub manner (typically, when something like Flume brings data into HDFS, it can on the side send it to Kafka simultaneously). Multiple processes can produce the data for, or consume the data from, the Kafka cluster simultaneously. Data points on a Kafka server is stored for a default of 7 days. It used to depend on Apache ZooKeeper for distributed coordination and management tasks. However, recent Kafka versions are moving away from this dependency to depend on Kraft (Kafka Raft). Typical use cases of Kafka include log aggregation (making sure the monitoring of a system can be centralized), event sourcing (analyzing user behavior on a website), or metrics collection (such as IoT data or embedded systems for physical measurements).
+	\item \textbf{Kafka (CMELT, DG)}: Kafka is an open-source distributed event store and stream-processing platform. It generally is implemented in its own cluster. It receives data in a pub/sub manner (typically, when something like Flume brings data into HDFS, it can on the side send it to Kafka simultaneously). Multiple processes can produce the data for, or consume the data from, the Kafka cluster simultaneously. Data points on a Kafka server is stored for a default of 7 days. It used to depend on Apache ZooKeeper for distributed coordination and management tasks. However, recent Kafka versions are moving away from this dependency to depend on Kraft (Kafka Raft). Typical use cases of Kafka include log aggregation (making sure the monitoring of a system can be centralized), event sourcing (analyzing user behavior on a website), or metrics collection (such as IoT data or embedded systems for physical measurements).
 
 	Here is Kafka's terminology:
 	\begin{itemize}
@@ -1031,6 +1033,8 @@ Here we describe various techniques or meta-approaches that are common in data s
 \section*{TODOs}
 
 Add table of contents and index. Possibly add newpage between sections.
+
+Fix timestamp for generated pdf version tracking to include current time.
 
 Improve difficulty / importance code usage (right now, it uses A and B too much; many Bs should be Cs for specific profiles, or a G should be added). Probably divide Importance and Difficulty into 2 different codes. Probably use emojis for the code rather than letters, so that they can be search for easily with Ctrl+F by people of the respective profile.
 
