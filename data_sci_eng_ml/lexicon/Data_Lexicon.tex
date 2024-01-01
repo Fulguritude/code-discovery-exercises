@@ -5,9 +5,11 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{derivative}
+\usepackage{datetime2}
 
 \begin{document}
 
+(Document compiled on \today \currenttime)
 
 \section*{Data Lexicon}
 
@@ -87,7 +89,7 @@ For example "(AM, BE)" would mean fundamental to mathematicians, but intermediat
 		\item \textbf{consumption / exploration / analysis}: this 5th step consists in actually using the data to produce useful (non-raw) "information": analyses. Generally one first starts with an exploration of data, trying to understand its various attributes, and its underlying geometry, using various visualization tools (such as software libraries like Matplotlib, or various algorithms like bar charts or more advanced ones, like doing a dimensionality reduction (e.g., PCA) first). Then, analyses are run. For example, a data scientist than elaborates hypotheses over the data, meant to test \textit{a priori} domain questions, or answer questions / remarks that arose from the process of exploration. In other cases, an ML engineer can choose an appropriate neural network model and define its topology in order to train models over the dataset. Finally, isolated reports or dynamic software that helps communicate or make this data useful for human decision-making, or to help process automation.
 	\end{itemize}
 
-	Note, however, that these steps are not neatly separated, nor neatly sequential. The above is a neat abstraction that allows one to have a simple mental model of the various factors required for a data pipeline. Dividing "data pipelines" into the above does not mean that all systems neatly follow the above division; far from it. You may very well have some ingestion immediately happen into a pre-existing, already well-networked system. You may have a company where the wranglers are also the data architects and write a single piece of software that goes from dirty raw data to everything being neatly ingested into a distributed database. The networking step can be done before the loading step if we know in advance the amount of data to ingest is going to be massive and are building a system from scratch; but it can also be done after, if we're scaling an existing small system into a bigger system. If the data is stored improperly, because the model was poorly thought-out, some wrangling is generally necessary before analysis. The list of exceptions and caveats goes on and on; however, given the overall complexity of modern systems, the above is still an excellent mental model to keep in mind, if one wants to have a simple set of questions to ask themselves when trying to analyze or design a system.
+	Note, however, that these steps are not neatly separated, nor neatly sequential, nor are they all always present. The above is a neat abstraction that allows one to have a simple mental model of the various factors required for a (big) data pipeline. Dividing "data pipelines" into the above does not mean that all systems neatly follow the above division; far from it. You may very well have some ingestion immediately happen into a pre-existing, already well-networked system. You may have a company where the wranglers are also the data architects and write a single piece of software that goes from dirty raw data to everything being neatly ingested into a distributed database. The networking step can be done before the loading step if we know in advance the amount of data to ingest is going to be massive and are building a system from scratch; but it can also be done after, if we're scaling an existing small system into a bigger system. Some data pipelines use a single machine, and thus don't require a full system. If the data is stored improperly, because the model was poorly thought-out, some wrangling is generally necessary before analysis (inducing the need for yet another data pipeline). The list of exceptions and caveats goes on and on; however, given the overall complexity of modern systems, the above is still an excellent mental model to keep in mind, if one wants to have a simple set of questions to ask themselves when trying to analyze or design a system for data management and/or analytics.
 
 	Also note that there are peripheral steps that don't necessarily integrate into the pipeline \textit{per se}, such as running a prior analysis of the domain and prototyping models and systems on paper before even building anything; or the study of the pipeline itself in order to improve it over time; or documenting the pipeline for new workers.
 
@@ -101,11 +103,11 @@ This is a (non-exhaustive) list of professions, designed to give you an idea of 
 
 \begin{itemize}
 
-	\item \textbf{Data wrangler (A)}: individual knowing how to create, synthesize, prepare, normalize, and/or homogenize data so that it is coherent and can be processed by algorithms.
-
 	\item \textbf{Data engineer (A)}: individual knowing how to store, distribute, and route data so that it can be processed by algorithms on specific computing machines. They implement pipelines, and ensure data pipelines are efficient, scalable, and reliable.
 
-	\item \textbf{Data analyst / Data scientist (A)}: individual who knows how to analyze input data, formalize a problem and elaborate hypotheses, choose an algorithmic protocol for data processing, provide visualization tools, and finally evaluate the quality of the predictive model generated by the algorithm. Their work is then used to aid strategic decision-making.
+	\item \textbf{Data wrangler (A)}: individual knowing how to create, synthesize, prepare, normalize, and/or homogenize data so that it is coherent and can be processed by algorithms. Often not a job \textit{per se} (though it does happens), but rather a description of some data engineer profiles. Most data engineers and data scientists are confronted to data wrangling tasks regularly.
+
+	\item \textbf{Data analyst / Data scientist (A)}: individual who knows how to analyze input data, formalize a problem and elaborate hypotheses, choose an algorithmic protocol for data processing, provide visualization tools, and finally evaluate the quality of the predictive model generated by the algorithm. Their work is then used to aid strategic decision-making. There is a lot of overlap between the two roles of "data analyst" and "data scientist"; in practice, if a distinction is to be made, you can think of the "data analyst" (or "business analyst") as someone who uses already pre-cleaned data to produce graphs and reports via some easy-to-use spreadsheet to directly communicate information about the data with business owners, while the "data scientist" is more concerned with the underlying mathematics and models used to produce these reports and optimize their predictive qualities, or how fast these can be produced. In less a les caricatural way, data analysts also specialize in data communication, while data scientists specialize in the mathematics of data analysis.
 
 	\item \textbf{Data architect (A)}: A catch-all term for data engineers or mathematicians who are tasked with designing data pipelines. It is generally a managerial, or at least, a high-responsibility position. One can generally distinguish between \textbf{systems architects} (who design overall information systems, generally more on the engineering side; themselves divided into network architects, computer architects, web architects, etc) and \textbf{database architects} (who design how best to mathematically model the data from a given real-world domain in order to answer its questiosn, and help define how this data should be stored and serviced). Obviously, these profiles still do have a lot of overlap in their skills and responsibilities, hence the catch-all term.
 
@@ -190,7 +192,9 @@ This section describes terms that are fundamental to understand how one can use 
 
 	\item \textbf{Paradigm (of a programming language) (BMELTO)}: way to design a programming language. The 3 most frequently used paradigms are: imperative, object-oriented, and functional. You may also see the term "procedural" used instead of "imperative". These paradigms are not necessarily mutually exclusive. Imperative languages are very close to how the machine works, giving orders as concrete instructions (typical example: C). Object-oriented languages structure their components in "classes", types that contain both data (i.e., state: nouns or adjectives) and functions (i.e., actions: verbs). Most modern languages are inspired by object-oriented design; Python included, among others. Functional languages are very close to mathematics and are inspired by the lambda calculus; they have the advantage of producing very solid code because they are close to a mathematical proof, when they are handled by the interpreter or the compiler. It's helpful to think of the history of programming, with one side (functional) starting from the works of mathematicians, and the other starting from the works of electronics engineers (imperative). There are other paradigms (such as array-oriented), though their use is much less frequent.
 
-	\item \textbf{Version control / Git / GitHub / GitLab / Bitbucket (AMELTO)}: Technology for managing project data and archiving code, used in software development. There are many historical ones, but today, git has become the \textit{de facto} norm. A git "repository" contains all the archives and changes in a project's data since its creation. This means that you can use it to find anything that was saved at any time in a project's history (up to voluntary deletion of that history). Platforms like GitHub, GitLab and BitBucket allow sharing of, and collaboration for, code projects online. Using git daily is a \textbf{\textit{fundamental}} practice when programming, \textit{and} when collaborating with programmers.
+	\item \textbf{Version control / Git (AMELTO)}: Technology for managing project data and archiving code, used in software development. There are many historical ones, but today, git has become the \textit{de facto} norm. A git "repository" contains all the archives and changes in a project's data since its creation. This means that you can use it to find anything that was saved at any time in a project's history (up to voluntary deletion of that history). Using git daily is a \textbf{\textit{fundamental}} practice when programming, \textit{and} when collaborating with programmers.
+
+	\item \textbf{Git-based version control platform / GitHub / GitLab / Bitbucket (AMELTO)}: Platforms like GitHub, GitLab and BitBucket allow sharing of, and collaboration for, code projects online. These platforms rely on Git, a version control software. There are other (mostly historical) version control technologies and platforms, but git now easily dominates the market, and for good reason.
 
 \end{itemize}
 
@@ -262,11 +266,13 @@ This section has some vocabulary which useful for computer engineering, on the s
 
 \begin{itemize}
 
-	\item \textbf{Operating System, OS (A)}: an operating system is a piece of software that allows the management and operation of other software. It is generally the first piece of software that you want to run when turning on a computer. Examples of such architectures include Mac OS, Windows, Linux-Debian, Linux-RedHat, iOS, Android, Raspberry Pi, Microsoft Azure, and more.
+	\item \textbf{Operating System, OS (A)}: an operating system is the fundamental piece of software that allows other software to run. Its purpose the management, operation and control of other software, through the distribution of resources and the monitoring of their usage. These resources include computation time (CPU), memory space (registers, RAM, ROM), and connections (both managing files and network I/O). It is generally the first piece of software that you want to run when turning on a computer. Examples of such architectures include Mac OS, Windows, Linux-Debian, Linux-RedHat, iOS, Android, Raspberry Pi, Microsoft Azure, and more.
 
-	\item \textbf{Bootloader (BE, CG)}: For most modern computer architectures, since modern OSes are quite complex to launch, a smaller operating system, called a bootloader, is used to launch the main operating system (in fact, this can be a multi-stage process where a bootloader loads another, more complex bootloader). Examples of first-stage boot-loaders include BIOS and UEFI. Examples of second stage bootloaders include GNU GRUB and rEFInd. In more complex (but important) scenarios, the bootloader and OS's data can be received from some other computer in the network at startup.
+	\item \textbf{Processor architecture (BE, CG)}: a processor's architecture is the set of specifications for both this processor's hardware, and how it should be used with software. This includes how it is built, the set of instructions that was ingrained into its electronics, how these are encoded numerically, memory size for registers or cache, logical word (=base integer memory) size, etc.
 
-	\item \textbf{Cross-platform (AE, BMLTO)}: Refers to software or code that can run on various operating systems.
+	\item \textbf{Bootloader (BE, CG)}: For most modern computer architectures, since modern OSes are quite complex to launch, needing some amount of memory management (and since processors need to start up with smaller byte sizes than their actual architecture dictates), a smaller operating system, called a bootloader, is used to launch the main operating system. In fact, this can be a multi-stage process where a bootloader loads another, more complex bootloader. Examples of first-stage boot-loaders include BIOS and UEFI. Examples of second stage bootloaders include GNU GRUB and rEFInd. In more complex (but important) scenarios, the bootloader and OS's data can be received from some other computer in the network at startup.
+
+	\item \textbf{Cross-platform (AE, BMLTO)}: Refers to software or code that can run on various operating systems and/or various processor architectures.
 
 	\item \textbf{Process (computer engineering) (A)}: Refers to an isolated, identified, and managed piece of software that is running on an operating system. Whereas a program is the "specification" of instructions that a computer should run, a process is the form that a program when it is "run" (executed) by a computer. A program can instantiate of multiple processes (a process called forking).
 
@@ -283,7 +289,7 @@ This section has some vocabulary which useful for computer engineering, on the s
 
 	\item \textbf{Bit (A)}: a bit is the fundamental unit of information. It corresponds to a choice 2 values: 0 or 1 (equivalently, "true or false", or yet again, "passing current or blocked current"). A sequence of bits (such as $1000111011$) is called a "word in binary language".
 
-	\item \textbf{Byte (A)}: a byte is an ordered sequence of 8 bits, corresponding to a choice between $2^8 = 256$ values. It is the fundamental unit that modern computers use to divide information into organized chunks. 
+	\item \textbf{Byte (A)}: a byte is an ordered sequence of 8 bits, corresponding to a choice between $2^8 = 256$ values. It is the fundamental unit that modern computers use to divide information into organized chunks. It is fundamental because it is the smallest addressable chunk of memory on modern machines.
 
 	\item \textbf{Address / Memory address (AE, BMLT)}: a memory address is a specific location on a computer, described as a numeric integer value, which contains some data, usually the size of a byte.
 
@@ -303,11 +309,16 @@ This section has some vocabulary which useful for computer engineering, on the s
 
 	\item \textbf{Parallelism / Parallel programming (BMELT)}: parallelism refers to a specific kind of concurrency, when (roughly) the same task needs to be run on multiple threads, or processes, or machines, at the same time. The most famous parallel compute device is the GPU. We can distinguish between shared-memory parallelism (on a single machine) and distributed parallelism (over multiple machines, and memory sharing is done by network communication).
 
-	\item \textbf{Single instruction single data, SISD (BEL, CMT)}: refers to sequential programming. In a SISD architecture, there is only one thread at any time, and it reads the code sequentially.
+	\item \textbf{Single instruction single data, SISD / Multiple instruction single data, MISD / Single instruction multiple data, SIMD / Multiple instruction multiple data, MIMD (BEL, CMT)}: these acronyms refer to a way of thinking about various kinds of sequential or concurrent ways of running calculations. However, they are deeply imperfect, due to the difficulty of defining what "single" vs "multiple" actually entails.
 
-	\item \textbf{Single instruction multiple data, SIMD (BEL, CMT)}: refers to parallel concurrency. In a SIMD architecture, multiple instances of data of the same type, but with differing values, are processed by multiple threads, executing the same program simultaneously, instruction-by-instruction (hence the "single instruction" principle). An example is as an array of 3D vectors, where each 3D vector in the array is to be processed by the same algorithm. The fundamental problem of SIMD programming are conditional branches ("if/else" statements) which may cause slowdowns, because these break the single-instruction principle. SIMD is the way that GPUs do their calculations.
+	For example, take the parallel multiplication of 4 pairs of 64-bit floats on a modern CPU. Generally, these are done in parallel, at the same time, in a single instruction, and could thus be described as SIMD. However, if you consider this same operation as "a pair of four-dimensional vectors multiplied together through a Schur (coordinate-wise) product", this same situation can be considered a SISD calculation. This example also underlies that there's the question of what a "single task" is, and an ambiguity over what a "thread" is: is a thread a kernel process thread, the kind defined by the OS, or is the thread one isolated, abstract, sequential avenue for computation ? Said otherwise: is there 1 thread, or are there 4 threads, in our example ? It's a stipulative choice of definition. As for MISD, nobody agrees on whether anything MISD actually exists. Given these important caveats, and knowing that in the rest of this definition, we'll use the term "thread" in the "\textit{non-kernel}, abstract, unit avenue of computation" sense of the word (which is not the most frequent usage!), we try to give a bit more detail of how these terms are used:
+	\begin{itemize}
+		\item \textbf{Single instruction single data, SISD (BEL, CMT)}: refers to sequential programming. In a SISD architecture, there is only one thread at any time, and it reads the code sequentially.
 
-	\item \textbf{Multiple instruction multiple data, MIMD (BEL, CMT)}: refers to general concurrency. Any instruction sequence can be applied concurrently to any data. MIMD is the way that modern (multi-core) CPUs do their computations. Any MIMD device can run some version of a SIMD program (to some extent), but they might not be as specialized and effective as a device designed for SIMD (such as a GPU).
+		\item \textbf{Single instruction multiple data, SIMD (BEL, CMT)}: refers to parallel concurrency. In a SIMD architecture, multiple instances of data of the same type, but with differing values, are processed by multiple threads, executing the same program simultaneously, instruction-by-instruction (hence the "single instruction" principle). An example is as an array of 3D vectors, where each 3D vector in the array is to be processed by the same algorithm. SIMD is the way that GPUs (and also many modern CPUs) do their calculations. A fundamental problem for many types of SIMD programs are conditional branches ("if/else" statements) which may cause slowdowns, because these break the single-instruction principle. This is the case for GPUs, though not necessarily or the kind of SIMD computations that happen in a CPU.
+
+		\item \textbf{Multiple instruction multiple data, MIMD (BEL, CMT)}: refers to general concurrency. Any instruction sequence can be applied concurrently to any data. MIMD is the way that modern (multi-core) CPUs do their computations. Any MIMD device can run some version of a SIMD program (to some extent), but they might not be as specialized and effective as a device designed for SIMD (such as a GPU).
+	\end{itemize}
 
 	\item \textbf{Multithreading (BEL, CMT)}: multithreading a program is the act of having the program create multiple threads in order to run concurrently. If a program is a restaurant's kitchen, multithreading is like hiring multiple cooks, so that each can handle a given task. One can write a program that is both multithreaded and asynchronous, since these are 2 different concepts allowing concurrency.
 
@@ -591,10 +602,10 @@ This section presents some of the distributed technologies under Apache license 
 		\item AM reports the end of the task to RM, shuts itself down, and releases its own container.
 	\end{itemize}
 
-    \item \textbf{Cloudera (AG)}: famous company that provides services based around Hadoop and its ecosystem.
+	\item \textbf{Cloudera (AG)}: famous company that provides services based around Hadoop and its ecosystem.
 
-    \item \textbf{Hadoop ecosystem (CE, DMLTG)}: Hadoop was foundational, but had multiple issues (mentioned in the defintions for HDFS, YARN and MapReduce). Consequently, a bunch of companion technologies were built, also under the Apache license, in order to resolve these issues. Here is a non-exhaustive, imperfectly described, list:
-    \begin{itemize}
+	\item \textbf{Hadoop ecosystem (CE, DMLTG)}: Hadoop was foundational, but had multiple issues (mentioned in the defintions for HDFS, YARN and MapReduce). Consequently, a bunch of companion technologies were built, also under the Apache license, in order to resolve these issues. Here is a non-exhaustive, imperfectly described, list:
+	\begin{itemize}
 		\item Hue: a filesystem explorer for HDFS and YARN (Hue Job Browser), in a browser
 		\item Hive: for SQL-like querying over HDFS; converts an SQL query into a MapReduce program to run on Hadoop; now mostly replaced by Spark SQL
 		\item Pig: for data flow scripting, much less popular than Spark nowadays
@@ -605,10 +616,10 @@ This section presents some of the distributed technologies under Apache license 
 		\item Storm: real-time processing, mostly replaced by Spark
 		\item Impala: for real-time queries (very fast, in-memory, mail fail, unlike MapReduce), Cloudera tech
 		\item Hawq: same as Impala but not a Cloudera tech.
-    \end{itemize}
+	\end{itemize}
 
 
-    \item \textbf{Spark (CMEL, DTG)}: Spark is an open-source analytics engine under the Apache license. It is a framework used for real-time processing (e.g.: immediate fraud detection) and batch processing (e.g.: weekly reports). Its main aspect is its in-memory execution engine, this makes it faster than MapReduce. Also, because it is in-memory, it cannot resist all failures, but Spark has a clever "lineage" mechanism to minimally reconstruct parts of the data that were lost during a failure. Finally, Spark uses a lazy evaluation mechanism: it creates an execution plan, and optimizes it before running it. It only effectively runs when prompted (through function calls like collect(), count() or show()).
+	\item \textbf{Spark (CMEL, DTG)}: Spark is an open-source analytics engine under the Apache license. It is a framework used for real-time processing (e.g.: immediate fraud detection) and batch processing (e.g.: weekly reports). Its main aspect is its in-memory execution engine, this makes it faster than MapReduce. Also, because it is in-memory, it cannot resist all failures, but Spark has a clever "lineage" mechanism to minimally reconstruct parts of the data that were lost during a failure. Finally, Spark uses a lazy evaluation mechanism: it creates an execution plan, and optimizes it before running anything. It only effectively runs when prompted (through function calls like collect(), count() or show()).
 
 	Its various facets include:
 	\begin{itemize}
@@ -621,16 +632,16 @@ This section presents some of the distributed technologies under Apache license 
 
 	Its core concept, and fundamental data structure, is the Resilient Distributed Dataset (RDD). They are in-memory, distributed collections of data. They are immutable (once created, they cannot be edited, but can be used to create new RDDs), resilient (they can be reconstructed, in case of failure, from lineage information); typed or untyped; and can handle multiple types and collections of data. Basic operations on RDDs include: map, filter, reduce, join (in the sense of SQL), groupByKey (makes a dictionary to prepare aggregation), reduceByKey (per key aggregation), sortByKey, distinct (returns an RDD with unique values), union, intersection.
 
-    How it works:
-    \begin{itemize}
+	How it works:
+	\begin{itemize}
 		\item Spark works as a column-centric database (ignore all attributes not part of the compute), thereby greatly decreasing memory load. This also simplifies the compression of similar values.
 		\item Everything is loaded into memory, removing the need for things likes indexes, aggregates, etc. This also somewhat simplifies concurrency, since everything is already loaded, and reduces querying costs. All-in-all, it's a $10^4$ to $10^6$ factor speedup over Hadoop's MapReduce.
 		\item Spark does not need Hadoop, but implements a way to use Hadoop (and other such DFS).
 		\item Spark allows a lot of the analytics features to be done in a single common platform, greatly reducing codebase complexity.
-    \end{itemize}
+	\end{itemize}
 
 
-    \item \textbf{Kafka (CMELT, DG)}: Kafka is an open-source distributed event store and stream-processing platform. It generally is implemented in its own cluster. It receives data in a pub/sub manner (typically, when something like Flume brings data into HDFS, it can on the side send it to Kafka simultaneously). Multiple processes can produce the data for, or consume the data from, the Kafka cluster simultaneously. Data points on a Kafka server is stored for a default of 7 days. It used to depend on Apache ZooKeeper for distributed coordination and management tasks. However, recent Kafka versions are moving away from this dependency to depend on Kraft (Kafka Raft). Typical use cases of Kafka include log aggregation (making sure the monitoring of a system can be centralized), event sourcing (analyzing user behavior on a website), or metrics collection (such as IoT data or embedded systems for physical measurements).
+	\item \textbf{Kafka (CMELT, DG)}: Kafka is an open-source distributed event store and stream-processing platform. It generally is implemented in its own cluster. It receives data in a pub/sub manner (typically, when something like Flume brings data into HDFS, it can on the side send it to Kafka simultaneously). Multiple processes can produce the data for, or consume the data from, the Kafka cluster simultaneously. Data points on a Kafka server is stored for a default of 7 days. It used to depend on Apache ZooKeeper for distributed coordination and management tasks. However, recent Kafka versions are moving away from this dependency to depend on Kraft (Kafka Raft). Typical use cases of Kafka include log aggregation (making sure the monitoring of a system can be centralized), event sourcing (analyzing user behavior on a website), or metrics collection (such as IoT data or embedded systems for physical measurements).
 
 	Here is Kafka's terminology:
 	\begin{itemize}
@@ -1022,6 +1033,8 @@ Here we describe various techniques or meta-approaches that are common in data s
 \section*{TODOs}
 
 Add table of contents and index. Possibly add newpage between sections.
+
+Fix timestamp for generated pdf version tracking to include current time.
 
 Improve difficulty / importance code usage (right now, it uses A and B too much; many Bs should be Cs for specific profiles, or a G should be added). Probably divide Importance and Difficulty into 2 different codes. Probably use emojis for the code rather than letters, so that they can be search for easily with Ctrl+F by people of the respective profile.
 

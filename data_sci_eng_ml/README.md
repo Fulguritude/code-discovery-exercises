@@ -5,7 +5,7 @@ NB: This is a WIP.
 
 This is a set of ressources meant to help quickly teach data literacy to people of all levels and interests.
 
-It is a revamp (and translation) of the pedagogical material that I had made for various university students. It started with master's students of "UX and design" at the *Ecole de Design Nantes-Atlantique*, and more recently, I used it for master's students in data science and engineering at the *Estiam*.
+It is a revamp (and translation) of the pedagogical material that I had made for various university students. It started with master's students of "UX and design" at the *Ecole de Design Nantes-Atlantique*, and more recently, I used it for master's students in data science, data engineering, and AI/ML, at the *Estiam*.
 
 The goal of this course (of my own design), originally, was to give a decent amount data and programming literacy to people with backgrounds that might even be lacking high school math. It was mostly centered around data science and ML, but could serve as a guide to the most motivated students to be able to pursue general programming, data science, data engineering, and machine learning.
 
@@ -18,6 +18,10 @@ Of interest are:
   - the lexicon, which presents some thematic lists of concepts that relate to computer science, professional work in data, machine learning, mathematics, design, system design, network engineering, etc.
 
   - the jupyter worksheets, which would present fundamental programming, data science, data visualization, and machine learning concepts, in a pedagogically decent order (TODO: finish cleaning, and translate).
+
+  - the syllabus for the Estiam class I gave.
+
+  - the exam I gave to the Estiam class, useful for those interested in self-study. The exam gives has three questions: one which allows you to present general knowledge on big data, one which is a simple analysis of a small-ish end-to-end dataset, and one which is a system design problem. All of these are directly relevant to getting hired as a data scientist or engineer.
 
 
 # Programming literacy
