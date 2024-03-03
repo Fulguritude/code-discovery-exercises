@@ -5,7 +5,19 @@ Git is a powerful piece of software that allows the writing and archiving of tex
 
 Git, for a beginner, can basically be summarized in a dozen commands.
 
-First things first, some vocabulary and context. There is a "repository" (a deposit of code, and the history of changes to that code) containing some code (or which is initially empty), online, that you want to copy into you local computer. For this, you'll `git clone [address] [local_path]` to make a local version of a remote git repo into the `local_path` folder of your computer. This can be done via HTTPS or SSH: SSH is safer, but will require you to create an SSH PPK pair (Public/Private Key pair) and to set it up on your GitHub/GitLab/BitBucket/etc account.
+First things first, some vocabulary and context. There is a "**repository**" (a deposit of code, and the history of changes to that code) containing some code (or which is initially empty), online, that you want to copy into you local computer. For this, you'll `git clone [address] [local_path]` to make a local version of a remote git repo into the `local_path` folder of your computer. This can be done via HTTPS or SSH: SSH is safer, but will require you to create an SSH PPK pair (Public/Private Key pair) and to set it up on your GitHub/GitLab/BitBucket/etc account.
+
+To set up SSH with github (which we recommend on your own machine, and only on your own machine), you'll need to do a couple of things.
+
+- First, you need to go into the appropriate SSH folder on your system. In general, on Unix-based systems, this folder is found in your home directory, as `~/.ssh/`. If it doesn't exist, use `mkdir ~/.ssh` to create it.
+
+- Then, go into that folder using `cd ~/.ssh/`, use the `ssh-keygen` command to create a public/private key pair (any encryption algorithm is fine, the default is RSA; some encryption protocols are stronger than others though).
+
+- Then, copy the contents of your public key (if you went with the default RSA, it should be the file `~/.ssh/id_rsa.pub`).
+
+- Then, while logged in to GitHub, go to `https://github.com/settings/keys`. Click on the green "New SSH key" button, paste the contents of `id_rsa.pub` in the big text box, give that key a name that'll help you remember the computer that it came from, and validate.
+
+You should now be able to do a `git clone git@github.com:MyGithubUsername/MyRepoName.git my_local/dir_path/` command without issue (type "yes" when it asks you to remember the fingerprint the first time; it just means that your computer accepts GitHub as a trusted peer).
 
 Now, you've got the local repo/archive on your computer, and the remote one on GitHub (or GitLab, or BitBucket...). You've also made a couple of changes to the text/code files locally.
 
@@ -13,7 +25,7 @@ The simplest thing you can desire to do, now, is send your code to the repo on t
 This is generally done via:
 
 ```bash
-git add [my file names]
+git add [my file paths]
 git commit -m "my commit message explaining what I just did"
 git push
 ```
