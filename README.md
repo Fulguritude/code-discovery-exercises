@@ -86,7 +86,7 @@ For now, we have:
 - the 42 OCaml piscine,
 - some custom Rust cheat sheets which will present essential concepts of the language, as well as the polars data science library, and a link to Rustlings.
 - some code projects meant to teach you entry-level university mathematics if you already know at least one programming language well that I wrote as a member of 42-AI.
-- an introduction to data science, data engineering and ML that I initially wrote for university students of design and UX, then revamped for students of big data. It should now be good enough to serve as a general introduction to most subdomains of computer science, as well as important related subjects.
+- an introduction to data science, data engineering and ML that I initially wrote for master's students of design and UX, then revamped for master's students of AI and big data. It should now be good enough to serve as a general introduction to most subdomains of computer science, as well as important related subjects.
 
 They can prove very useful if you're looking to broaden your skills.
 
